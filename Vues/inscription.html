@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inscription</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+	<div style="text-align: center">
+		<div class="rectangle center">
+			<h2 class="title">Inscription</h2>
+			
+			<div>
+				<div class="steps">
+					<button class="btn-step" id="1" onclick="changeStep(1)">1</button>
+					<button class="btn-step" id="2" onclick="changeStep(2)">2</button>
+					<button class="btn-step" id="3" onclick="changeStep(3)">3</button>
+				</div>
+				<form>
+					<div id="step1">
+						
+						<input type="text" id="emailSignup" required  name="email" class="input_connexion" placeholder="Email" style="border-top-left-radius:5px; border-top-right-radius:5px;">
+						<input type="text" id="emailConfirmSignup" required name="email_confirm" class="input_connexion" placeholder="Confirmer email" ">
+						<input type="password" id="passwordSignup" required name="password" class="input_connexion" placeholder="Mot de passe" style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+
+						<button type="button" class="btn-connect" onclick="changeStep(2)">Valider</button>
+
+					</div>
+					<div id="step2" style="display:none;">
+
+						<select id="civilite" class="select_civilite">
+							<option selected>Madame</option>
+							<option>Monsieur</option>
+						</select>
+
+						<input type="text" id="dateSignup" required  name="date" class="input_connexion" placeholder="Date de naissance (JJ-MM-YYYY)" style="border-top-left-radius:5px; border-top-right-radius:5px;">
+						<input type="text" id="nomSignup" required  name="nom" class="input_connexion" placeholder="Nom">
+						<input type="text" id="prenomSignup" required name="prenom" class="input_connexion" placeholder="Prénom">
+						<input type="text" id="adresseSignup" required name="adresse" class="input_connexion" placeholder="Adresse postale">
+
+						<input type="text" id="cpSignup" required name="text" class="input_connexion" placeholder="Code postale" style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+
+						<button type="button" class="btn-connect" onclick="changeStep(3)">Valider</button>
+
+					</div>
+					<div id="step3" style="display:none;">
+
+						<div class="cgu">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</div>
+
+						<button type="button" class="btn-connect" onclick="confirmRegister()">
+						Valider
+						</button>
+
+					</div>
+				</form>
+				
+			</div>
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+		// on initialise l'étape
+		let step = 1;
+		changeStep(1); // pour se mettre à l'étape 1 dès le départ
+
+		// fonction pour changer l'étape
+		function changeStep(s){
+			step = s; 
+			// on commence par change le background du btn séléctionné
+			for(let i=1; i<=3; i++){
+				if(i==s){
+					document.getElementById(i).classList.add("selected");
+					document.getElementById("step"+i).style.display = "block"
+
+				}else{
+					// on enlève la class selected des autres boutons
+					document.getElementById(i).classList.remove("selected");
+					document.getElementById("step"+i).style.display = "none"
+				}
+			}
+
+		}
+
+
+		function confirmRegister(){
+			// let email = document.getElementById("emailSignup");
+			// let email_confirm = document.getElementById("emailConfirmSignup");
+			// let password = document.getElementById("passwordSignup");
+
+			// if(email.length>0 && email_confirm.length>0 && password.length>0){
+
+			// }else{
+			// 	alert("Remplissez tous les champs.")
+			// }
+
+		}
+	</script>
+</body>
+</html>
