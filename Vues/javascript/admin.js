@@ -1,3 +1,31 @@
+var getHttpRequest= function(){
+    // permet de supporter tous les navigateurs ( même les moins bons tels que IE .......)
+    var httpRequest = false;
+    if (window.XMLHttpRequest) { // Mozilla, Safari,...
+        httpRequest = new XMLHttpRequest();
+        if (httpRequest.overrideMimeType) {   // permet d'éviter un bug
+          httpRequest.overrideMimeType('text/xml');
+        }
+      }
+      else if (window.ActiveXObject) { // IE
+        try {
+          httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+        }
+        catch (e) {
+          try {
+            httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          catch (e) {}
+        }
+      }
+      
+      if (!httpRequest) {
+        alert('Abandon :( Impossible de créer une instance XMLHTTP');
+        return false;
+      }
+    return httpRequest;
+}
+
 var tabcontent=document.getElementsByClassName('tabcontent');
 	for (var i = 0; i < 6; i++) {
 		tabcontent[i].style.display="none";
@@ -28,15 +56,33 @@ var tabcontent=document.getElementsByClassName('tabcontent');
 let modal=null;
 
 const openModal=function(e){
-    console.log(e);
     e.preventDefault(); // empeche le comportement classique du lien
-    const target=document.querySelector(e.target.getAttribute('data-href')); // récupère la cible du clic
     
+    const target=document.querySelector(e.target.getAttribute('data-href')); // récupère la cible du clic
+    const modalType=e.target.getAttribute('data-href').replace('#',''); // récupère le type de modal à update
+    const rowNode=e.target.parentNode.parentNode; // on remonte au parent pour récupérer les infos (nom,prénom etc.)
     target.style.display=null;
     modal=target;
     modal.addEventListener('click',closeModal);
     modal.querySelector('.js-modal-close').addEventListener('click',closeModal);
     modal.querySelector('.js-modal-stop').addEventListener('click',stopPropagation);
+
+    var cell=rowNode.children;
+    var userId=cell[0].textContent;
+    var userFirstName=cell[1].textContent;
+    var userLastName=cell[2].textContent;
+
+    switch(modalType){
+        case 'modal-modif':
+            updateModalModif(userId,userFirstName,userLastName);
+            break;
+        case 'modal-msg':
+            updateModalMsg();
+            break;
+        case 'modal-del':
+            updateModalDel(userFirstName,userLastName);
+            break;
+    } 
 }
 
 
@@ -61,7 +107,7 @@ const stopPropagation=function(e){
 }
 document.querySelectorAll('.js-modal').forEach(img=>{
     img.addEventListener('click',openModal);
-    
+
 })
 
 window.addEventListener('keydown',function(e){
@@ -70,4 +116,52 @@ window.addEventListener('keydown',function(e){
     }
 })
 
-    
+
+$('.row').click(function() {
+    var itemNumer= this.id.replace('rowitem_','');
+    var cell=$(this).children('.cell');
+    var usertId=cell[0].textContent;
+    var userFirstName=cell[1].textContent;
+    var userLastName=cell[2].textContent;
+    //document.cookie='userId='+item;
+});
+
+
+
+function updateModalModif(userId,userFirstName,userLastName){
+    document.getElementById('modif-title').textContent="Modifications utilisateur n°"+userId;
+    document.getElementById('fname-txt').value=userFirstName;
+    document.getElementById('lname-txt').value=userLastName;
+}
+
+function updateModalMsg(userId,userFirstName){
+
+}
+
+function updateModalDel(userFirstName,userLastName){
+    document.getElementById('delete-name').textContent=userFirstName+" "+userLastName;
+}
+
+
+$('#text').on('input',function(e){
+    e.preventDefault();
+    httpRequest=getHttpRequest();
+    httpRequest.onreadystatechange=function(){
+        if(httpRequest.readyState===4){
+            document.getElementById('result').innerHTML=httpRequest.responseText;
+        }
+    }
+    httpRequest.open('POST','demo.php',true);
+    //var input=document.getElementById('q');
+    var form=document.getElementById('form');
+    var data=new FormData(form);
+    //httpRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded')
+    //httpRequest.send("name=Lucas&lname=Mercier");
+    httpRequest.send(data);
+/*     // get
+    httpRequest.open('GET','demo.php?content='+'a',true);
+    httpRequest.send(); */
+});
+
+
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Controle administrateur</title>
+        <link rel="stylesheet" type="text/css" href="css/master-1.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand|PT+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+    	<div class="tab">
+    		<p id="tabtitle">Panneau d'administration</p>
+    		<div>
+    			<button class="tabbutton" id="newcomptebtn" onclick="dispTab(event,'newcompte')">Créer un nouveau compte</button>
+    			<button class="tabbutton" id="consobtn" onclick="dispTab(event,'conso')">Relevé de consommation</button>
+    			<button class="tabbutton" id="clientsbtn" onclick="dispTab(event,'clients')">Liste des clients</button>
+    		</div>
+    		<div>
+    			<button class="tabbutton" id="cgubtn" onclick="dispTab(event,'cgu')">Editions des CGU</button>
+    			<button class="tabbutton" id="consignesbtn" onclick="dispTab(event,'consignes')">Consignes générales</button>
+    			<button class="tabbutton" id="visubtn" onclick="dispTab(event,'visu')">Visualisation globale</button>
+    		</div>
+    	</div>
+    	<div class="tabcontent" id="conso">
+    		<p class="subtabtitle"> Relevé de consommation</p>
+    	</div>
+        <div class="tabcontent" id="clients">
+    		<p class="subtabtitle"> Liste des clients</p>
+    	</div>
+    	<div class="tabcontent" id="cgu">
+            <p class="subtabtitle"> CGU</p>
+    	</div>
+    	<div class="tabcontent" id="consignes">
+    		<p class="subtabtitle"> Consignes générales</p>
+    	</div>
+       	<div class="tabcontent" id="visu">
+    		<p class="subtabtitle"> Visualisation globale</p>
+		</div>
+		
+    </body>
+
+<script src="javascript/admin.js">
+</script>
+
+
+</html>
+

@@ -85,8 +85,8 @@
     				<div class="table-header">
     					<div class="row">
     						  <div class="cell">id</div>
-						      <div class="cell">Nom</div>
 						      <div class="cell">Prénom</div>
+						      <div class="cell">Nom</div>
 						      <div class="cell">Role</div>
 				    	</div> 
     				</div>
@@ -100,8 +100,8 @@
 								$btnEdit='<img src="Vues/images/edit.png" alt="Editer" data-href="#modal-modif" class="admin_option dlg-edit js-modal">';
 								$btnContact='<img src="Vues/images/contact.png" alt="Editer" data-href="#modal-msg" class="admin_option dlg-edit js-modal">';
 								$btnDel='<img src="Vues/images/delete.png" alt="Editer" data-href="#modal-del" class="admin_option dlg-edit js-modal">';
-	    						echo '<div class="row">';
-	    						echo '<div class="cell">'.$i.'</div>'.'<div class="cell">'.$prenom.'</div>'.'<div class="cell">'.$nom.'</div>'.'<div class="cell">'.$role.'</div>'.'<div class="cell">'.$btnEdit.$btnContact.$btnDel.'</div>';
+	    						echo '<div class="row" id="rowitem_'.$i.'">';
+	    						echo '<div class="cell">'.$i.'</div>'.'<div class="cell row_prenom">'.$prenom.'</div>'.'<div class="cell row_nom">'.$nom.'</div>'.'<div class="cell row_role">'.$role.'</div>'.'<div class="cell">'.$btnEdit.$btnContact.$btnDel.'</div>';
 	    						echo '</div>';
 	    					}
 	    				 ?>
@@ -136,13 +136,25 @@
 
 		<div id="modal-modif" class="modal" role="modal" style="display:none;">
     		<div class="modal-wrapper js-modal-stop">
-        		<button class="js-modal-close">FERMER</button>
-        		<h1> Modifications utilisateur </h1>
+        		<button class="js-modal-close">&#10006</button>
+        		<p id="modif-title"> Modifications utilisateur n°[UID]</p>
 				<div>
 					<form action="" id="form-modif-client">
-						<div> Nom <input type="text"></div>
-						<div> Prenom <input type="text"></div>
-						<div> Mail <input type="text"></div>
+						<table>
+							<tr>
+								<td>Nom</td>
+								<td><input type="text" id="fname-txt"></td>
+							</tr>
+							<tr>
+								<td>Prenom</td>
+								<td><input type="text" id="lname-txt"></td>
+							</tr>
+							<tr>
+								<td>Mail</td>
+								<td><input type="text" id="mail-txt"></td>
+							</tr>
+						</table>
+						<input type="submit" value="Modifier">
 					</form>
 				</div>
 			</div>
@@ -151,7 +163,6 @@
 		<div id="modal-msg" class="modal" role="modal" style="display:none;">
     		<div class="modal-wrapper js-modal-stop">
         		<button class="js-modal-close">FERMER</button>
-        		<h1> Messagerie privée avec [USERNAME] </h1>
 				<div>
 					A VENIR
 				</div>
@@ -159,7 +170,8 @@
 		</div>
 		<div id="modal-del" class="modal" role="modal" style="display:none;">
     		<div class="modal-wrapper js-modal-stop">
-				<p> Êtes-vous sur de vouloir supprimer l'utilisateur [USERNAME]?</p>
+				<p> Êtes-vous sur de vouloir supprimer l'utilisateur suivant?</p>
+				<p id="delete-name">[USERNAME]</p>
 				<div class="center">
 					<button class="js-modal-close">ANNULER</button>
 					<button class="js-modal-close">CONFIRMER</button>
@@ -173,7 +185,8 @@
 
 
 
-<script src="Vues/javascript/admin.js"></script>
+<script src="Vues/javascript/admin.js">
+</script>
 
 
 </html>

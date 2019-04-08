@@ -1,8 +1,13 @@
+<?php
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Inscription</title>
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="Vues/css/style.css">
 </head>
 <body>
 	<div style="text-align: center">
@@ -15,7 +20,7 @@
 					<button class="btn-step" id="2" onclick="changeStep(2)">2</button>
 					<button class="btn-step" id="3" onclick="changeStep(3)">3</button>
 				</div>
-				<form>
+				<form aciton="">
 					<div id="step1">
 						
 						<input type="text" id="emailSignup" required  name="email" class="input_connexion" placeholder="Email" style="border-top-left-radius:5px; border-top-right-radius:5px;">
@@ -37,7 +42,7 @@
 						<input type="text" id="prenomSignup" required name="prenom" class="input_connexion" placeholder="Prénom">
 						<input type="text" id="adresseSignup" required name="adresse" class="input_connexion" placeholder="Adresse postale">
 
-						<input type="text" id="cpSignup" required name="text" class="input_connexion" placeholder="Code postale" style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
+						<input type="text" id="cpSignup" required name="cp" class="input_connexion" placeholder="Code postale" style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
 
 						<button type="button" class="btn-connect" onclick="changeStep(3)">Valider</button>
 
@@ -48,7 +53,7 @@
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 						</div>
 
-						<button type="button" class="btn-connect" onclick="confirmRegister()">
+						<button type="submit" class="btn-connect" onclick="confirmRegister()" >
 						Valider
 						</button>
 
@@ -59,6 +64,7 @@
 			
 		</div>
 	</div>
-	<script type="text/javascript" src="./javascript/inscription.js"></script>
+	<script type="text/javascript" src="Vues/javascript/inscription.js"></script>
 </body>
+
 </html>

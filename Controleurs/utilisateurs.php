@@ -21,14 +21,29 @@ switch($function){
     
     case 'inscription':
         $view='inscription';
-        if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mdp']) && isset($_POST['mail'])){
+        if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['password']) && isset($_POST['email'])){
             // si un formulaire a ete post
-
-
-
-
             // une fois l'inscription terminée, on re dirige vers la page de connexion
-            $view='connexion';
+            $nom=htmlspecialchars($_POST['nom']);
+            $prenom=htmlspecialchars($_POST['prenom']);
+            $password=hash("sha256",htmlspecialchars($_POST['password']));
+            $date=htmlspecialchars($_POST['date']);
+            $codePostal=htmlspecialchars($_POST['cp']);
+            $adresse=htmlspecialchars($_POST['adresse']);
+            
+
+            if($_POST['email']==$_POST['email_confirm']){
+                if(is_numeric($codePostal)){
+                    addCustomer($bdd,$nom,$prenom,$password);
+                    $view='connexion';
+                }
+
+                else
+                    $error="Code postal non valide";
+            }else
+                $error="Les adresses mails doivent être identiques";
+
+            
         }
         break;
     
