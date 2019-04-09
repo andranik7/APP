@@ -9,14 +9,13 @@
 		<div class="rectangle center">
 			<h2 class="title">Inscription</h2>
 			
-			Modification
 			<div>
 				<div class="steps">
 					<button class="btn-step" id="1" onclick="changeStep(1)">1</button>
 					<button class="btn-step" id="2" onclick="changeStep(2)">2</button>
 					<button class="btn-step" id="3" onclick="changeStep(3)">3</button>
 				</div>
-				<form>
+				<form action="" >
 					<div id="step1">
 						
 						<input type="text" id="emailSignup" required  name="email" class="input_connexion" placeholder="Email" style="border-top-left-radius:5px; border-top-right-radius:5px;">
@@ -49,11 +48,12 @@
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 						</div>
 
-						<button type="button" class="btn-connect" onclick="confirmRegister()">
-						Valider
+						<button type="submit" class="btn-connect" id="submit">
+							Soumettre
 						</button>
 
 					</div>
+					<section class="message" id="message" style="display: none"></section>
 				</form>
 				
 			</div>

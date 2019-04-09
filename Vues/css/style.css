@@ -5,15 +5,15 @@
 
 
 body{
-	background-color: #364970;
-	font-family: 'Quicksand';
+  background-color: #364970;
+  font-family: 'Quicksand';
 }
 
 
 
 .rectangle{
-	width: 30%;
-	height: 400px;
+  width: 30%;
+  height: 400px;
 }
 
 .center{
@@ -23,13 +23,13 @@ body{
 }
 
 .title{
-	color: #d8764a;
+  color: #d8764a;
     font-size:200%;
     font-weight: bold;
 }
 
 .input_connexion{
-	width: 97%;
+  width: 97%;
     height: 45px;
     padding-left:5px;
     box-shadow: none;
@@ -44,7 +44,7 @@ body{
 }
 
 .input_connexion:focus{
-	border: 3px solid #d8764a;
+  border: 3px solid #d8764a;
     transition: 0.6s;
 }
 
@@ -226,7 +226,6 @@ body{
   background-color: rgba(255,255,255,0.32);
 }
 
-
 .rectangleContenu>.title{
     margin-bottom:30px;
     text-align: center;
@@ -240,5 +239,17 @@ body{
     flex-direction: row;
     color:white;
     margin-top: 10px;
+}
+
+.message{
+    border:none;
+    margin-top: 4px;
+    background-color:#fb4344;
+    height:40px;
+    width:100%;
+    color:white;
+    font-size:110%;
+    border-radius: 3px;
+    font-family: 'Quicksand';
 }
 
