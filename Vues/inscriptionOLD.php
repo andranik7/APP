@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+<?php
+
+
+
+?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Inscription</title>
@@ -48,12 +53,11 @@
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 						</div>
 
-						<button type="submit" class="btn-connect" id="submit">
-							Soumettre
+						<button type="submit" class="btn-connect" onclick="confirmRegister()" >
+						Valider
 						</button>
 
 					</div>
-					<section class="message" id="message" style="display: none"></section>
 				</form>
 				
 			</div>
@@ -62,4 +66,5 @@
 	</div>
 	<script type="text/javascript" src="Vues/javascript/inscription.js"></script>
 </body>
+
 </html>

@@ -30,11 +30,12 @@ switch($function){
             $date=htmlspecialchars($_POST['date']);
             $codePostal=htmlspecialchars($_POST['cp']);
             $adresse=htmlspecialchars($_POST['adresse']);
+            $email=htmlspecialchars($_POST['email']);
             
 
             if($_POST['email']==$_POST['email_confirm']){
                 if(is_numeric($codePostal)){
-                    addCustomer($bdd,$nom,$prenom,$password);
+                    addCustomer($bdd,$nom,$prenom,$password,$email,null);
                     $view='connexion';
                 }
 
