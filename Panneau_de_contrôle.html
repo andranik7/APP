@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Titre</title>
+    <link rel="stylesheet" href="./css/jsgrid-1.5.3/style.css">
+    <script type="text/javascript">
+        var tabcontent=document.getElementsByClassName('tabcontent');
+
+        for (var i = 0; i < 6; i++) {
+            tabcontent[i].style.display="none";
+        }
+
+        function dispTab(event,tabname){
+            var tabcontent=document.getElementsByClassName('tabcontent');
+            
+            var tabtitle=document.getElementsByClassName('tabbutton');
+            for (var i = 0; i < 6; i++) {
+                console.log(tabcontent[i]);
+                tabcontent[i].style.display="none";
+                tabtitle[i].style.backgroundColor='#556fb2';
+            }
+            document.getElementById(tabname).style.display="block";
+            document.getElementById(tabname+"btn").style.backgroundColor='#eba338';
+        }
+    </script>
+   
+</head>
+
+<body style="background-color:#364970;">
+
+    <header>
+        
+    </header>
+    <section>
+        
+            <div class='Panneau'>
+                <h1>Panneau de contrôle</h1> 
+                <div class="Button">
+                    
+                    <div class="Visual">
+                        <em > Visualisation </em>
+                    </div>
+                    <div class="Consigne">
+                        <em > Consigne </em>
+  
+                    </div>
+                    
+                </div>
+                <div class="Consigne_1">
+                    
+                    <table frame="below" border rules=rows cellspacing=0 align=right>
+                                <tr>
+                                    <th><h2><p style="color:#eba338;">Active</p></h2></th>
+                                    <th><h2><p style="color:#eba338;">Consigne</p></h2></th>
+                                    <th><h2><p style="color:#eba338;">Valeur</p></h2></th>
+                                </tr>
+                                <tr>
+                                    <td align="middle"><label><input type="checkbox" name="light" style="color: "></label></td>
+                                    <td align="middle"><h3>lumière</h3></td>
+                                    <td align="middle">
+                                        <form method="post" action="#">
+
+                                        <input type="number" name="" placeholder="10" id="number" required style="font-size:15px;" min="10"max="30"step="5">
+                                        </form>
+
+                                       </label></td> 
+
+                                </tr>
+                                <tr>
+                                    <td align="middle"><label><input type="checkbox" name="temperature"></label></td>
+                                    <td align="middle"><h3>temperature</h3></td>
+                                    <td align="middle">
+
+                                        <form method="post" action="#">
+
+                                        <input type="number" name="temperature" placeholder="25" id="number" required style="font-size:15px;" min="25"max="60"step="5">
+                                        </form>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td align="middle"><label><input type="checkbox" name="sound"></label></td>
+                                    <td align="middle"><h3>son</h3></td>
+                                    <td align="middle">
+                                        <form method="post" action="#">
+
+                                        <input type="number" name="sound" placeholder="10" id="number" required style="font-size:15px;" min="10"max="30"step="5">
+                                        </form>
+
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td align="middle"><label><input type="checkbox" name="distance"></label></td>
+                                    <td align="middle"><h3>distance</h3></td>
+                                    <td align="middle">
+                                        <form method="post" action="#">
+
+                                        <input type="number" name="distance" placeholder="5" id="number" required style="font-size:15px;" min="5"max="100"step="5">
+                                        </form>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td align="middle"><label><input type="checkbox" name="actionneur"></label></td>
+                                    <td align="middle"><h3>actionneur</h3></td>
+                                    <td align="middle"></td>
+                                </tr>
+                            </table>               
+                            <form method="post" action="#">
+                                <p><input type="submit" value="Valider" min="10" max="30"></p> 
+                            </form>
+                                    
+                    
+                </div>
+            </div>
+
+
+        
+        
+    </section>
+    <div id="jsGrid">
+
+    </div>
+
+    
+
+    
+    
+    
+    
+</body>
+</html>
