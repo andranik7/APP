@@ -15,7 +15,7 @@ echo 'Page de connexion';
 		<div class="rectangle center">
 			<h2 class="title">Connexion</h2>
 			<div>
-				<form>
+				<form action="" method="POST">
 					<input type="text" required name="email" class="input_connexion" placeholder="Email" style="border-top-left-radius:5px; border-top-right-radius:5px;">
 					<input type="password" required name="password" class="input_connexion" placeholder="Mot de passe" style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;">
 

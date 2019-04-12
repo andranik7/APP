@@ -92,7 +92,6 @@
     				</div>
     				<div class="table-body">
     					<?php
-							$donnees=basicQuerry($bdd,'select * from utilisateurs');
 	    					for($i=0;$i<sizeof($donnees);$i++){
 	    						$prenom=$donnees[$i]['Prenom'];
 	    						$nom=$donnees[$i]['Nom'];

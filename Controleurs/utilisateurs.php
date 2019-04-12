@@ -32,37 +32,60 @@ switch($function){
             $adresse=htmlspecialchars($_POST['adresse']);
             $email=htmlspecialchars($_POST['email']);
             
-
             if($_POST['email']==$_POST['email_confirm']){
                 if(is_numeric($codePostal)){
-                    addCustomer($bdd,$nom,$prenom,$password,$email,null);
+                    addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,'à modifier');
                     $view='connexion';
                 }
-
                 else
                     $error="Code postal non valide";
             }else
                 $error="Les adresses mails doivent être identiques";
-
-            
         }
         break;
     
     case 'connexion':
+        if(isset($_SESSION))
+            print_r($_SESSION);
         $view='connexion';
-        //if(isset($_POST['mail']) && isset($_POST['mdp'])){
+            if(isset($_POST['email']) && isset($_POST['password'])){
             // si un formulaire a ete post
-
-
-            // une fois la connexion établie
-            $connexionSucces=TRUE;
-            if($connexionSucces)
-                $view='admin';
-                
-            else
+            $email=htmlspecialchars($_POST['email']);
+            $password=hash("sha256",htmlspecialchars($_POST['password']));
+            $userInfo=speficQuery($bdd,'utilisateurs','*','email',$email);
+            if($password==$userInfo[0]['mdp']){
+                $error='Connexion ok';
+                $_SESSION['nom']=$userInfo[0]['Nom'];
+                $_SESSION['prenom']=$userInfo[0]['Prenom'];
+                $_SESSION['role']=$userInfo[0]['role'];
+                $_SESSION['email']=$userInfo[0]['email'];
+                header('Location: http://localhost/app/index.php?cible=utilisateurs&function=user');
+            }else
                 $error="<div> Echec de l'authentification, veuillez vérifier vos informations.</div>";
-        //}
-        break; 
+        }
+        break;
+    
+    case 'user':
+        if(!isset($_SESSION['nom']) || !isset($_SESSION['prenom'])){
+            $view="nonconnecte";
+        }else{
+            switch($_SESSION['role']){
+                case 'client':
+                    break;
+                
+                case 'technicien':
+                    break;
+                
+                case 'gestionnaire':
+                    break;
+                
+                case 'admin':
+                    $donnees=basicQuerry($bdd,'utilisateurs','*');
+                    $view="admin";
+                    break;
+            }
+        }
+        break;
 }
 
 include('Vues/'.$view.'.php');

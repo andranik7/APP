@@ -32,9 +32,11 @@ var tabcontent=document.getElementsByClassName('tabcontent');
 	}
 
 	function dispTab(event,tabname){
-		var tabcontent=document.getElementsByClassName('tabcontent');
+        var tabcontent=document.getElementsByClassName('tabcontent');
+        
 		var tabtitle=document.getElementsByClassName('tabbutton');
 		for (var i = 0; i < 6; i++) {
+            
 			tabcontent[i].style.display="none";
 			tabtitle[i].style.backgroundColor='#556fb2';
 		}
@@ -143,7 +145,7 @@ function updateModalDel(userFirstName,userLastName){
 }
 
 
-$('#text').on('input',function(e){
+/* $('#text').on('input',function(e){
     e.preventDefault();
     httpRequest=getHttpRequest();
     httpRequest.onreadystatechange=function(){
@@ -160,8 +162,8 @@ $('#text').on('input',function(e){
     httpRequest.send(data);
 /*     // get
     httpRequest.open('GET','demo.php?content='+'a',true);
-    httpRequest.send(); */
+    httpRequest.send(); 
 });
 
-
+ */
 
