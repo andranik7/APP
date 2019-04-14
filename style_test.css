@@ -1,0 +1,90 @@
+h1{
+    font-family: "Arial Black";   
+    font-style: italic;
+    font-weight: bold; 
+    text-decoration: underline
+}
+.Panneau {
+
+    border: 3px solid #364970;
+    text-align: center;
+    margin: 10px;
+    margin-top: 50px;
+    height: 110px;
+    background-color: #364970;
+    color: white;
+}
+
+
+
+.Button {
+    display: flex;
+    flex-direction: row;
+
+    /*text-align: center;*/
+    font-size: 1.2em;
+    margin: 30px;
+    
+}
+
+
+
+.Button_t {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-indent: 200px;
+    font-size:100% ;
+    background-color: #364970;
+    color: white;
+    border: 5px solid #eba338;
+    border-radius: 15px;
+}
+
+.Button_t:hover {
+    border-radius: 15px;
+    background-color: #eba338;
+    color: white;
+    transition: 0.5s;
+}
+
+.Consigne_1 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+
+}
+
+button {
+    border-radius: 10px;
+    border: 0;
+    text-rendering: auto;
+    color: white;
+    background-color: #eba338;
+    width: 5em;
+    height: 2em;
+    text-align: middle;
+    font-size:90%;
+    margin-left:auto;
+    margin-right:auto; 
+    margin-top: auto;
+}
+
+input{
+     width: 5em;  
+    height: 2em;
+    color: black;
+    background-color: #C8C8C8;
+    border-color: #364970;
+    border: 0;
+}
+
+input[type=number] {
+    width: 2em;  
+    height: 2em;
+    color: black;
+    background-color: #C8C8C8;
+}
