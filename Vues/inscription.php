@@ -27,9 +27,9 @@
 					</div>
 					<div id="step2" style="display:none;">
 
-						<select id="civilite" class="select_civilite">
-							<option selected>Madame</option>
-							<option>Monsieur</option>
+						<select id="civilite" class="select_civilite" name="civilite">
+							<option selected value="madame">Madame</option>
+							<option value="monsieur">Monsieur</option>
 						</select>
 
 						<input type="text" id="dateSignup" required  name="date" class="input_connexion" placeholder="Date de naissance (JJ-MM-YYYY)" style="border-top-left-radius:5px; border-top-right-radius:5px;">

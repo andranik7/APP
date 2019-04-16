@@ -10,17 +10,6 @@
     </head>
 
     <body>
-    	<header>
-    		<div id="header_buttons">
-				<FORM>
-					<SELECT name="langue" size="1" id="stylized_select">
-						<option value="a venir">Français</option>
-						<option value="a venir" disabled>à venir</option>
-					</SELECT>
-				</FORM>
-				<button class="stylized_button"> Se connecter</button>
-			</div>
-    	</header>
     	<div class="tab">
     		<p id="tabtitle">Panneau d'administration</p>
     		<div>

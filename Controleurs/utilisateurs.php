@@ -31,10 +31,12 @@ switch($function){
             $codePostal=htmlspecialchars($_POST['cp']);
             $adresse=htmlspecialchars($_POST['adresse']);
             $email=htmlspecialchars($_POST['email']);
+            $dateNaissance=htmlspecialchars($_POST['date']);
+            $civilite=htmlspecialchars($_POST['civilite']);
             
             if($_POST['email']==$_POST['email_confirm']){
                 if(is_numeric($codePostal)){
-                    addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,'à modifier');
+                    addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,'a modifier',$dateNaissance,$civilite);
                     $view='connexion';
                 }
                 else
@@ -71,6 +73,7 @@ switch($function){
         }else{
             switch($_SESSION['role']){
                 case 'client':
+                    $view='client';
                     break;
                 
                 case 'technicien':
@@ -88,6 +91,8 @@ switch($function){
         break;
 }
 
+if($function=="user")
+    include('Vues/bandeau.php');
 include('Vues/'.$view.'.php');
 
 if(isset($error)) echo $error;

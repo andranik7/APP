@@ -313,8 +313,6 @@ body{
 }
 
 
-
-
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Animations ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 @keyframes fadeIn{
 	from{opacity: 0;}
@@ -349,4 +347,26 @@ body{
 #form-modif-client{
 	display: flex;
 	flex-direction: column;
+}
+
+/* scrolbar */
+
+/* width */
+div::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #26395f; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #425b97; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5975b2; 
 }

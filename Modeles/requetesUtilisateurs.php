@@ -25,12 +25,14 @@ function updateUserInfo($bdd,$alteredParam,$newValue,$targetId,$targetTable){
 }
 
 
-function addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,$ville){
+function addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,$ville,$dateNaissance,$civilite){
     // on ajoute en deux temps: a la table utilisateurs classique et à la table clients
-    $userQuery='insert into utilisateurs (idUtilisateur,Nom,Prenom,mdp,email,linkPhoto,role) VALUES (?,?,?,?,?,?,?)';
+    $userQuery='insert into utilisateurs (idUtilisateur,Nom,Prenom,mdp,email,linkPhoto,role,dateNaissance,civilite) VALUES (?,?,?,?,?,?,?,?,?)';
     $stmt=$bdd->prepare($userQuery);
-    if(!$stmt->execute([null,$nom,$prenom,$password,$email,'no','client'])){
-        echo "Impossible d'ajouter dans la table utilisateur";
+    if(!$stmt->execute([null,$nom,$prenom,$password,$email,'no','client',$dateNaissance,$civilite])){
+        echo "Taille date: ".strlen($dateNaissance).'<br>';
+        echo "Taille civilite: ".strlen($civilite).'<br>';
+        echo "Impossible d'ajouter dans la table utilisateur, CODE ERREUR: ".$stmt->errorCode();
         return;
     }
     
