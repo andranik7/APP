@@ -60,7 +60,18 @@ h1{
 
 }
 
-button {
+
+input{
+     width: 2em;  
+    height: 2em;
+    color: black;
+    background-color: #C8C8C8;
+    border-color: #364970;
+    border: 0;
+    outline:none;
+}
+
+input[type=submit] {
     border-radius: 10px;
     border: 0;
     text-rendering: auto;
@@ -76,20 +87,19 @@ button {
     outline:none;
 }
 
-input{
-     width: 5em;  
-    height: 2em;
-    color: black;
-    background-color: #C8C8C8;
-    border-color: #364970;
+input[type=reset] {
+    border-radius: 10px;
     border: 0;
+    text-rendering: auto;
+    color: white;
+    background-color: #eba338;
+    width: 5em;
+    height: 2em;
+    text-align: middle;
+    font-size:90%;
+    margin-left:auto;
+    margin-right:auto; 
+    margin-top: auto;
     outline:none;
 }
 
-input[type=number] {
-    width: 2em;  
-    height: 2em;
-    color: black;
-    background-color: #C8C8C8;
-    outline:none;
-}
