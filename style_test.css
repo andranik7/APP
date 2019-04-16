@@ -40,6 +40,7 @@ h1{
     color: white;
     border: 5px solid #eba338;
     border-radius: 15px;
+    outline:none;
 }
 
 .Button_t:hover {
@@ -47,6 +48,7 @@ h1{
     background-color: #eba338;
     color: white;
     transition: 0.5s;
+    outline:none;
 }
 
 .Consigne_1 {
@@ -71,6 +73,7 @@ button {
     margin-left:auto;
     margin-right:auto; 
     margin-top: auto;
+    outline:none;
 }
 
 input{
@@ -80,6 +83,7 @@ input{
     background-color: #C8C8C8;
     border-color: #364970;
     border: 0;
+    outline:none;
 }
 
 input[type=number] {
@@ -87,4 +91,5 @@ input[type=number] {
     height: 2em;
     color: black;
     background-color: #C8C8C8;
+    outline:none;
 }
