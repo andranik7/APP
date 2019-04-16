@@ -91,7 +91,70 @@
                     </div>
 
                     <div class="Visualisation_1" id="2">
-                        <h1>你爸爸</h1>
+                        <canvas class="Canvas" id="canvas" width="450" height="300" style="border: 0px;"></canvas>
+                        <script type="text/javascript">
+                            var canvas=document.getElementById('canvas');
+
+                                //Pour le title//
+                                var title= canvas.getContext("2d");
+                                title.fillStyle = "#eba338";
+                                title.font = "20px Arial";
+                                title.fillText("Les Consomations de capteurs", 80, 25);
+
+                                //Pour le cercle//
+                                var ctx=canvas.getContext('2d');
+                                //Créer les data
+                                var data_capteur = [
+                                    {name:'lumière', color:'#EDA208', value:0.3},
+                                    {name:'distance', color:'#ED9B1F', value:0.2},
+                                    {name:'température', color:'#EDD7AA', value:0.35},
+                                    {name:'son', color:'#EDCC8A', value:0.15},
+                                    //{name:'actionneur', color:'EDA04C', value:0.25}
+                                    
+                                ];
+                                 //Définir le centre du cercle
+                                var x0 = canvas.width * 0.5, y0 = canvas.height * 0.60;//显示在画布中间
+                                 //Définir le rayon
+                                var radius = 90;
+                                 //Définir l'angle de départ
+                                var beginAngle = -90 *Math.PI/180;//(angle initial :-90deg)
+                                 //Traverse, dessine un éventail
+                                for (var i = 0; i < data_capteur.length; i++) {
+                                    //angle de ventilation
+                                    var tempAngle = data_capteur[i].value * 360 *Math.PI/180;
+                                    //angle de fin
+                                    var endAngle = beginAngle + tempAngle;
+
+                                    ctx.beginPath();
+                                    //point de départ
+                                    ctx.moveTo(x0, y0);
+                                    //radians de dessin
+                                    ctx.arc(x0, y0, radius, beginAngle, endAngle);
+                                    //Définir la coulor
+                                    ctx.fillStyle = data_capteur[i].color;
+                                    //Remplir la coulor
+                                    ctx.fill();
+
+                                    //Pour le text_capteur
+                                    var textAngle = beginAngle + tempAngle * 0.5; //l'angle du text_capteur
+                                    var text_capteur = data_capteur[i].name + ' '+data_capteur[i].value * 100 + '%';
+                                    console.log(text_capteur);
+                                    //Coordonnée du text
+                                    var text_X = x0 + (radius + 10) * Math.cos(textAngle);
+                                    var text_Y = y0 + (radius + 30) * Math.sin(textAngle);
+                                    
+                                    ctx.font = "15px 'Roboto'";
+                                    //Déterminer si le texte est à gauche
+                                    if((textAngle > 90 *Math.PI/180) && (textAngle < 270 *Math.PI/180) ) {
+                                        ctx.textAlign = 'end';//Le côté droit du texte se trouve à l'extrémité gauche de la ligne de base
+                                    }
+                                    //Draw text
+                                    ctx.fillText(text_capteur, text_X, text_Y);
+                                    //Mettez à jour l'angle de départ et utilisez l'angle de fin du secteur actuel comme angle de départ du secteur suivant.
+                                    beginAngle = endAngle;
+                                }
+                        </script>
+            
                     </div>
 
                     
@@ -128,22 +191,6 @@
                     document.getElementById(1).style.display = "none"
                 }
 
-
-
-           /*    for(let i=1; i<=3; i++)
-               {
-                    if(i==s)
-                    {
-                        document.getElementById(i);
-                        document.getElementById("step"+i).style.display = "none"
-
-                    }else
-                    {
-                    // on enlève la class selected des autres boutons
-                        console.log(initial);
-                        document.getElementById(2).style.display = "none"
-                    }
-                }*/
 
             }
 
