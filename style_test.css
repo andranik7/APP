@@ -103,3 +103,14 @@ input[type=reset] {
     outline:none;
 }
 
+
+.Canvas{
+    position: absolute;
+    right: 130px;
+    top:230px;}
+
+
+.Canvas1{
+    position: absolute;
+    left: 120px;
+    top:230px;}
