@@ -45,6 +45,21 @@ function getLogementId($bdd,$idClient,$adresse){
     $infoLogement = $ans->fetchall();
     return $infoLogement;
 }
+function getRoomId($bdd,$idClient,$adresse,$descriptif){
+    $idLogement=getLogementId($bdd,$idClient,$adresse)[0]['idLogement'];
+    $query="select idPiece from pieces where idLogement=".$idLogement.' and descriptif like "%'.$descriptif.'%"';
+    $ans=$bdd->query($query);
+    $infoPiece = $ans->fetchall();
+    return $infoPiece;
+}
+
+function getSensorList($bdd,$idClient,$logement,$descriptif){
+    $idPiece=getRoomId($bdd,$idClient,$logement,$descriptif)[0]['idPiece'];
+    $query="select * from capteurs where idPiece=".$idPiece;
+    $ans=$bdd->query($query);
+    $donnees = $ans->fetchall();
+    return $donnees;
+}
 function getRoomList($bdd,$idClient,$adresse){
     // on récupère l'id du logement
     $infoLogement=getLogementId($bdd,$idClient,$adresse);
@@ -140,6 +155,16 @@ function addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,$vi
     
     echo 'Utilisateur créé avec l\'id '.$infoUtilisateur[0]['idUtilisateur'];
 
+}
+
+function writeSensorQuerry($bdd,$typeDeCapteur,$idClient,$adresse,$descriptif){
+    $idPiece=getRoomId($bdd,$idClient,$adresse,$descriptif)[0]['idPiece'];
+    $query='insert into capteurs (idCapteur, valeur, type, estActif, idPiece) values (?,?,?,?,?)';
+    $stmt=$bdd->prepare($query);
+    if(!$stmt->execute([NULL,0,$typeDeCapteur,0,$idPiece])){
+        echo $stmt->errorCode();
+        return;
+    }
 }
 ?>
 

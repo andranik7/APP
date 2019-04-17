@@ -77,6 +77,7 @@ switch($function){
                 case 'client':
                     $view='client';
                     $listeLogements=getHomeList($bdd,$_SESSION['idClient']);
+
                     // ajout de maison
                     if(isset($_POST['adresse']) && isset($_POST['ville']) && isset($_POST['cp']) && isset($_POST['superficie'])){
                         $adresse=htmlspecialchars($_POST['adresse']);
@@ -89,14 +90,58 @@ switch($function){
                         exit();
                     }
                     // affichage des pièces 
-                    if(isset($_POST['logements'])){
-                        $listePieces=getRoomList($bdd,$_SESSION['idClient'],$_POST['logements']);
+                    if(isset($_POST['logements']) || isset($_SESSION['adresse'])){
+                        if(isset($_POST['logements'])){
+                            $listePieces=getRoomList($bdd,$_SESSION['idClient'],$_POST['logements']);
+                            $_SESSION['adresse']=$_POST['logements'];
+                            break;
+                        }
+                        if(isset($_SESSION['adresse']))
+                        $listePieces=getRoomList($bdd,$_SESSION['idClient'],$_SESSION['adresse']);
                     }
+                    // ajout de piece
                     if(isset($_POST['typePiece']) && isset($_POST['superficie'])){
                         $typePiece=htmlspecialchars($_POST['typePiece']);
                         $superficie=htmlspecialchars($_POST['superficie']);
 
                         addRoom($bdd,$typePiece,$superficie,$_SESSION['idClient'],$_SESSION['adresse']);
+                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                        exit();
+                    }
+                    // affichage capteurs
+                    if(isset($_POST['piece'])){
+                        $displayModal=true;
+                        $listeCapteur=getSensorList($bdd,$_SESSION['idClient'],$_SESSION['adresse'],$_POST['piece']);
+                        $_SESSION['piece']=$_POST['piece'];
+                    }
+
+                    if(isset($_POST['c_temperature'])){
+                        $displayModal=true;
+                        writeSensorQuerry($bdd,"Capteur de temperature",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
+                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                        exit();
+                    }
+                    if(isset($_POST['c_distance'])){
+                        $displayModal=true;
+                        writeSensorQuerry($bdd,"Capteur de distance",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
+                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                        exit();
+                    }
+                    if(isset($_POST['c_luminosite'])){
+                        $displayModal=true;
+                        writeSensorQuerry($bdd,"Capteur de luminosite",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
+                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                        exit();
+                    }
+                    if(isset($_POST['c_sonore'])){
+                        $displayModal=true;
+                        writeSensorQuerry($bdd,"Capteur sonore",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
+                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                        exit();
+                    }
+                    if(isset($_POST['c_camera'])){
+                        $displayModal=true;
+                        writeSensorQuerry($bdd,"Camera",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
                         header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
                         exit();
                     }

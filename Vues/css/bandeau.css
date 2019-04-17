@@ -10,12 +10,13 @@ header{
 	position: relative;
 	height:40px;
 	width:100%;
+	font-family: 'Quicksand';
 }
 
 .menulangue{
 	width:10%;
 	text-align: center;
-	background-color: rgb(150,150,150);
+	background:#4a63a3;
 }
 
 .menulangue span, .submenulangue img{
@@ -28,7 +29,7 @@ header{
 	position: relative;
 	top:54%;
 	height:300%;
-	background: rgb(170,170,170);
+	background:#556fb2;
 	z-index: 1;
 }
 
@@ -39,6 +40,7 @@ header{
 .profil{
 	width:39px;
 	background-color:rgb(100,100,100);
+	margin-right:5px;
 }
 
 .imgprofil{
@@ -49,17 +51,18 @@ header{
 	height:100%;
 	width:10%;
 	text-align: center;
-	padding-top:10px;
+	
 	text-decoration: none;
 	cursor: pointer;
 	border-width:0px;
-
-	background-color:rgb(140,140,140);
+	top:50%;
+	background:#556fb2;
 	color:rgb(200,200,200);
 
 	-webkit-appearance: none; 
     -moz-appearance: none;
-    appearance: none;
+	appearance: none;
+	
 }
 
 .imgprofil:hover{
@@ -67,8 +70,7 @@ header{
 }
 
 .login:hover{
-	background-color:rgb(100,100,100);
-	color:rgb(200,200,200);
+	color: #d8764a;
 }
 
 .menulangue:hover .menulanguehidden{
@@ -76,5 +78,10 @@ header{
 }
 
 .submenulangue:hover{
-	background-color: rgb(110,110,110);
+	background-color: #d8764a;
+}
+
+#infoClient{
+	margin-left:10px;
+	margin-right:10px;
 }

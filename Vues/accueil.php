@@ -20,15 +20,22 @@
 </head>
 
 <body>
-    <header>
-        <div id="header">
-            <a href="http://localhost/app/index.php?cible=utilisateurs&function=inscription" class="btn">Inscription</a>
-            <a href="http://localhost/app/index.php?cible=utilisateurs&function=connexion" class="btn">Connexion</a>
-            <a href="#" class="btn">Messagerie</a>
-            <input type="text" name="recherche" class="search-bar" placeholder="Adresse, arrondissement..">
-            <button class="btn-search">Chercher</button>
-        </div>   
-    </header>
+    <?php
+        if(!isset($_SESSION['nom'])){
+            echo '<header>
+                    <div id="header">
+                        <a href="http://localhost/app/index.php?cible=utilisateurs&function=inscription" class="btn">Inscription</a>
+                        <a href="http://localhost/app/index.php?cible=utilisateurs&function=connexion" class="btn">Connexion</a>
+                        <a href="#" class="btn">Messagerie</a>
+                        <input type="text" name="recherche" class="search-bar" placeholder="Adresse, arrondissement..">
+                        <button class="btn-search">Chercher</button>
+                    </div>   
+                </header>';
+        }else{
+            include('bandeau.php');
+        }
+    ?>
+
     <div class="block">
         <div style="flex:1">
             <section>
@@ -42,7 +49,7 @@
         </div>
 
         <div style="flex:1; text-align:center;">
-            <img src="home.jpg" style="width:80%; margin:30px; border-radius:10px">
+            <img src="Vues/images/home.jpg" style="width:80%; margin:30px; border-radius:10px">
         </div>
     </div>
 
@@ -51,7 +58,7 @@
 
 
         <div style="flex:1; text-align:center;">
-            <img src="home2.jpg" style="width:95%; margin:30px; border-radius:10px">
+            <img src="Vues/images/home2.jpg" style="width:95%; margin:30px; border-radius:10px">
         </div>
 
         <div style="flex:1; padding-left:30px;">
@@ -72,19 +79,19 @@
 
         <div style="flex:1; text-align:center;">
             <div class="rectangle">
-                <img src="mail.png">
+                <img src="Vues/images/mail.png">
                 <div style="font-weight:bold;">Contactez-nous par Mail</div>
                 <div style="color:gray; margin-top:10px;">mail: <a href="mailto:contact@ecomatique.fr">contact@ecomatique.fr</a></div>
                 
             </div>
             <div class="rectangle">
-                <img src="phone.png">
+                <img src="Vues/images/phone.png">
                 <div style="font-weight:bold;">Par téléphone</div>
                 <div style="color:gray; margin-top:10px;">07 77 77 77 77</div>
                 
             </div>
             <div class="rectangle">
-                <img src="location.png">
+                <img src="Vues/images/location.png">
                 <div style="font-weight:bold;">Localisation</div>
                 <div style="color:gray; margin-top:10px;">35 rue Rouget de l'Isle 92100 Issy</div>
                 

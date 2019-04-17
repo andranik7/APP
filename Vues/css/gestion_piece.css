@@ -109,6 +109,7 @@
 
 .supprimerCapteur{
 	background-color:rgba(0,0,0,0);
+	font-size: 25px;
 	color: #ff3f37 !important;
 	border:none;
 	outline:none;
@@ -119,6 +120,9 @@
 
 .supprimerCapteur:active{
 	color: #e03043 !important;
+}
+.supprimerCapteur:hover{
+	animation: rotate 0.3s both;	
 }
 
 .bouton{
@@ -216,4 +220,9 @@ div::-webkit-scrollbar {
 @keyframes fadeIn{
 	from{opacity: 0;}
 	to{opacity: 1;}
+}
+
+@keyframes rotate{
+	from{transform: rotate(-45deg);}
+	to{transform: rotate(90deg);}
 }

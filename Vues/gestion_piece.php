@@ -9,7 +9,7 @@
 	<div id="wrapper" style="display:none;" class="modal">
 		<div id="modal-content">
 			<div class="entete">
-				<h1>Ajout/Retrait de capteurs dans la pièce</h1>
+				<?php echo '<h1>Ajout/Retrait de capteurs dans : '. $_SESSION['piece'].'</h1>'?>
 				<button id="modal-close">&#10006</button>
 			</div>
 			<div class="boiteprincipale">
@@ -19,14 +19,19 @@
 							<img src="Vues/images/temperature.jpg">
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur de température</div>
-								<button class="bouton">Ajouter</button>
+								<form action="" method="post">
+									<input type="submit" class="bouton" value="Ajouter" name="c_temperature">
+								</form>
+								
 							</div>
 						</div>
 						<div class="boite">
 							<img src="Vues/images/distance.jpg">
 							<div class="ajsupr">
 							<div class="description-capteur"> Capteur de distance</div>
-								<button class="bouton">Ajouter</button>
+								<form action="" method="post">
+									<input type="submit" class="bouton" value="Ajouter" name="c_distance">
+								</form>
 							</div>
 						</div>
 					</div>
@@ -35,14 +40,18 @@
 							<img src="Vues/images/lumiere.jpg">
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur de luminosité</div>
-								<button class="bouton">Ajouter</button>
+								<form action="" method="post">
+									<input type="submit" class="bouton" value="Ajouter" name="c_luminosite">
+								</form>
 							</div>
 						</div>	
 						<div class="boite">
 							<img src="Vues/images/son.jpg">
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur sonore</div>
-								<button class="bouton">Ajouter</button>
+								<form action="" method="post">
+									<input type="submit" class="bouton" value="Ajouter" name="c_sonore">
+								</form>
 							</div>
 						</div>
 					</div>
@@ -51,23 +60,32 @@
 							<img src="Vues/images/moteur.jpg">
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur de température</div>
-								<button class="bouton">Ajouter</button>
+								<form action="" method="post">
+									<input type="submit" class="bouton" value="Ajouter" name="c_moteur">
+								</form>
 							</div>
 						</div>
 						<div class="boite">
 							<img src="Vues/images/camera.jpg">
 							<div class="ajsupr">
 								<div class="description-capteur"> Caméra</div>
-								<button class="bouton">Ajouter</button>
+								<form action="" method="post">
+									<input type="submit" class="bouton" value="Ajouter" name="c_camera">
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="boitedroite">
-					<?php 
-						$nbCapteurs = 15;
-						for ($i=0; $i < $nbCapteurs; $i++) { 
-							echo '<div class="capteur">  <div class="nomCapteur"> Capteur de température </div> <button class="supprimerCapteur">&#10006</button> </div> <div class="separateur"></div>';
+					<?php
+						if(isset($listeCapteur)){
+							if(sizeOf($listeCapteur)==0)
+								echo '<div class="capteur">Vous n\'avez pas encore de capteurs dans cette pièce. Vous pouvez en ajouter avec le menu sur votre gauche.</div>';
+							else{
+								for ($i=0; $i < sizeOf($listeCapteur); $i++) { 
+									echo '<div class="capteur">  <div class="nomCapteur">'.$listeCapteur[$i]['type'] .' id: '.$listeCapteur[$i]['idCapteur'].' valeur: '.$listeCapteur[$i]['valeur'].'</div> <button class="supprimerCapteur">&#10006</button> </div> <div class="separateur"></div>';
+								}
+							}
 						}
 					?>
 				</div>

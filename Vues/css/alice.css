@@ -1,4 +1,4 @@
-@font-face {
+font-face {
     font-family: Quicksand;
     src: url("./quicksand/Quicksand-Light.otf") format("opentype");
 }
@@ -145,7 +145,7 @@ body{
 
 .bodyProfile{
 
-  background: url(../images/bg.png) no-repeat center center fixed; 
+  background: url(../images/bg.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -250,29 +250,44 @@ body{
 
 .tableProfile{
   width:100%;
-  margin-left:auto; 
+  margin-left:auto;
   margin-right:auto;
-  border: 1px solid black;
-  border-radius: 5px;
   overflow: hidden;
-  background: #7918f2;
-  background: -webkit-linear-gradient(-68deg, #ac32e4 , #4801ff);
-  background: -o-linear-gradient(-68deg, #ac32e4 , #4801ff);
-  background: -moz-linear-gradient(-68deg, #ac32e4 , #4801ff);
-  background: linear-gradient(-68deg, #ac32e4 , #4801ff);
 }
 
+.tableProfile thead{
+  background-color: #eb9f54;
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.tableProfile thead>tr{
+  height:50px;
+}
+
+.tableProfile tbody>tr{
+  height:30px;
+}
+
+.tableProfile>tbody>tr:nth-child(even) {background-color: #dadcdc;}
+.tableProfile>tbody>tr:nth-child(odd) {background-color: #FFFFFF;}
+
+.tableProfile tbody>tr:hover{
+  opacity:0.5;
+  transition: 1s;
+}
 
 
 
 .tableGestion{
   width:100%;
-  margin-left:auto; 
+  margin-left:auto;
   margin-right:auto;
   border: 1px solid #fff;
   border-radius: 5px;
   overflow: hidden;
-  
+
 }
 
 
@@ -299,14 +314,13 @@ body{
 
 
 .rectangleContenu .content{
-    display: flex; 
+    display: flex;
     flex-direction: row;
     color:white;
     margin-top: 10px;
 }
 
 .block{
-    display: flex; 
+    display: flex;
     flex-direction: row;
 }
-

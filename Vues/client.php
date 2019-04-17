@@ -118,18 +118,23 @@
 
 					<table class="tableGestion">
 						<tr>
-							<th>Liste des pieces</th>
+							<?php 
+							if(isset($_SESSION['adresse']))
+								echo '<th>Liste des pieces pour le: '.$_SESSION['adresse'].'</th>';
+							else
+								echo '<th>Liste des pieces pour le logement </th>';
+							?>
 						</tr>
-						<form >
+						<form action="" method="post">
 							<?php
 							if(isset($listePieces)){
 								for($i=0;$i<sizeof($listePieces);$i++){
-									echo '<tr><td><input type="submit"  class="btn-tab" value="'.$listePieces[$i]['descriptif'].'"></td></tr>';
+									echo '<tr><td><input type="submit"  name="piece" class="btn-tab" value="'.$listePieces[$i]['descriptif'].'"></td></tr>';
 								}
 								if(sizeof($listePieces)==0)
 									echo "<tr><td>Vous n'avez pas encore ajouté de pièces. Ajoutez en une avec le bouton ci dessous</tr></td>";
 							}else{
-								echo "<tr><td>Pour afficher les pièce d'un logement, veuillz en sélectionner un grâce au menu de gauche.</tr></td>";
+								echo "<tr><td>Pour afficher les pièce d'un logement, veuillez en sélectionner un grâce au menu de gauche.</tr></td>";
 							}
 
 							?>
@@ -177,33 +182,44 @@
 			<div class="title">
 				Mon relevé de consommation
 			</div>
-			<table class="tableProfile">
-				<tr>
-					<th>Consommation électrique</th>
-					<th>Consommation de chauffage</th>
-					<th>Économie</th>
-				</tr>
-				<tr>
-					<td>100W</td>
-					<td>200W</td>
-					<td>30W</td>
-				</tr>
-				<tr>
-					<td>100W</td>
-					<td>200W</td>
-					<td>30W</td>
-				</tr>
-				<tr>
-					<td>100W</td>
-					<td>200W</td>
-					<td>30W</td>
-				</tr>
-				<tr>
-					<td>100W</td>
-					<td>200W</td>
-					<td>30W</td>
-				</tr>
-			</table>
+<div style="display:flex; margin-top:100px">
+				<div style="flex:10">
+					<table class="tableProfile">
+						<thead>
+							<tr>
+								<th>Consommation électrique</th>
+								<th>Consommation de chauffage</th>
+								<th>Économie</th>
+							</tr>
+					  </thead>
+						<tbody>
+							<tr>
+								<td>100W</td>
+								<td>200W</td>
+								<td>30W</td>
+							</tr>
+							<tr>
+								<td>100W</td>
+								<td>200W</td>
+								<td>30W</td>
+							</tr>
+							<tr>
+								<td>100W</td>
+								<td>200W</td>
+								<td>30W</td>
+							</tr>
+							<tr>
+								<td>100W</td>
+								<td>200W</td>
+								<td>30W</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div style="flex:1">
+						<canvas id="canvas" width="800" height="500"></canvas>
+				</div>
+			</div>
 		</div>
 
 		<div class="rectangleContenu" id="rectangleContenu3">
@@ -212,8 +228,17 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="Vues/javascript/client.js"></script>
+
 	</body>
 	</html>
 
 
-<?php include('Vues/gestion_piece.php');?>
+<?php 
+	include('Vues/gestion_piece.php');
+	if(isset($displayModal)){
+		if($displayModal){
+			echo '<script type="text/javascript" >openModal(); </script>';
+		}
+	}
+
+?>

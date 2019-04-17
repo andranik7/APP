@@ -3,7 +3,7 @@ body
 
 
   /* Location of the image */
-  background-image: url("bg.png");
+  background-image: url("../images/bg_accueil.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
