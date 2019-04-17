@@ -181,7 +181,12 @@ div::-webkit-scrollbar {
   background: #5975b2; 
 }
 
-
+.description-capteur{
+	text-align: center;
+	color: #FFF;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 20px;
+}
 
 /* Modal */
 
@@ -198,7 +203,7 @@ div::-webkit-scrollbar {
 	animation: fadeIn 0.3s both;	
 }
 
-.modal-close{
+#modal-close{
 	position: absolute;
 	right:0px;
 	top: 0px;

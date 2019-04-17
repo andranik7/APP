@@ -55,12 +55,14 @@ switch($function){
             $email=htmlspecialchars($_POST['email']);
             $password=hash("sha256",htmlspecialchars($_POST['password']));
             $userInfo=speficQuery($bdd,'utilisateurs','*','email',$email);
+            $userId=getClientId($bdd,$email);
             if($password==$userInfo[0]['mdp']){
                 $error='Connexion ok';
                 $_SESSION['nom']=$userInfo[0]['Nom'];
                 $_SESSION['prenom']=$userInfo[0]['Prenom'];
                 $_SESSION['role']=$userInfo[0]['role'];
                 $_SESSION['email']=$userInfo[0]['email'];
+                $_SESSION['idClient']=$userId[0]['idClient'];
                 header('Location: http://localhost/app/index.php?cible=utilisateurs&function=user');
             }else
                 $error="<div> Echec de l'authentification, veuillez vérifier vos informations.</div>";
@@ -74,7 +76,30 @@ switch($function){
             switch($_SESSION['role']){
                 case 'client':
                     $view='client';
-                    
+                    $listeLogements=getHomeList($bdd,$_SESSION['idClient']);
+                    // ajout de maison
+                    if(isset($_POST['adresse']) && isset($_POST['ville']) && isset($_POST['cp']) && isset($_POST['superficie'])){
+                        $adresse=htmlspecialchars($_POST['adresse']);
+                        $codePostal=htmlspecialchars($_POST['cp']);
+                        $ville=htmlspecialchars($_POST['ville']);
+                        $nbHabitants=htmlspecialchars($_POST['nb_habitants']);
+                        $_SESSION['adresse']=$adresse;
+                        addHome($bdd,$adresse,$codePostal,$ville,$nbHabitants,$_SESSION['idClient']);
+                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                        exit();
+                    }
+                    // affichage des pièces 
+                    if(isset($_POST['logements'])){
+                        $listePieces=getRoomList($bdd,$_SESSION['idClient'],$_POST['logements']);
+                    }
+                    if(isset($_POST['typePiece']) && isset($_POST['superficie'])){
+                        $typePiece=htmlspecialchars($_POST['typePiece']);
+                        $superficie=htmlspecialchars($_POST['superficie']);
+
+                        addRoom($bdd,$typePiece,$superficie,$_SESSION['idClient'],$_SESSION['adresse']);
+                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                        exit();
+                    }
                     break;
                 
                 case 'technicien':

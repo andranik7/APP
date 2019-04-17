@@ -45,21 +45,16 @@
 					<tr>
 						<th>Liste des habitats</th>
 					</tr>
-					<tr>
-						<td> <button class="btn-tab" onclick="listePiece()">
-							Habitat 1
-						</button></td>
-					</tr>
-					<tr>
-						<td><button class="btn-tab" onclick="listePiece()">
-							Habitat 2
-						</button></td>
-					</tr>
-					<tr>
-						<td> <button class="btn-tab" onclick="listePiece()">
-							Habitat 3
-						</button> </td>
-					</tr>
+					<form action="" method="post">
+						<?php
+							for($i=0;$i<sizeof($listeLogements);$i++){
+								echo '<tr><td><input type="submit" name="logements" class="btn-tab" value="'.$listeLogements[$i]['adresse'].'"></td></tr>';
+							}
+							if(sizeof($listeLogements)==0)
+								echo "<tr><td>Vous n'avez pas encore de logements enregistrés. Ajoutez en un avec le bouton ci dessous</tr></td>";
+						?>
+					</form>
+
 				</table>
 
 				<button class="btn-ajouter" onclick="ajouterHabitat()" style="height: auto;">
@@ -74,6 +69,30 @@
 							</div>
 							<div style="flex: 2">
 								<input type="text" required name="adresse" class="input_content" placeholder="Ex: 9 avenue Victor Hugo" style="border-radius:5px;">
+							</div>
+						</div>
+						<div class="content">
+							<div style="flex: 1;">
+								Ville
+							</div>
+							<div style="flex: 2">
+								<input type="text" required name="ville" class="input_content" placeholder="Ex: Paris" style="border-radius:5px;">
+							</div>
+						</div>
+						<div class="content">
+							<div style="flex: 1;">
+								Code postal
+							</div>
+							<div style="flex: 2">
+								<input type="text" required name="cp" class="input_content" placeholder="Ex: 92140" style="border-radius:5px;">
+							</div>
+						</div>
+						<div class="content">
+							<div style="flex: 1;">
+								Nombre d'habitants
+							</div>
+							<div style="flex: 2">
+								<input type="number" required name="nb_habitants" class="input_content" placeholder="Ex: 4" style="border-radius:5px;">
 							</div>
 						</div>
 						<div class="content">
@@ -94,28 +113,27 @@
 			
 			<div style="flex:1">
 
-				<div id="listePiece" style="display:none">
+				<div id="listePiece" >
 					
 
 					<table class="tableGestion">
 						<tr>
 							<th>Liste des pieces</th>
 						</tr>
-						<tr>
-							<td> <button class="btn-tab btn-piece" onclick="listePiece()">
-								Piece 1
-							</button></td>
-						</tr>
-						<tr>
-							<td><button class="btn-tab btn-piece" onclick="listePiece()">
-								Piece 2
-							</button></td>
-						</tr>
-						<tr>
-							<td><button class="btn-tab btn-piece" onclick="listePiece()">
-								Piece 3
-							</button> </td>
-						</tr>
+						<form >
+							<?php
+							if(isset($listePieces)){
+								for($i=0;$i<sizeof($listePieces);$i++){
+									echo '<tr><td><input type="submit"  class="btn-tab" value="'.$listePieces[$i]['descriptif'].'"></td></tr>';
+								}
+								if(sizeof($listePieces)==0)
+									echo "<tr><td>Vous n'avez pas encore ajouté de pièces. Ajoutez en une avec le bouton ci dessous</tr></td>";
+							}else{
+								echo "<tr><td>Pour afficher les pièce d'un logement, veuillz en sélectionner un grâce au menu de gauche.</tr></td>";
+							}
+
+							?>
+						</form>
 					</table>
 
 
@@ -125,22 +143,26 @@
 
 
 					<div id="newCapteur" style="display:none">
-						<div class="content">
-							<div style="flex: 1;">
-								Type de piece
+						<form action="" method="post">
+							<div class="content">
+								<div style="flex: 1;">
+									Type de piece
+								</div>
+								<div style="flex: 2">
+									<input type="text" required name="typePiece" class="input_content" placeholder="Ex: Sallon, Chambre 1 ..." style="border-radius:5px;">
+								</div>
 							</div>
-							<div style="flex: 2">
-								<input type="text" required name="typePiece" class="input_content" placeholder="Sallon" style="border-radius:5px;">
+							<div class="content">
+								<div style="flex: 1;">
+									Superficie (m2)
+								</div>
+								<div style="flex: 2">
+									<input type="number" required name="superficie" class="input_content" placeholder="Ex: 20" style="border-radius:5px;">
+								</div>
 							</div>
-						</div>
-						<div class="content">
-							<div style="flex: 1;">
-								Superficie (m2)
-							</div>
-							<div style="flex: 2">
-								<input type="number" required name="superficie" class="input_content" placeholder="20" style="border-radius:5px;">
-							</div>
-						</div>
+							<button type="submit" class="btn-ajouter">Confirmer</button>
+						</form>
+						
 					</div>
 
 				</div>

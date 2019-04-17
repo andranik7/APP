@@ -53,12 +53,12 @@ const stopPropagation=function(e){
     e.stopPropagation(); //
 }
 
-$('.btn-piece').click(function(e) {
-	openModal(e);
+$('#modal-close').click(function(e) {
+	closeModal(e);
 });
 
-$('.modal-close').click(function(e) {
-	closeModal(e);
+$('.btn-piece').click(function(e) {
+	openModal(e);
 });
 
 

@@ -19,12 +19,76 @@ function speficQuery($bdd,$table,$desiredField,$identifier,$value){
     return $donnees;
 }
 
+function getClientId($bdd,$email){
+    $query="select idClient from utilisateurs join clients on utilisateurs.idUtilisateur=clients.idClient where email='".$email."'";
+    echo $query;
+    $ans=$bdd->query($query);
+    $donnees = $ans->fetchall();
+    return $donnees;
+}
 function updateUserInfo($bdd,$alteredParam,$newValue,$targetId,$targetTable){
     $query='update '.$targetTable.' SET '.$alteredParam.'='.$newValue.' WHERE '.''.'='.$targetId;
     $ans=$bdd->query($query);
 }
 
+function getHomeList($bdd,$idClient){
+    $query="select * from (habitea join logement on logement.idLogement=habitea.idLogement) join clients on clients.idClient=habitea.idClient where habitea.idClient=".$idClient;
+    $ans=$bdd->query($query);
+    $donnees = $ans->fetchall();
+    return $donnees;
+}
 
+function getLogementId($bdd,$idClient,$adresse){
+    // Double vérification: adresse + id client pour éviter les adresse redondantes
+    $query="select * from (habitea join logement on logement.idLogement=habitea.idLogement) join clients on clients.idClient=habitea.idClient where habitea.idClient=".$idClient.' and adresse like "%'.$adresse.'%"';
+    $ans=$bdd->query($query);
+    $infoLogement = $ans->fetchall();
+    return $infoLogement;
+}
+function getRoomList($bdd,$idClient,$adresse){
+    // on récupère l'id du logement
+    $infoLogement=getLogementId($bdd,$idClient,$adresse);
+    $query="select * from pieces where idLogement=".$infoLogement[0]["idLogement"];
+    $ans=$bdd->query($query);
+    $donnees = $ans->fetchall();
+
+    return $donnees;
+}
+
+function getLastInsertId($bdd){
+    $query='select LAST_INSERT_ID();';      // récupère le dernier id créé
+    $ans=$bdd->query($query);
+    $donnees = $ans->fetchall();
+    return $donnees;
+}
+
+function addRoom($bdd,$descriptif,$superficie,$idClient,$adresse){
+    $idLogement=getLogementId($bdd,$idClient,$adresse)[0]['idLogement'];
+    $sql='insert into pieces (idPiece,descriptif,superficie,idLogement) VALUES (?,?,?,?)';
+    $stmt=$bdd->prepare($sql);
+    if(!$stmt->execute([null,$descriptif,$superficie,$idLogement])){
+        echo $stmt->errorCode();
+        return;
+    }
+}
+function addHome($bdd,$adresse,$codePostal,$ville,$nbHabitants,$idClient){
+    $sql='insert into logement (idLogement,adresse,codePostal,ville,nbHabitants,idResidence) VALUES (?,?,?,?,?,?)';
+    $stmt=$bdd->prepare($sql);
+    //echo $adresse.' type '.gettype($adresse).' | '.$codePostal.' type '.gettype($codePostal);
+    if(!$stmt->execute([null,$adresse,$codePostal,$ville,$nbHabitants,-1])){
+        echo $stmt->errorCode();
+        return;
+    }
+    $logementId=getLastInsertId($bdd)[0]['LAST_INSERT_ID()'];
+
+    $sql='insert into habiteA (idHabiteA,idLogement,idClient) VALUES (?,?,?)';
+    $stmt=$bdd->prepare($sql);
+    if(!$stmt->execute([null,$logementId,$idClient])){
+        echo $stmt->errorCode();
+        return;
+    }
+
+}
 function addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,$ville,$dateNaissance,$civilite){
     // on ajoute en deux temps: a la table utilisateurs classique et à la table clients
     $userQuery='insert into utilisateurs (idUtilisateur,Nom,Prenom,mdp,email,linkPhoto,role,dateNaissance,civilite) VALUES (?,?,?,?,?,?,?,?,?)';
@@ -66,7 +130,6 @@ function addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,$vi
     $ans=$bdd->query($query);
     $infoClient= $ans->fetchall();
 
-    print_r($infoClient);
     // on relie le logement au client
     $sql='insert into habiteA (idHabiteA,idLogement,idClient) VALUES (?,?,?)';
     $stmt=$bdd->prepare($sql);
