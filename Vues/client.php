@@ -66,25 +66,28 @@
 					Ajouter un habitat
 				</button>
 
-
-
 				<div id="newHabitat" style="display:none">
-					<div class="content">
-						<div style="flex: 1;">
-							Adresse
+					<form action="" method="post">
+						<div class="content">
+							<div style="flex: 1;">
+								Adresse
+							</div>
+							<div style="flex: 2">
+								<input type="text" required name="adresse" class="input_content" placeholder="Ex: 9 avenue Victor Hugo" style="border-radius:5px;">
+							</div>
 						</div>
-						<div style="flex: 2">
-							<input type="text" required name="adresse" class="input_content" placeholder="9 avenue Victor Hugo" style="border-radius:5px;">
+						<div class="content">
+							<div style="flex: 1;">
+								Superficie (m2)
+							</div>
+							<div style="flex: 2">
+								<input type="number" required name="superficie" class="input_content" placeholder="Ex: 105" style="border-radius:5px;">
+							</div>
 						</div>
-					</div>
-					<div class="content">
-						<div style="flex: 1;">
-							Superficie (m2)
-						</div>
-						<div style="flex: 2">
-							<input type="number" required name="superficie" class="input_content" placeholder="105" style="border-radius:5px;">
-						</div>
-					</div>
+						<button type="submit" class="btn-ajouter">Confirmer</button>
+					</form>
+
+
 				</div>
 
 			</div>
@@ -99,17 +102,17 @@
 							<th>Liste des pieces</th>
 						</tr>
 						<tr>
-							<td> <button class="btn-tab" onclick="listePiece()">
+							<td> <button class="btn-tab btn-piece" onclick="listePiece()">
 								Piece 1
 							</button></td>
 						</tr>
 						<tr>
-							<td><button class="btn-tab" onclick="listePiece()">
+							<td><button class="btn-tab btn-piece" onclick="listePiece()">
 								Piece 2
 							</button></td>
 						</tr>
 						<tr>
-							<td><button class="btn-tab" onclick="listePiece()">
+							<td><button class="btn-tab btn-piece" onclick="listePiece()">
 								Piece 3
 							</button> </td>
 						</tr>
@@ -186,10 +189,9 @@
 				Contrôler mes actionneurs
 			</div>
 		</div>
-
-
-
-
 		<script type="text/javascript" src="Vues/javascript/client.js"></script>
 	</body>
 	</html>
+
+
+<?php include('Vues/gestion_piece.php');?>

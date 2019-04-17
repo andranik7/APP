@@ -74,6 +74,7 @@ switch($function){
             switch($_SESSION['role']){
                 case 'client':
                     $view='client';
+                    
                     break;
                 
                 case 'technicien':
@@ -94,6 +95,7 @@ switch($function){
 if($function=="user")
     include('Vues/bandeau.php');
 include('Vues/'.$view.'.php');
+
 
 if(isset($error)) echo $error;
 ?>

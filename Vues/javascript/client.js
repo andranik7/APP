@@ -37,3 +37,36 @@ function listePiece(){
 	document.getElementById("listePiece").style.display = "block"
 
 }
+
+
+// gestion du modal
+
+function openModal(e){
+	document.getElementById('wrapper').style.display="block";
+}
+
+function closeModal(e){
+	document.getElementById('wrapper').style.display="none";
+}
+const stopPropagation=function(e){
+    // empêche la propagation du click aux parents > empeche de fermer quand on clique dans la fenetre
+    e.stopPropagation(); //
+}
+
+$('.btn-piece').click(function(e) {
+	openModal(e);
+});
+
+$('.modal-close').click(function(e) {
+	closeModal(e);
+});
+
+
+
+window.addEventListener('keydown',function(e){
+    if(e.key == "Escape" || e.key=="Esc"){
+        closeModal(e);
+    }
+})
+
+
