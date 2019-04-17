@@ -87,73 +87,28 @@
                                 <p> <bar /></p>         
                                 
                                  
-                     <button type="button"  onclick="changeStep(2)">Valider</button>   
+                     <form method="post" action="#">
+                     
+                             <input type="submit" value="Valider">
+                             <input type="reset" value="Effacer">
+                         
+                     </form>  
                     </div>
 
                     <div class="Visualisation_1" id="2">
-                        <canvas class="Canvas" id="canvas" width="450" height="300" style="border: 0px;"></canvas>
-                        <script type="text/javascript">
-                            var canvas=document.getElementById('canvas');
+                        <div class="Canvas">
+                            
+                            <canvas  id="canvas" width="450" height="300" style="border: 0px;"></canvas>
+                        </div>
 
-                                //Pour le title//
-                                var title= canvas.getContext("2d");
-                                title.fillStyle = "#eba338";
-                                title.font = "20px Arial";
-                                title.fillText("Les Consomations de capteurs", 80, 25);
+                    <div class >
+                        
+                    </div>
 
-                                //Pour le cercle//
-                                var ctx=canvas.getContext('2d');
-                                //Créer les data
-                                var data_capteur = [
-                                    {name:'lumière', color:'#EDA208', value:0.3},
-                                    {name:'distance', color:'#ED9B1F', value:0.2},
-                                    {name:'température', color:'#EDD7AA', value:0.35},
-                                    {name:'son', color:'#EDCC8A', value:0.15},
-                                    //{name:'actionneur', color:'EDA04C', value:0.25}
-                                    
-                                ];
-                                 //Définir le centre du cercle
-                                var x0 = canvas.width * 0.5, y0 = canvas.height * 0.60;//显示在画布中间
-                                 //Définir le rayon
-                                var radius = 90;
-                                 //Définir l'angle de départ
-                                var beginAngle = -90 *Math.PI/180;//(angle initial :-90deg)
-                                 //Traverse, dessine un éventail
-                                for (var i = 0; i < data_capteur.length; i++) {
-                                    //angle de ventilation
-                                    var tempAngle = data_capteur[i].value * 360 *Math.PI/180;
-                                    //angle de fin
-                                    var endAngle = beginAngle + tempAngle;
+                    <div class="Canvas1"> 
+                        <canvas id="can1" width="1260" height="324"></canvas>
+                    </div>
 
-                                    ctx.beginPath();
-                                    //point de départ
-                                    ctx.moveTo(x0, y0);
-                                    //radians de dessin
-                                    ctx.arc(x0, y0, radius, beginAngle, endAngle);
-                                    //Définir la coulor
-                                    ctx.fillStyle = data_capteur[i].color;
-                                    //Remplir la coulor
-                                    ctx.fill();
-
-                                    //Pour le text_capteur
-                                    var textAngle = beginAngle + tempAngle * 0.5; //l'angle du text_capteur
-                                    var text_capteur = data_capteur[i].name + ' '+data_capteur[i].value * 100 + '%';
-                                    console.log(text_capteur);
-                                    //Coordonnée du text
-                                    var text_X = x0 + (radius + 10) * Math.cos(textAngle);
-                                    var text_Y = y0 + (radius + 30) * Math.sin(textAngle);
-                                    
-                                    ctx.font = "15px 'Roboto'";
-                                    //Déterminer si le texte est à gauche
-                                    if((textAngle > 90 *Math.PI/180) && (textAngle < 270 *Math.PI/180) ) {
-                                        ctx.textAlign = 'end';//Le côté droit du texte se trouve à l'extrémité gauche de la ligne de base
-                                    }
-                                    //Draw text
-                                    ctx.fillText(text_capteur, text_X, text_Y);
-                                    //Mettez à jour l'angle de départ et utilisez l'angle de fin du secteur actuel comme angle de départ du secteur suivant.
-                                    beginAngle = endAngle;
-                                }
-                        </script>
             
                     </div>
 
@@ -166,7 +121,70 @@
         
     </section>
     <script type="text/javascript">
-        
+        //Le cercle
+
+        var canvas=document.getElementById('canvas');
+
+            //Pour le title//
+            var title= canvas.getContext("2d");
+            title.fillStyle = "#eba338";
+            title.font = "20px Arial";
+            title.fillText("Les taux de consomations d'énergie", 80, 25);
+
+            //Pour le cercle//
+            var ctx=canvas.getContext('2d');
+            //Créer les data
+            var data_capteur = [
+                {name:'lumière', color:'#EDA208', value:0.3},
+                {name:'distance', color:'#ED9B1F', value:0.2},
+                {name:'température', color:'#EDD7AA', value:0.35},
+                {name:'son', color:'#EDCC8A', value:0.15},
+                //{name:'actionneur', color:'EDA04C', value:0.25}
+                
+            ];
+             //Définir le centre du cercle
+            var x0 = canvas.width * 0.5, y0 = canvas.height * 0.60;//显示在画布中间
+             //Définir le rayon
+            var radius = 90;
+             //Définir l'angle de départ
+            var beginAngle = -90 *Math.PI/180;//(angle initial :-90deg)
+             //Traverse, dessine un éventail
+            for (var i = 0; i < data_capteur.length; i++) {
+                //angle de ventilation
+                var tempAngle = data_capteur[i].value * 360 *Math.PI/180;
+                //angle de fin
+                var endAngle = beginAngle + tempAngle;
+
+                ctx.beginPath();
+                //point de départ
+                ctx.moveTo(x0, y0);
+                //radians de dessin
+                ctx.arc(x0, y0, radius, beginAngle, endAngle);
+                //Définir la coulor
+                ctx.fillStyle = data_capteur[i].color;
+                //Remplir la coulor
+                ctx.fill();
+
+                //Pour le text_capteur
+                var textAngle = beginAngle + tempAngle * 0.5; //l'angle du text_capteur
+                var text_capteur = data_capteur[i].name + ' '+data_capteur[i].value * 100 + '%';
+                console.log(text_capteur);
+                //Coordonnée du text
+                var text_X = x0 + (radius + 10) * Math.cos(textAngle);
+                var text_Y = y0 + (radius + 30) * Math.sin(textAngle);
+                
+                ctx.font = "15px 'Roboto'";
+                //Déterminer si le texte est à gauche
+                if((textAngle > 90 *Math.PI/180) && (textAngle < 270 *Math.PI/180) ) {
+                    ctx.textAlign = 'end';//Le côté droit du texte se trouve à l'extrémité gauche de la ligne de base
+                }
+                //Draw text
+                ctx.fillText(text_capteur, text_X, text_Y);
+                //Mettez à jour l'angle de départ et utilisez l'angle de fin du secteur actuel comme angle de départ du secteur suivant.
+                beginAngle = endAngle;
+            }
+
+        //Changer les pages
 
             // on initialise l'étape
             let step= 1;
@@ -198,6 +216,68 @@
 
     </script>
 
+    <script type="text/javascript">
+            var canvas1=document.getElementById('can1');
+            var title1= canvas1.getContext("2d");
+            title1.fillStyle = "#eba338";
+            title1.font = "20px Arial";
+            title1.fillText("Les consomations d'énergie (en Watt)", 80, 20);
+
+            var can1 = document.getElementById("can1");
+            var ctx1 = can1.getContext("2d");
+            var nums = [108,78,280,51];
+            var colors = ["#EDA208","#ED9B1F","#EDD7AA","#EDCC8A"]
+            var cols = (can1.width - 1000)/nums.length;//逐个柱子占位宽度和间距共1000
+            var colGaps = 30;//largeur de rect
+            // Dessiner le grid
+            function drawRows(){
+                var rows = 9;
+                //列步长
+                var rW = can1.height/rows;
+                for (var i = 1 ; i <= rows; i ++){
+                    ctx1.beginPath();
+                    //Dessiner les lignes
+                    ctx1.moveTo(90,i*rW);
+                    console.log(i*rW);
+                    ctx1.lineTo(can1.width/4+colGaps,i*rW);
+                    //console.log(can1.width/4+colGaps);
+                    //绘制坐标点
+                    ctx1.font = "15px scans-serif";
+                    ctx1.fillStyle = "white";
+                    ctx1.strokeStyle="white";
+                    var colsNo = ctx1.measureText(i*30);//
+                    ctx1.fillText(i*36,79-colsNo.width,can1.height - i*36);//changer l'hauteur et la distance des chiffres 
+                    //Tracez le côté gauche de l'icône pour éviter de redéfinir la façon de la dessiner, placez-la dans la boucle, dessinez 10 fois dans la même position.
+                    ctx1.moveTo(90,36);
+                    ctx1.lineTo(90,can1.height);
+                    ctx1.closePath();
+                    ctx1.stroke();
+
+                }
+            }
+            //dessiner les rects & les chifres au dessus
+            function drawRects(){
+                for (var i = 0;i < nums.length; i ++){
+                    //les rects
+                    ctx1.lineWidth = 1;
+                    ctx1.strokeStyle = "white";
+                    ctx1.fillStyle = colors[i];
+                    ctx1.beginPath();
+                    ctx1.rect((i+1)*cols+25,can1.height-nums[i],colGaps,nums[i]);//x,y,width,height //+25 pour les positions de l'axisx sont egales
+                    console.log(can1.height-nums[i]);
+                    ctx1.fill();
+                    //les chiffres 
+                    ctx1.font = "18px scans-serif";
+                    ctx1.fillStyle = "white";// changer la coulor de chiffre
+                    var text = ctx1.measureText(nums[i]);
+                    ctx1.fillText(nums[i],(i+1)*cols+(colGaps-text.width)/2+25,can1.height-nums[i]-5);//text,x,y,maxWidth
+                    ctx1.closePath();
+                    ctx1.stroke();
+                }
+            }
+            drawRows();// dessiner les lignes et la coordonnee
+            drawRects();//dessiner les rects et les chiffres
+        </script>
     
 
     
