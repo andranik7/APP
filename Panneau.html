@@ -101,13 +101,29 @@
                             <canvas  id="canvas" width="450" height="300" style="border: 0px;"></canvas>
                         </div>
 
-                    <div class >
-                        
-                    </div>
+                     
 
-                    <div class="Canvas1"> 
-                        <canvas id="can1" width="1260" height="324"></canvas>
-                    </div>
+                        <div class="Canvas1"> 
+                         <canvas id="can1" width="1260" height="324"></canvas>
+                        </div>
+
+
+                        <div class="Color">
+                            <h4 id="a11"> Lumière</h4>
+                            <h4 id="a12"> Distance</h4>
+                            <h4 id="a13"> Température</h4>
+                            <h4 id="a14"> Son</h4>
+                        
+                        </div>
+
+                        <div class="Total">
+                            <canvas id="total" width="1260" height="30"></canvas>
+                            <script type="text/javascript">
+                                
+                            </script>
+                        </div>
+
+
 
             
                     </div>
@@ -120,8 +136,11 @@
         
         
     </section>
+
+
     <script type="text/javascript">
-        //Le cercle
+        
+        //Le cercle-----Canvas
 
         var canvas=document.getElementById('canvas');
 
@@ -217,6 +236,9 @@
     </script>
 
     <script type="text/javascript">
+
+        //Le grid---Canvas1
+
             var canvas1=document.getElementById('can1');
             var title1= canvas1.getContext("2d");
             title1.fillStyle = "#eba338";
@@ -225,7 +247,9 @@
 
             var can1 = document.getElementById("can1");
             var ctx1 = can1.getContext("2d");
+
             var nums = [108,78,280,51];
+
             var colors = ["#EDA208","#ED9B1F","#EDD7AA","#EDCC8A"]
             var cols = (can1.width - 1000)/nums.length;//逐个柱子占位宽度和间距共1000
             var colGaps = 30;//largeur de rect
@@ -238,7 +262,7 @@
                     ctx1.beginPath();
                     //Dessiner les lignes
                     ctx1.moveTo(90,i*rW);
-                    console.log(i*rW);
+                    //console.log(i*rW);
                     ctx1.lineTo(can1.width/4+colGaps,i*rW);
                     //console.log(can1.width/4+colGaps);
                     //绘制坐标点
@@ -264,7 +288,7 @@
                     ctx1.fillStyle = colors[i];
                     ctx1.beginPath();
                     ctx1.rect((i+1)*cols+25,can1.height-nums[i],colGaps,nums[i]);//x,y,width,height //+25 pour les positions de l'axisx sont egales
-                    console.log(can1.height-nums[i]);
+                   // console.log(can1.height-nums[i]);
                     ctx1.fill();
                     //les chiffres 
                     ctx1.font = "18px scans-serif";
@@ -277,6 +301,9 @@
             }
             drawRows();// dessiner les lignes et la coordonnee
             drawRects();//dessiner les rects et les chiffres
+
+
+
         </script>
     
 
