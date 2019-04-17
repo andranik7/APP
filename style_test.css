@@ -103,14 +103,51 @@ input[type=reset] {
     outline:none;
 }
 
-
 .Canvas{
     position: absolute;
     right: 130px;
-    top:230px;}
+    top:260px;}
 
 
 .Canvas1{
     position: absolute;
     left: 120px;
-    top:230px;}
+    top:260px;}
+
+.Color{
+    position: absolute;
+    left: 480px;
+    top:280px;
+    color: #7575a3;
+}
+
+#a11{
+    display: block;
+    background-color: #EDA208;
+    text-align: center; 
+}
+
+#a12{
+    display: block;
+    background-color: #ED9B1F;
+    text-align: center; 
+}
+
+#a13{
+    display: block;
+    background-color: #EDD7AA; 
+    text-align: center;
+}
+
+#a14{
+    display: block;
+    background-color: #EDCC8A; 
+    text-align: center;
+}
+
+.Total{
+    display: block;
+    top: 200px;
+}
+
+
