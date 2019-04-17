@@ -254,3 +254,21 @@ body{
     padding-top:15px;
 }
 
+#deja{
+    color:#fff;
+}
+#redirect{
+    text-decoration: none;
+    color:#eda04c;
+    font-weight: bold;
+}
+
+#retour_accueil{
+    padding-top: 20px;
+    text-decoration: none;
+    color:#fff;
+}
+
+#retour_accueil:hover{
+    color:#eda04c;
+}
