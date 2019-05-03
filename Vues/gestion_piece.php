@@ -20,7 +20,7 @@
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur de température</div>
 								<form action="" method="post">
-									<input type="submit" class="bouton" value="Ajouter" name="c_temperature">
+									<input  type="button" class="addCapteur" value="Ajouter" name="c_temperature">
 								</form>
 								
 							</div>
@@ -30,7 +30,7 @@
 							<div class="ajsupr">
 							<div class="description-capteur"> Capteur de distance</div>
 								<form action="" method="post">
-									<input type="submit" class="bouton" value="Ajouter" name="c_distance">
+									<input type="submit" class="addCapteur" value="Ajouter" name="c_distance">
 								</form>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur de luminosité</div>
 								<form action="" method="post">
-									<input type="submit" class="bouton" value="Ajouter" name="c_luminosite">
+									<input type="submit" class="addCapteur" value="Ajouter" name="c_luminosite">
 								</form>
 							</div>
 						</div>	
@@ -50,7 +50,7 @@
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur sonore</div>
 								<form action="" method="post">
-									<input type="submit" class="bouton" value="Ajouter" name="c_sonore">
+									<input type="submit" class="addCapteur" value="Ajouter" name="c_sonore">
 								</form>
 							</div>
 						</div>
@@ -59,9 +59,9 @@
 						<div class="boite">
 							<img src="Vues/images/moteur.jpg">
 							<div class="ajsupr">
-								<div class="description-capteur"> Capteur de température</div>
+								<div class="description-capteur"> Moteur</div>
 								<form action="" method="post">
-									<input type="submit" class="bouton" value="Ajouter" name="c_moteur">
+									<input type="submit" class="addCapteur" value="Ajouter" name="c_moteur">
 								</form>
 							</div>
 						</div>
@@ -70,13 +70,13 @@
 							<div class="ajsupr">
 								<div class="description-capteur"> Caméra</div>
 								<form action="" method="post">
-									<input type="submit" class="bouton" value="Ajouter" name="c_camera">
+									<input type="submit" class="addCapteur" value="Ajouter" name="c_camera">
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="boitedroite">
+				<div id="boitedroite">
 					<?php
 						if(isset($listeCapteur)){
 							if(sizeOf($listeCapteur)==0)

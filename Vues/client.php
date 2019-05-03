@@ -8,7 +8,7 @@
 
 </head>
 <body class="bodyProfile">
-	<h2 style="color:#354a6d; font-weight: bold;">Profile</h2>
+	<h2 style="color:#354a6d; font-weight: bold;">Profil</h2>
 	<div style="text-align:center">
 		<table class="rectangleMenuPanneau">
 			<tbody>

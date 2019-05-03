@@ -37,7 +37,7 @@ switch($function){
             if($_POST['email']==$_POST['email_confirm']){
                 if(is_numeric($codePostal)){
                     addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,'a modifier',$dateNaissance,$civilite);
-                    $view='connexion';
+                    header('Location: http://localhost/app/index.php?cible=utilisateurs&function=connexion');
                 }
                 else
                     $error="Code postal non valide";
@@ -62,6 +62,7 @@ switch($function){
                 $_SESSION['prenom']=$userInfo[0]['Prenom'];
                 $_SESSION['role']=$userInfo[0]['role'];
                 $_SESSION['email']=$userInfo[0]['email'];
+                $_SESSION['idUtilisateur']=$userInfo[0]['idUtilisateur'];
                 $_SESSION['idClient']=$userId[0]['idClient'];
                 header('Location: http://localhost/app/index.php?cible=utilisateurs&function=user');
             }else
@@ -103,7 +104,6 @@ switch($function){
                     if(isset($_POST['typePiece']) && isset($_POST['superficie'])){
                         $typePiece=htmlspecialchars($_POST['typePiece']);
                         $superficie=htmlspecialchars($_POST['superficie']);
-
                         addRoom($bdd,$typePiece,$superficie,$_SESSION['idClient'],$_SESSION['adresse']);
                         header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
                         exit();
@@ -115,36 +115,6 @@ switch($function){
                         $_SESSION['piece']=$_POST['piece'];
                     }
 
-                    if(isset($_POST['c_temperature'])){
-                        $displayModal=true;
-                        writeSensorQuerry($bdd,"Capteur de temperature",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
-                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
-                        exit();
-                    }
-                    if(isset($_POST['c_distance'])){
-                        $displayModal=true;
-                        writeSensorQuerry($bdd,"Capteur de distance",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
-                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
-                        exit();
-                    }
-                    if(isset($_POST['c_luminosite'])){
-                        $displayModal=true;
-                        writeSensorQuerry($bdd,"Capteur de luminosite",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
-                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
-                        exit();
-                    }
-                    if(isset($_POST['c_sonore'])){
-                        $displayModal=true;
-                        writeSensorQuerry($bdd,"Capteur sonore",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
-                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
-                        exit();
-                    }
-                    if(isset($_POST['c_camera'])){
-                        $displayModal=true;
-                        writeSensorQuerry($bdd,"Camera",$_SESSION['idClient'],$_SESSION['adresse'],$_SESSION['piece']);
-                        header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
-                        exit();
-                    }
                     break;
                 
                 case 'technicien':
@@ -160,9 +130,13 @@ switch($function){
             }
         }
         break;
+
+        case 'forum':
+            $view='forum';
+            break;
 }
 
-if($function=="user")
+if($function=="user" || $function=="forum" )
     include('Vues/bandeau.php');
 include('Vues/'.$view.'.php');
 
@@ -170,3 +144,4 @@ include('Vues/'.$view.'.php');
 if(isset($error)) echo $error;
 ?>
 
+<script src="Controleurs/behaviour.js"></script>

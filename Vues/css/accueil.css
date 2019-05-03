@@ -1,14 +1,12 @@
 body 
 {
-
-
   /* Location of the image */
   background-image: url("../images/bg_accueil.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  padding:10px;
+  
   font-family: "Times New Roman", Times, serif;
   
 } 

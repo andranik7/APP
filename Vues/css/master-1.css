@@ -202,21 +202,21 @@ body{
   width: calc(20% - 0px);
 }
 
-.table-body .cell{
+#table-body .cell{
   width:20%;
 }
 
 
-.table-body .row:nth-child(even){
+#table-body .row:nth-child(even){
   background-color:#8ca1db;
 }
 
-.table-body .row:nth-child(odd){
+#table-body .row:nth-child(odd){
   background-color:#7a93d6;
 }
 
 
-.table-body{
+#table-body{
   height:350px;
   overflow-y:scroll;
 }

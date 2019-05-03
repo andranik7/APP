@@ -60,15 +60,16 @@
     		<p class="subtabtitle"> Liste des clients</p>
     		<div>
     			<div id="search">
-    				<input type="text" placeholder="Rechercher...">
-    				<SELECT name="langue" size="1" >
-							<option value="a venir">Tous</option>
-							<option value="a venir">Utilisateurs</option>
-							<option value="a venir">Gestionnaires</option>
-							<option value="a venir">Techniciens</option>
-							<option value="a venir">Administrateurs</option>
-					</SELECT>
-					<input type="button" value="Rechercher">
+					<form action="" id="form">
+						<input type="text" name="recherche" id="sb" placeholder="Rechercher..." autocomplete=off>
+						<SELECT name="langue" size="1" >
+								<option value="a venir">Tous</option>
+								<option value="a venir">Utilisateurs</option>
+								<option value="a venir">Gestionnaires</option>
+								<option value="a venir">Techniciens</option>
+								<option value="a venir">Administrateurs</option>
+						</SELECT>
+					</form>
     			</div>
     			<div id="table">
     				<div class="table-header">
@@ -79,9 +80,9 @@
 						      <div class="cell">Role</div>
 				    	</div> 
     				</div>
-    				<div class="table-body">
+    				<div id="table-body">
     					<?php
-	    					for($i=0;$i<sizeof($donnees);$i++){
+/* 	    					for($i=0;$i<sizeof($donnees);$i++){
 	    						$prenom=$donnees[$i]['Prenom'];
 	    						$nom=$donnees[$i]['Nom'];
 	    						$role=$donnees[$i]['role'];
@@ -91,7 +92,7 @@
 	    						echo '<div class="row" id="rowitem_'.$i.'">';
 	    						echo '<div class="cell">'.$i.'</div>'.'<div class="cell row_prenom">'.$prenom.'</div>'.'<div class="cell row_nom">'.$nom.'</div>'.'<div class="cell row_role">'.$role.'</div>'.'<div class="cell">'.$btnEdit.$btnContact.$btnDel.'</div>';
 	    						echo '</div>';
-	    					}
+	    					} */
 	    				 ?>
     				</div>
     			</div>
@@ -173,9 +174,7 @@
 
 
 
-<script src="Vues/javascript/admin.js">
-</script>
-
+<script src="Vues/javascript/admin.js"></script>
 
 </html>
 

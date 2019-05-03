@@ -148,3 +148,28 @@ var drawPieChart = function(data, colors) {
   var colors = [ '#f86920', '#30d99c', '#32ace1', '#e9e0d7' ];
   
   drawPieChart(data, colors);
+
+
+// mise en forme des données reçues via AJAX
+
+
+httpRequest=getHttpRequest();
+httpRequest.onreadystatechange=function(){
+    if(httpRequest.readyState===4){
+        //document.getElementById('result').innerHTML=httpRequest.responseText;
+        obj=JSON.parse(httpRequest.responseText);
+        removeChild('boitedroite'); // efface les anciennes données
+        for(var i=0;i<obj.length;i++){
+						var content='<div class="capteur"><div class="nomCapteur">'+obj[i].type+' id: '+obj[i].idCapteur+' valeur: '+listeCapteur[i].valeur+'</div> <button class="supprimerCapteur">&#10006</button> </div> <div class="separateur"></div>';
+						$('#boitedroite').append(content);
+            //addListener(); // on ajoute un listener aux boutons juste créés
+        }     
+    }
+}
+
+function removeChild(parent){
+    var myNode = document.getElementById(parent);
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+}
