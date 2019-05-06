@@ -30,6 +30,16 @@ switch($function){
         break;
     
     case 'post':
+        print_r($_POST);
+        if(isset($_POST['messageReponse'])){
+            echo 'IF OK';
+            $answer=htmlspecialchars($_POST['answer']);
+            $date=date("Y-m-d H:i:s");
+            $postId=$_GET['postid'];
+            postAnswer($bdd,$answer,$date,$postId,$_SESSION['idUtilisateur']);
+            header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+            exit();
+        }
         $postId=$_GET['postid'];
         $postInfo=getSpecificPost($bdd,$postId);
         $ansInfo=getAnswer($bdd,$postId);
@@ -42,6 +52,7 @@ switch($function){
 
     case 'newtopic':
         $view='newpost';
+        print_r($_POST);
         if(isset($_POST['titre']) && isset($_POST['message'])){
             $titre=htmlspecialchars($_POST['titre']);
             $message=htmlspecialchars($_POST['message']);
@@ -49,7 +60,7 @@ switch($function){
             createTopic($bdd,strtolower($_POST['categorie']),$titre,$message,$date,$_SESSION['idUtilisateur']);
             header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
             exit();
-        }
+        } 
         break;
 
     default:

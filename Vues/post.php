@@ -39,6 +39,15 @@
             echo "<div class='message'>".$ansInfo[$i]['message']."</div></div>";
         }
     ?>
+    <div class="group-forum">
+        <form action="http://localhost/app/index.php?cible=forum&function=post&postid=1" method="post" id="anspost">
+            <label for="txtmsgA">Votre réponse</label>
+            <input type="text" name="TEST">
+            <textarea name="messageReponse" cols="80" rows="20" placeholder="Votre message ici" id="txtmsg" ></textarea>
+            <!-- <textarea name="answerText" cols="80" rows="10" placeholder="Votre message ici" id="txtmsgA" required></textarea>  -->
+            <input type="submit" value="Répondre" id="submit">
+        </form>
+    </div>
 
 </body>
 </html>

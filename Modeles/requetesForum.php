@@ -21,6 +21,14 @@ function createTopic($bdd,$categorie,$titre,$message,$date,$idUtilsateur){
     }
 }
 
+function postAnswer($bdd,$message,$date,$postId,$idUtilsateur){
+    $sql='insert into reponseforum (idReponseForum,message,date,idUtilisateur) VALUES (?,?,?,?)';
+    $stmt=$bdd->prepare($sql);
+    if(!$stmt->execute([null,$message,$date,$postId,$idUtilsateur])){
+        echo $stmt->errorCode();
+        return;
+    }
+}
 function getSpecificPost($bdd,$postId){
     $query='select nom,prenom,role,idPostForum,categorie,titre,message,date,postforum.idUtilisateur FROM postforum JOIN utilisateurs on postforum.idUtilisateur=utilisateurs.idUtilisateur where postforum.idPostForum='.$postId;
     $ans=$bdd->query($query);

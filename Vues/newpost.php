@@ -20,16 +20,28 @@
         <form action="" method="post" id="formmsg">
                 <table>
                     <tr>
-                        <td><label for="titremsg">Sujet</label></td>
+                        <td><label for="titremsg" required>Sujet</label></td>
                         <td><input type="text" name="titre" id="titremsg"></td>
                     </tr>
                     <tr>
                         <td><label for="catmsg">Categorie</label></td>
-                        <td>                
-                            <select name="categorie" id="catmsg">
-                                <option value="probleme">Problème</option>
-                                <option value="autre">Autre</option>
-                            </select>
+                        <td>
+                        <?php 
+                            if($_SESSION['role']=='admin'){
+                                echo '<select name="categorie" id="catmsg">
+                                        <option value="Annonces">Annonces</option>
+                                        <option value="Problèmes">Problème</option>
+                                        <option value="Actualités">Actualités</option>
+                                        <option value="Autre">Autre</option>
+                                    </select>';
+                            }else{
+                                echo '<select name="categorie" id="catmsg">
+                                    <option value="Problèmes">Problème</option>
+                                    <option value="Autre">Autre</option>
+                                </select>';
+                            }
+                        ?>
+
                         </td>
                     </tr>
                     <tr>
