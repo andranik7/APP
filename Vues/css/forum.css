@@ -29,12 +29,16 @@ body{
 }
 
 .img-forum{
-    width: 3%;
-    height: 3%;
+    min-height:60px;
+    height:60px;
+    min-width:60px;
+    width:60px;
     margin-left:10px;
 }
 .main-topic{
+    padding-top:10px;
     display: flex;
+    border-bottom: 1px solid #fff;
 }
 
 .main-topic:hover{
@@ -42,7 +46,7 @@ body{
 }
 
 .main-topic-title{
-    width: 90%;
+    width: 80%;
     margin-left:10px;
 }
 
@@ -74,6 +78,10 @@ a{
 
 .origin{
     background-color: #5771b4;
+}
+
+.date{
+
 }
 
 #newtopic{

@@ -22,7 +22,7 @@ function createTopic($bdd,$categorie,$titre,$message,$date,$idUtilsateur){
 }
 
 function postAnswer($bdd,$message,$date,$postId,$idUtilsateur){
-    $sql='insert into reponseforum (idReponseForum,message,date,idUtilisateur) VALUES (?,?,?,?)';
+    $sql='insert into reponseforum (idReponseForum,message,date,idPostForum,idUtilisateur) VALUES (?,?,?,?,?)';
     $stmt=$bdd->prepare($sql);
     if(!$stmt->execute([null,$message,$date,$postId,$idUtilsateur])){
         echo $stmt->errorCode();
@@ -43,10 +43,20 @@ function getAnswer($bdd,$postId){
 }
 
 function getPost($bdd,$categorie){
-    $query='select * from postforum where categorie ="'.$categorie.'"';
+    $query='select nom,prenom,role,idPostForum,categorie,titre,message,date,postforum.idUtilisateur FROM postforum JOIN utilisateurs on postforum.idUtilisateur=utilisateurs.idUtilisateur where postforum.categorie="'.$categorie.'"';
+    //echo $query;
     $ans=$bdd->query($query);
     $donnees = $ans->fetchall();
     return $donnees;
 }
+
+function getAllPost($bdd){
+    $query='select nom,prenom,role,idPostForum,categorie,titre,message,date,postforum.idUtilisateur FROM postforum JOIN utilisateurs on postforum.idUtilisateur=utilisateurs.idUtilisateur';
+    //echo $query;
+    $ans=$bdd->query($query);
+    $donnees = $ans->fetchall();
+    return $donnees;
+}
+
 ?>
 

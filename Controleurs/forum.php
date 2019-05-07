@@ -5,7 +5,7 @@
 
 */
 include('Modeles/requetesForum.php');
-$possibleCat=array('Annonces','Problèmes','Actualités','Tous','Autres');
+$possibleCat=array('annonces','problemes','actualites','autre','tous');
 
 if(isset($_GET['function']) || !empty($_GET['function'])){
     $function=$_GET['function'];
@@ -25,15 +25,15 @@ switch($function){
             $view='404';
             break;
         }
-        $posts=getPost($bdd,$categorie);
+        
+        if($categorie=="Tous") $posts=getAllPost($bdd);
+        else $posts=getPost($bdd,$categorie);
         $view='subforum';
         break;
     
     case 'post':
-        print_r($_POST);
         if(isset($_POST['messageReponse'])){
-            echo 'IF OK';
-            $answer=htmlspecialchars($_POST['answer']);
+            $answer=htmlspecialchars($_POST['messageReponse']);
             $date=date("Y-m-d H:i:s");
             $postId=$_GET['postid'];
             postAnswer($bdd,$answer,$date,$postId,$_SESSION['idUtilisateur']);
@@ -52,14 +52,14 @@ switch($function){
 
     case 'newtopic':
         $view='newpost';
-        print_r($_POST);
         if(isset($_POST['titre']) && isset($_POST['message'])){
             $titre=htmlspecialchars($_POST['titre']);
             $message=htmlspecialchars($_POST['message']);
             $date=date("Y-m-d H:i:s");
-            createTopic($bdd,strtolower($_POST['categorie']),$titre,$message,$date,$_SESSION['idUtilisateur']);
-            header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
-            exit();
+            $categorie=str_replace("è","e",$_POST['categorie']);
+            createTopic($bdd,strtolower($categorie),$titre,$message,$date,$_SESSION['idUtilisateur']);
+/*             header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+            exit();  */
         } 
         break;
 

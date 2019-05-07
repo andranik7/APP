@@ -18,27 +18,27 @@
 
     <fieldset id="accueil-forum" class="group-forum">
         <legend>Accueil du forum</legend>
-        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=Annonces">
+        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=annonces">
             <img src="Vues/images/conversation-grey.png" class="img-forum">
             <p class="main-topic-title">Annonces officielles</p>
             <p class="date">12/12/12</p>
         </a>
-        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=Actualités">
+        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=actualites">
             <img src="Vues/images/conversation-grey.png" class="img-forum">
             <p class="main-topic-title">Les actus ecomatiques</p>
             <p class="date">12/12/12</p>
         </a>
-        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=Problèmes">
+        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=problemes">
             <img src="Vues/images/conversation-grey.png" class="img-forum">
             <p class="main-topic-title">Les problèmes</p>
             <p class="date">12/12/12</p>
         </a>
-        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=Autres">
+        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=autre">
             <img src="Vues/images/conversation-grey.png" class="img-forum">
             <p class="main-topic-title">Autre</p>
             <p class="date">12/12/12</p>
         </a>
-        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=Tous">
+        <a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=subforum&cat=tous">
             <img src="Vues/images/conversation-grey.png" class="img-forum">
             <p class="main-topic-title">Tous les topics</p>
             <p class="date">12/12/12</p>

@@ -21,7 +21,10 @@
             for($i=0;$i<sizeof($posts);$i++){
                 echo '<a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=post&postid='.$posts[$i]['idPostForum'].'">
                 <img src="Vues/images/conversation-grey.png" class="img-forum">
-                <p class="main-topic-title">'.$posts[$i]['titre'].'</p>
+                <div class="main-topic-title">
+                    <p >'.$posts[$i]['titre'].'</p>
+                    <p>'.$posts[$i]['prenom'].' '.$posts[$i]['nom'].' | '.ucfirst($posts[$i]['categorie']).'</p>
+                </div>
                 <p class="date">'.$posts[$i]['date'].'</p>
                 </a>';
             }
@@ -30,3 +33,4 @@
     <a href="http://localhost/app/index.php?cible=forum&function=newtopic" id="newtopic"> Créer un topic </a>
 </body>
 </html>
+

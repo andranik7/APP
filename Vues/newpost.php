@@ -29,15 +29,15 @@
                         <?php 
                             if($_SESSION['role']=='admin'){
                                 echo '<select name="categorie" id="catmsg">
-                                        <option value="Annonces">Annonces</option>
-                                        <option value="Problèmes">Problème</option>
-                                        <option value="Actualités">Actualités</option>
-                                        <option value="Autre">Autre</option>
+                                        <option value="annonces">Annonces</option>
+                                        <option value="problemes">Problème</option>
+                                        <option value="actualite">Actualités</option>
+                                        <option value="autre">Autre</option>
                                     </select>';
                             }else{
                                 echo '<select name="categorie" id="catmsg">
-                                    <option value="Problèmes">Problème</option>
-                                    <option value="Autre">Autre</option>
+                                    <option value="problemes">Problème</option>
+                                    <option value="autre">Autre</option>
                                 </select>';
                             }
                         ?>

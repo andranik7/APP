@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="title">
-        <div id="box"> <a href="http://localhost/app/index.php?cible=forum&function=forum" >Forum</a> > <a href=<?php echo "http://localhost/app/index.php?cible=forum&function=subforum&cat=".ucfirst($postInfo[0]['categorie']).' > '. ucfirst($postInfo[0]['categorie']); ?></a> > Topic</div>
+        <div id="box"> <a href="http://localhost/app/index.php?cible=forum&function=forum" >Forum</a> > <a href=<?php echo "http://localhost/app/index.php?cible=forum&function=subforum&cat=".$postInfo[0]['categorie'].' > '. ucfirst($postInfo[0]['categorie']).' </a> > "'.$postInfo[0]['titre'].'"'; ?></div>
     </div>
     <div class="group-forum topic origin">
         <div class="userinfo">
@@ -40,9 +40,9 @@
         }
     ?>
     <div class="group-forum">
-        <form action="http://localhost/app/index.php?cible=forum&function=post&postid=1" method="post" id="anspost">
+        <form action=<?php echo "http://localhost/app/index.php?cible=forum&function=post&postid=".$_GET['postid']?> method="post" id="anspost">
             <label for="txtmsgA">Votre réponse</label>
-            <input type="text" name="TEST">
+            <!-- <input type="text" name="TEST"> -->
             <textarea name="messageReponse" cols="80" rows="20" placeholder="Votre message ici" id="txtmsg" ></textarea>
             <!-- <textarea name="answerText" cols="80" rows="10" placeholder="Votre message ici" id="txtmsgA" required></textarea>  -->
             <input type="submit" value="Répondre" id="submit">
