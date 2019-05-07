@@ -105,43 +105,43 @@ input[type=reset] {
 
 .Cercle{
     position: absolute;
-    right: 130px;
+    left:110px;
     top:260px;}
 
 
 .Grid{
     position: absolute;
-    left: 120px;
-    top:270px;}
+    left: 700px;
+    top:250px;}
 
 .Color{
     position: absolute;
-    left: 480px;
-    top:280px;
+    right: 140px;
+    top:310px;
     color: #7575a3;
 }
 
 #a11{
     display: block;
-    background-color: #EDA208;
+    background-color: #F5B041;
     text-align: center; 
 }
 
 #a12{
     display: block;
-    background-color: #ED9B1F;
+    background-color: #EB984E;
     text-align: center; 
 }
 
 #a13{
     display: block;
-    background-color: #EDD7AA; 
+    background-color: #F5CBA7; 
     text-align: center;
 }
 
 #a14{
     display: block;
-    background-color: #EDCC8A; 
+    background-color: #FAD7A0; 
     text-align: center;
 }
 
