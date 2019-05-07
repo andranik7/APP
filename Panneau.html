@@ -96,14 +96,14 @@
                     </div>
 
                     <div class="Visualisation_1" id="2">
-                        <div class="Canvas">
+                        <div class="Cercle">
                             
                             <canvas  id="canvas" width="450" height="300" style="border: 0px;"></canvas>
                         </div>
 
                      
 
-                        <div class="Canvas1"> 
+                        <div class="Grid"> 
                          <canvas id="can1" width="1260" height="324"></canvas>
                         </div>
 
@@ -119,13 +119,13 @@
                         <div class="Total">
                             <canvas id="total" width="1260" height="40"></canvas>
                             <script type="text/javascript">
-                                var total=document.getElementById('total');
+                                /*var total=document.getElementById('total');
 
                                             //Pour le title//
                                             var total= total.getContext("2d");
                                             total.fillStyle = "white";
                                             total.font = "20px Arial";
-                                            total.fillText("La consomations d'énergie au total:", 80, 30);
+                                            total.fillText("La consomations d'énergie au total:", 80, 30);*/
                                 
                             </script>
                         </div>
@@ -213,6 +213,16 @@
 
                   var a_sum=sum(nums);
 
+
+                  var total=document.getElementById('total');
+
+                                                              //Pour le title//
+                        var total= total.getContext("2d");
+                        total.fillStyle = "white";
+                        total.font = "20px Arial";
+                        total.fillText("La consomations d'énergie au total : "+a_sum+"Watt", 80, 30);
+
+
                         function percentage (){
                            var percent = [];  
                            var zzz=0;                     //var sum = 521;
@@ -234,7 +244,7 @@
                         //var value=percentage(nums);
                         
 
-                var colors = ["#EDA208","#ED9B1F","#EDD7AA","#EDCC8A"]
+                var colors = ["#F5B041","#EB984E","#F5CBA7","#FAD7A0"]
                 var cols = (can1.width - 1000)/nums.length;//逐个柱子占位宽度和间距共1000
                 var colGaps = 30;//largeur de rect
                 // Dessiner le grid
@@ -322,10 +332,10 @@
 
                     //Créer les data
                     var data_capteur = [
-                        {name:'lumière', color:'#EDA208'},
-                        {name:'distance', color:'#ED9B1F'},
+                        {name:'lumière', color:'#F5B041'},
+                        {name:'distance', color:'#EB984E'},
                         {name:'température', color:'#EDD7AA'},
-                        {name:'son', color:'#EDCC8A'},
+                        {name:'son', color:'#FAD7A0'},
                         //{name:'actionneur', color:'EDA04C', value:0.25}   
                     ];
 
