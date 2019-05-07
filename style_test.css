@@ -103,16 +103,16 @@ input[type=reset] {
     outline:none;
 }
 
-.Canvas{
+.Cercle{
     position: absolute;
     right: 130px;
     top:260px;}
 
 
-.Canvas1{
+.Grid{
     position: absolute;
     left: 120px;
-    top:260px;}
+    top:270px;}
 
 .Color{
     position: absolute;
@@ -147,7 +147,7 @@ input[type=reset] {
 
 .Total{
     display: block;
-    top: 200px;
+    top: 100px;
 }
 
 
