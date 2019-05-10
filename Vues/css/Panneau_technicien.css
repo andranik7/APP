@@ -1,0 +1,148 @@
+body{
+	background-color:#374873;
+	background-image: url("../Images/placeholder.jpg");
+	background-position: 50% 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin:0;
+	padding: 0;
+}
+
+*{
+	box-sizing: border-box;
+}
+
+#table{
+  padding-top: 20px;
+  margin-left:auto;
+  margin-right:auto;
+  width:90%;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.tabcontent{
+	text-align: center;
+	background-color: #556fb2;
+	width: 70%;
+	margin: 0 auto;
+	height: 500px;
+	margin-top: 5px;
+}
+
+#tabtitle{
+	font-size: 30px;
+	font-family: 'Quicksand', sans-serif;
+	color: white;
+	text-align: center;
+}
+
+.subtabtitle{
+	font-family: 'Quicksand', sans-serif;
+	font-size: 25px;
+	padding-top: 20px;
+	color: white;
+}
+
+#form-modif-client{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	border:1px solid grey;
+}
+
+#table{
+  padding-top: 20px;
+  margin-left:auto;
+  margin-right:auto;
+  width:90%;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.table-header .cell{
+  width: calc(20% - 0px);
+}
+
+#table-body .cell{
+  width:20%;
+}
+
+.cell{
+	height: 25px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.table-header .row{
+  background-color:#eba338;
+}
+.row{
+  display:flex;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.table-header .cell{
+  width: calc(20% - 0px);
+}
+
+#table-body .cell{
+  width:20%;
+}
+
+.admin_option{
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+}
+
+.admin_option:hover{
+	border:2px solid #eba338;
+}
+
+
+#table-body .row:nth-child(even){
+  background-color:#8ca1db;
+}
+
+#table-body .row:nth-child(odd){
+  background-color:#7a93d6;
+}
+
+.tabbutton{
+	width: 30%;
+	height: 30px;
+	border: none;
+	background: none;
+	font-family: 'Quicksand', sans-serif;
+	color: white;
+}
+
+.tabbutton:hover{
+	background-color:#eba338;
+}
+
+
+.tab{
+	background-color: #556fb2;
+	position: relative;
+	margin: 0 auto;
+  	border-radius: 3px;
+  	text-align: center;
+  	width: 70%;
+}
+
+
+#table-body{
+  height:350px;
+  overflow-y:scroll;
+}
+
+
+
+/* Animations */
+
+#form-modif-client{
+	display: flex;
+	flex-direction: column;
+}
+

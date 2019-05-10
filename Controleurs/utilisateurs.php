@@ -118,6 +118,7 @@ switch($function){
                     break;
                 
                 case 'technicien':
+                    $view='Panneau_technicien';
                     break;
                 
                 case 'gestionnaire':
