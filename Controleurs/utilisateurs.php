@@ -51,22 +51,22 @@ switch($function){
             print_r($_SESSION);
         $view='connexion';
             if(isset($_POST['email']) && isset($_POST['password'])){
-            // si un formulaire a ete post
-            $email=htmlspecialchars($_POST['email']);
-            $password=hash("sha256",htmlspecialchars($_POST['password']));
-            $userInfo=speficQuery($bdd,'utilisateurs','*','email',$email);
-            $userId=getClientId($bdd,$email);
-            if($password==$userInfo[0]['mdp']){
-                $error='Connexion ok';
-                $_SESSION['nom']=$userInfo[0]['Nom'];
-                $_SESSION['prenom']=$userInfo[0]['Prenom'];
-                $_SESSION['role']=$userInfo[0]['role'];
-                $_SESSION['email']=$userInfo[0]['email'];
-                $_SESSION['idUtilisateur']=$userInfo[0]['idUtilisateur'];
-                $_SESSION['idClient']=$userId[0]['idClient'];
-                header('Location: http://localhost/app/index.php?cible=utilisateurs&function=user');
-            }else
-                $error="<div> Echec de l'authentification, veuillez vérifier vos informations.</div>";
+                // si un formulaire a ete post
+                $email=htmlspecialchars($_POST['email']);
+                $password=hash("sha256",htmlspecialchars($_POST['password']));
+                $userInfo=speficQuery($bdd,'utilisateurs','*','email',$email);
+                $userId=getClientId($bdd,$email);
+                if($password==$userInfo[0]['mdp']){
+                    $error='Connexion ok';
+                    $_SESSION['nom']=$userInfo[0]['Nom'];
+                    $_SESSION['prenom']=$userInfo[0]['Prenom'];
+                    $_SESSION['role']=$userInfo[0]['role'];
+                    $_SESSION['email']=$userInfo[0]['email'];
+                    $_SESSION['idUtilisateur']=$userInfo[0]['idUtilisateur'];
+                    $_SESSION['idClient']=$userId[0]['idClient'];
+                    header('Location: http://localhost/app/index.php?cible=utilisateurs&function=user');
+                }else
+                    $error="<div> Echec de l'authentification, veuillez vérifier vos informations.</div>";
         }
         break;
     
@@ -125,6 +125,26 @@ switch($function){
                 
                 case 'admin':
                     $donnees=basicQuerry($bdd,'utilisateurs','*');
+                    if(isset($_POST['mail']) && isset($_POST['mdp']) && isset($_POST['remdp']) && isset($_POST['mail']) && isset($_POST['role']) && isset($_POST['nom'])){
+                        $nom=htmlspecialchars($_POST['nom']);
+                        $prenom=htmlspecialchars($_POST['prenom']);
+                        $password=hash("sha256",htmlspecialchars($_POST['mdp']));
+                        $repassword=hash("sha256",htmlspecialchars($_POST['remdp']));
+                        $role=htmlspecialchars($_POST['role']);
+                        $mail=htmlspecialchars($_POST['mail']);
+                        $dateNaissance=htmlspecialchars($_POST['date']);
+                        $civilite=htmlspecialchars($_POST['sexe']);
+                        
+                        if($password === $repassword){
+                            if(!checkMailExist($bdd,$mail)){
+                                addUser($bdd,$nom,$prenom,$password,$mail,$dateNaissance,$role,$civilite);
+                                header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                                exit();
+                            }else $error="Ce mail est déjà utilisé";
+                                
+                        }else $error="Les mots de passe ne correspondent pas";
+
+                    }
                     $view="admin";
                     break;
             }

@@ -4,7 +4,13 @@
 - Requêtes liées aux utilisateurs  
 
 */
-
+function checkMailExist($bdd,$mail){
+    $query='select email from utilisateurs where email like "%'.$mail.'%"';
+    $ans=$bdd->query($query);
+    $donnees = $ans->fetchall();
+    if(sizeof($donnees)==0) return FALSE;
+    return TRUE;
+}
 function basicQuerry($bdd,$table,$desiredField){
     $query='select '.$desiredField.' from '.$table;
     $ans=$bdd->query($query);
@@ -104,6 +110,39 @@ function addHome($bdd,$adresse,$codePostal,$ville,$nbHabitants,$idClient){
     }
 
 }
+
+function addUser($bdd,$nom,$prenom,$password,$email,$dateNaissance,$role,$civilite){
+    $userQuery='insert into utilisateurs (idUtilisateur,Nom,Prenom,mdp,email,linkPhoto,role,dateNaissance,civilite) VALUES (?,?,?,?,?,?,?,?,?)';
+    $stmt=$bdd->prepare($userQuery);
+    if(!$stmt->execute([null,$nom,$prenom,$password,$email,'no',$role,$dateNaissance,$civilite])){
+        echo "Taille date: ".strlen($dateNaissance).'<br>';
+        echo "Taille civilite: ".strlen($civilite).'<br>';
+        echo "Impossible d'ajouter dans la table utilisateur, CODE ERREUR: ".$stmt->errorCode();
+        return;
+    }
+    $newuserid=getLastInsertId($bdd)[0]['LAST_INSERT_ID()'];
+    switch($role){
+        case 'gestionnaire':
+            $userQuery='insert into gestionnaires (idGestionnaire,telephone,idUtilisateur) VALUES (?,?,?)';
+            $stmt=$bdd->prepare($userQuery);
+            if(!$stmt->execute([null,'+0000000000',$newuserid])){
+                echo "Erreur gestionnaire";
+                return;
+            }
+            break;
+        
+        case 'technicien':
+            $userQuery='insert into techniciens (idTechniciens,telephone,idLogement,idUtilisateur) VALUES (?,?,?,?)';
+            $stmt=$bdd->prepare($userQuery);
+            if(!$stmt->execute([null,'+0000000000',-1,$newuserid])){
+                echo "Erreur technicien";
+                return;
+            }
+            break;
+    }
+
+}
+
 function addCustomer($bdd,$nom,$prenom,$password,$email,$adresse,$codePostal,$ville,$dateNaissance,$civilite){
     // on ajoute en deux temps: a la table utilisateurs classique et à la table clients
     $userQuery='insert into utilisateurs (idUtilisateur,Nom,Prenom,mdp,email,linkPhoto,role,dateNaissance,civilite) VALUES (?,?,?,?,?,?,?,?,?)';

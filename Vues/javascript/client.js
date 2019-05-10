@@ -6,7 +6,7 @@ function changeStep(s){
 	step = s; 
 
 	// on commence par change le background du btn séléctionné
-	for(let i=1; i<=3; i++){
+	for(let i=1; i<=4; i++){
 		if(i==s){
 			document.getElementById(i).classList.add("btn-menu-selected");
 			document.getElementById("rectangleContenu"+i).style.display = "block"

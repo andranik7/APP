@@ -28,28 +28,28 @@
     		<form  method="post" action="">
     			<div id="admin_create">
     				<div class="column">
-    					<input type="text" placeholder="Adresse mail">
-	    				<input type="password" placeholder="Mot de passe">
-	    				<input type="password" placeholder="Confirmer mdp">
-	    				<SELECT name="langue" size="1" >
-							<option value="a venir">Utilisateur</option>
-							<option value="a venir">Gestionnaire</option>
-							<option value="a venir">Technicien</option>
-							<option value="a venir">Administrateur</option>
+    					<input type="text" placeholder="Adresse mail" name="mail" required>
+	    				<input type="password" placeholder="Mot de passe" name="mdp" required>
+	    				<input type="password" placeholder="Confirmer mdp" name="remdp" required>
+	    				<SELECT name="role" size="1" >
+							<option value="gestionnaire" name="gestionnaire">Gestionnaire</option>
+							<option value="technicien" name="technicien">Technicien</option>
+							<option value="admin" name="admin">Administrateur</option>
 						</SELECT>
     				</div>
     				<div class="column">
-	    				<input type="text" placeholder="Nom">
-	    				<input type="text" placeholder="Prenom">
-						<input type="date" id="start" name="trip-start" value="2018-07-22" min="1950-01-01" max="2018-12-31">
-						<SELECT name="langue" size="1" >
-							<option value="a venir">Homme</option>
-							<option value="a venir">Femme</option>
-							<option value="a venir">Autre</option>
+	    				<input type="text" placeholder="Nom" name="nom" required>
+	    				<input type="text" placeholder="Prenom" name="prenom" required>
+						<input type="date" id="start" name="date" value="2018-07-22" min="1950-01-01" max="2018-12-31" name="date">
+						<SELECT name="sexe" size="1" >
+							<option value="homme">Homme</option>
+							<option value="femme">Femme</option>
+							<option value="autre">Autre</option>
 						</SELECT>
 	    			</div>
     			</div>
 				<input type="submit" value="Créer le compte" class="submit">
+				<?php if(isset($error)) echo $error;?>
 			</form>
 			
     	</div>
@@ -57,7 +57,7 @@
     		<p class="subtabtitle"> Relevé de consommation</p>
     	</div>
         <div class="tabcontent" id="clients">
-    		<p class="subtabtitle"> Liste des clients</p>
+    		<p class="subtabtitle"> Liste des utilisateurs</p>
     		<div>
     			<div id="search">
 					<form action="" id="form">

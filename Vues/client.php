@@ -8,14 +8,14 @@
 
 </head>
 <body class="bodyProfile">
-	<h2 style="color:#354a6d; font-weight: bold;">Profil</h2>
+<!-- 	<h2 style="color:#354a6d; font-weight: bold;">Profil</h2> -->
 	<div style="text-align:center">
 		<table class="rectangleMenuPanneau">
 			<tbody>
 				<tr>
 					<td>
 						<button class="btn-menu" id="1" onclick="changeStep(1)">
-							Gestion de l'habitat
+							Mes informations
 						</button>
 					</td>
 					<td>
@@ -28,13 +28,93 @@
 							Contrôle des actionneurs
 						</button>
 					</td>
+					<td>
+						<button class="btn-menu" id="4" onclick="changeStep(4)">
+							Gestion de l'habitat
+						</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 
-
 	<div class="rectangleContenu" id="rectangleContenu1">
+		<div class="title">Mes informations</div>
+		<div id="informations">
+			<table class="subinfos">
+				<tr>
+					<td>Nom :</td>
+					<td><?php echo $_SESSION['nom']?><form method="post" action="" ><input type="text" name="newNom" value="<?php echo $_SESSION['nom']?>"></form></td>
+					<td><img src="Vues/images/edit.png" alt="" onclick="modify"></td>
+				</tr>
+				<tr>
+					<td>Prénom :</td>
+					<td><?php echo $_SESSION['prenom']?><form method="post" action="" ><input type="text" name="newPrenom" value="<?php echo $_SESSION['prenom']?>"></form></td>
+					<td><img src="Vues/images/edit.png" alt="" onclick="modify"></td>
+				</tr>
+				<tr>
+					<td>Adresse mail :</td>
+					<td><?php echo $_SESSION['email']?><form method="post" action="" ><input type="text" name="newMail" value="<?php echo $_SESSION['email']?>"></form></td>
+					<td><img src="Vues/images/edit.png" alt="" onclick="modify"></td>
+				</tr>
+				
+			</table>
+		</div>
+
+	</div>
+
+
+	<div class="rectangleContenu" id="rectangleContenu2">
+		<div class="title">
+			Mon relevé de consommation
+		</div>
+		<div style="display:flex; margin-top:100px">
+			<div style="flex:10">
+				<table class="tableProfile">
+					<thead>
+						<tr>
+							<th>Consommation électrique</th>
+							<th>Consommation de chauffage</th>
+							<th>Économie</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>100W</td>
+							<td>200W</td>
+							<td>30W</td>
+						</tr>
+						<tr>
+							<td>100W</td>
+							<td>200W</td>
+							<td>30W</td>
+						</tr>
+						<tr>
+							<td>100W</td>
+							<td>200W</td>
+							<td>30W</td>
+						</tr>
+						<tr>
+							<td>100W</td>
+							<td>200W</td>
+							<td>30W</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="flex:1">
+					<canvas id="canvas" width="800" height="500"></canvas>
+			</div>
+		</div>
+	</div>
+
+	<div class="rectangleContenu" id="rectangleContenu3">
+		<div class="title">
+			Contrôler mes actionneurs
+		</div>
+	</div>
+
+	<div class="rectangleContenu" id="rectangleContenu4">
 		<div class="title">
 			Gestion de mon habitat
 		</div>
@@ -177,56 +257,6 @@
 		</div>
 	</div>
 
-
-		<div class="rectangleContenu" id="rectangleContenu2">
-			<div class="title">
-				Mon relevé de consommation
-			</div>
-<div style="display:flex; margin-top:100px">
-				<div style="flex:10">
-					<table class="tableProfile">
-						<thead>
-							<tr>
-								<th>Consommation électrique</th>
-								<th>Consommation de chauffage</th>
-								<th>Économie</th>
-							</tr>
-					  </thead>
-						<tbody>
-							<tr>
-								<td>100W</td>
-								<td>200W</td>
-								<td>30W</td>
-							</tr>
-							<tr>
-								<td>100W</td>
-								<td>200W</td>
-								<td>30W</td>
-							</tr>
-							<tr>
-								<td>100W</td>
-								<td>200W</td>
-								<td>30W</td>
-							</tr>
-							<tr>
-								<td>100W</td>
-								<td>200W</td>
-								<td>30W</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div style="flex:1">
-						<canvas id="canvas" width="800" height="500"></canvas>
-				</div>
-			</div>
-		</div>
-
-		<div class="rectangleContenu" id="rectangleContenu3">
-			<div class="title">
-				Contrôler mes actionneurs
-			</div>
-		</div>
 		<script type="text/javascript" src="Vues/javascript/client.js"></script>
 
 	</body>
