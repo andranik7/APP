@@ -26,12 +26,15 @@ var getHttpRequest= function(){
     return httpRequest;
 }
 
+$(window).on('load',function(e){
+  dispTab('newcompte');
+});
 var tabcontent=document.getElementsByClassName('tabcontent');
 	for (var i = 0; i < 6; i++) {
 		tabcontent[i].style.display="none";
 	}
 
-	function dispTab(event,tabname){
+	function dispTab(tabname){
         var tabcontent=document.getElementsByClassName('tabcontent');
         
 		var tabtitle=document.getElementsByClassName('tabbutton');
@@ -76,7 +79,7 @@ const openModal=function(e){
 
     switch(modalType){
         case 'modal-modif':
-            updateModalModif(userId,userFirstName,userLastName);
+            //updateModalModif(userId,userFirstName,userLastName);
             break;
         case 'modal-msg':
             updateModalMsg();
@@ -127,11 +130,11 @@ $('.row').click(function() {
 
 
 
-function updateModalModif(userId,userFirstName,userLastName){
+/* function updateModalModif(userId,userFirstName,userLastName){
     document.getElementById('modif-title').textContent="Modifications utilisateur n°"+userId;
     document.getElementById('fname-txt').value=userFirstName;
     document.getElementById('lname-txt').value=userLastName;
-}
+} */
 
 function updateModalMsg(userId,userFirstName){
 

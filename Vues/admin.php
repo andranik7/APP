@@ -9,18 +9,18 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
 
-    <body>
+    <body id="bodyadmin">
     	<div class="tab">
     		<p id="tabtitle">Panneau d'administration</p>
     		<div>
-    			<button class="tabbutton" id="newcomptebtn" onclick="dispTab(event,'newcompte')">Créer un nouveau compte</button>
-    			<button class="tabbutton" id="consobtn" onclick="dispTab(event,'conso')">Relevé de consommation</button>
-    			<button class="tabbutton" id="clientsbtn" onclick="dispTab(event,'clients')">Liste des clients</button>
+    			<button class="tabbutton" id="newcomptebtn" onclick="dispTab('newcompte')">Créer un nouveau compte</button>
+    			<button class="tabbutton" id="consobtn" onclick="dispTab('conso')">Relevé de consommation</button>
+    			<button class="tabbutton" id="clientsbtn" onclick="dispTab('clients')">Liste des clients</button>
     		</div>
     		<div>
-    			<button class="tabbutton" id="cgubtn" onclick="dispTab(event,'cgu')">Editions des CGU</button>
-    			<button class="tabbutton" id="consignesbtn" onclick="dispTab(event,'consignes')">Consignes générales</button>
-    			<button class="tabbutton" id="visubtn" onclick="dispTab(event,'visu')">Visualisation globale</button>
+    			<button class="tabbutton" id="cgubtn" onclick="dispTab('cgu')">Editions des CGU</button>
+    			<button class="tabbutton" id="consignesbtn" onclick="dispTab('consignes')">Consignes générales</button>
+    			<button class="tabbutton" id="visubtn" onclick="dispTab('visu')">Visualisation globale</button>
     		</div>
     	</div>
     	<div class="tabcontent" id="newcompte">

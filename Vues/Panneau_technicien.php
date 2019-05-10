@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body onload="load(event)">
+<body onload="load(event)" id="bodytech">
 
 	<div class="tab">
     		<p id="tabtitle">Panneau de Technicien</p>
