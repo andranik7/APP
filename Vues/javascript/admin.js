@@ -64,8 +64,11 @@ const openModal=function(e){
     e.preventDefault(); // empeche le comportement classique du lien
     
     const target=document.querySelector(e.target.getAttribute('data-href')); // récupère la cible du clic
+    
     const modalType=e.target.getAttribute('data-href').replace('#',''); // récupère le type de modal à update
     const rowNode=e.target.parentNode.parentNode; // on remonte au parent pour récupérer les infos (nom,prénom etc.)
+    var temp=rowNode.id;
+    var id=temp.replace('user_','');
     target.style.display=null;
     modal=target;
     modal.addEventListener('click',closeModal);
@@ -79,7 +82,7 @@ const openModal=function(e){
 
     switch(modalType){
         case 'modal-modif':
-            //updateModalModif(userId,userFirstName,userLastName);
+            updateModalModif(id);
             break;
         case 'modal-msg':
             updateModalMsg();
@@ -94,7 +97,7 @@ const openModal=function(e){
 const closeModal=function(e){
     if(modal === null) return
     e.preventDefault(); // empeche le comportement classique du lien
-    
+    $('#modifnotif').text("");
     // Nettoyage de la boite > décharge les event listener
     modal.removeEventListener('click',closeModal);
     modal.querySelector('.js-modal-close').removeEventListener('click',closeModal);

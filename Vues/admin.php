@@ -62,12 +62,12 @@
     			<div id="search">
 					<form action="" id="form">
 						<input type="text" name="recherche" id="sb" placeholder="Rechercher..." autocomplete=off>
-						<SELECT name="langue" size="1" >
-								<option value="a venir">Tous</option>
-								<option value="a venir">Utilisateurs</option>
-								<option value="a venir">Gestionnaires</option>
-								<option value="a venir">Techniciens</option>
-								<option value="a venir">Administrateurs</option>
+						<SELECT name="role" size="1" id="userrole">
+								<option value="tous">Tous</option>
+								<option value="client">Clients</option>
+								<option value="gestionnaire">Gestionnaires</option>
+								<option value="technicien">Techniciens</option>
+								<option value="admin">Administrateurs</option>
 						</SELECT>
 					</form>
     			</div>
@@ -126,25 +126,12 @@
 		<div id="modal-modif" class="modal" role="modal" style="display:none;">
     		<div class="modal-wrapper js-modal-stop">
         		<button class="js-modal-close">&#10006</button>
-        		<p id="modif-title"> Modifications utilisateur n°[UID]</p>
+        		<p id="modif-title"> Chargement en cours...</p>
 				<div>
 					<form action="" id="form-modif-client">
-						<table>
-							<tr>
-								<td>Nom</td>
-								<td><input type="text" id="fname-txt"></td>
-							</tr>
-							<tr>
-								<td>Prenom</td>
-								<td><input type="text" id="lname-txt"></td>
-							</tr>
-							<tr>
-								<td>Mail</td>
-								<td><input type="text" id="mail-txt"></td>
-							</tr>
-						</table>
-						<input type="submit" value="Modifier">
+
 					</form>
+					<div id="modifnotif"></div>
 				</div>
 			</div>
 		</div>

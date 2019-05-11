@@ -15,7 +15,7 @@
 				<tr>
 					<td>
 						<button class="btn-menu" id="1" onclick="changeStep(1)">
-							Mes informations
+							Gestion de l'habitat
 						</button>
 					</td>
 					<td>
@@ -30,7 +30,7 @@
 					</td>
 					<td>
 						<button class="btn-menu" id="4" onclick="changeStep(4)">
-							Gestion de l'habitat
+							Mes informations
 						</button>
 					</td>
 				</tr>
@@ -38,7 +38,7 @@
 		</table>
 	</div>
 
-	<div class="rectangleContenu" id="rectangleContenu1">
+	<div class="rectangleContenu" id="rectangleContenu4">
 		<div class="title">Mes informations</div>
 		<div id="informations">
 			<table class="subinfos">
@@ -114,7 +114,7 @@
 		</div>
 	</div>
 
-	<div class="rectangleContenu" id="rectangleContenu4">
+	<div class="rectangleContenu" id="rectangleContenu1">
 		<div class="title">
 			Gestion de mon habitat
 		</div>
@@ -209,7 +209,7 @@
 							<?php
 							if(isset($listePieces)){
 								for($i=0;$i<sizeof($listePieces);$i++){
-									echo '<tr><td><input type="submit"  name="piece" class="btn-tab" value="'.$listePieces[$i]['descriptif'].'"></td></tr>';
+									echo '<tr><td><input type="submit"  name="piece" class="btn-tab btn-logement" value="'.$listePieces[$i]['descriptif'].'"></td></tr>';
 								}
 								if(sizeof($listePieces)==0)
 									echo "<tr><td>Vous n'avez pas encore ajouté de pièces. Ajoutez en une avec le bouton ci dessous</tr></td>";

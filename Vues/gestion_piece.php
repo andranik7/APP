@@ -20,7 +20,7 @@
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur de température</div>
 								<form action="" method="post">
-									<input  type="button" class="addCapteur" value="Ajouter" name="c_temperature">
+									<input  type="button" class="addCapteur" value="Ajouter" name="Capteur de température">
 								</form>
 								
 							</div>
@@ -30,7 +30,7 @@
 							<div class="ajsupr">
 							<div class="description-capteur"> Capteur de distance</div>
 								<form action="" method="post">
-									<input type="submit" class="addCapteur" value="Ajouter" name="c_distance">
+									<input type="submit" class="addCapteur" value="Ajouter" name="Capteur de distance">
 								</form>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur de luminosité</div>
 								<form action="" method="post">
-									<input type="submit" class="addCapteur" value="Ajouter" name="c_luminosite">
+									<input type="submit" class="addCapteur" value="Ajouter" name="Capteur de luminosité">
 								</form>
 							</div>
 						</div>	
@@ -50,7 +50,7 @@
 							<div class="ajsupr">
 								<div class="description-capteur"> Capteur sonore</div>
 								<form action="" method="post">
-									<input type="submit" class="addCapteur" value="Ajouter" name="c_sonore">
+									<input type="submit" class="addCapteur" value="Ajouter" name="Capteur sonore">
 								</form>
 							</div>
 						</div>
@@ -70,7 +70,7 @@
 							<div class="ajsupr">
 								<div class="description-capteur"> Caméra</div>
 								<form action="" method="post">
-									<input type="submit" class="addCapteur" value="Ajouter" name="c_camera">
+									<input type="submit" class="addCapteur" value="Ajouter" name="Caméra">
 								</form>
 							</div>
 						</div>
@@ -78,7 +78,7 @@
 				</div>
 				<div id="boitedroite">
 					<?php
-						if(isset($listeCapteur)){
+/* 						if(isset($listeCapteur)){
 							if(sizeOf($listeCapteur)==0)
 								echo '<div class="capteur">Vous n\'avez pas encore de capteurs dans cette pièce. Vous pouvez en ajouter avec le menu sur votre gauche.</div>';
 							else{
@@ -86,7 +86,7 @@
 									echo '<div class="capteur">  <div class="nomCapteur">'.$listeCapteur[$i]['type'] .' id: '.$listeCapteur[$i]['idCapteur'].' valeur: '.$listeCapteur[$i]['valeur'].'</div> <button class="supprimerCapteur">&#10006</button> </div> <div class="separateur"></div>';
 								}
 							}
-						}
+						} */
 					?>
 				</div>
 			</div>

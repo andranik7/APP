@@ -113,6 +113,7 @@ switch($function){
                         $displayModal=true;
                         $listeCapteur=getSensorList($bdd,$_SESSION['idClient'],$_SESSION['adresse'],$_POST['piece']);
                         $_SESSION['piece']=$_POST['piece'];
+                        $_SESSION['idPiece']=getRoomId($bdd,$_SESSION['idClient'],$_SESSION['adresse'],$_POST['piece'])[0]['idPiece'];
                     }
 
                     break;
