@@ -9,6 +9,18 @@
 
 <body style="background-color:#364970;">
 
+    <?php
+
+    $bdd = new PDO('mysql:host=localhost;dbname=APP;charset=utf8', 'root', 'root');
+
+    // Check connection
+    if (!$bdd) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    echo "Connected successfully";
+
+    ?>
+
     <header>
         
     </header>
@@ -38,7 +50,7 @@
                                         <td align="middle"><label><input type="checkbox" name="light" style="color: "></label></td>
                                         <td align="middle"><h3>lumière</h3></td>
                                         <td align="middle">
-                                            <form method="post" action="#">
+                                            <form method="post" action="BDD.php">
 
                                             <input type="number" name="" placeholder="10" id="light" required style="font-size:15px;" min="10"max="30"step="5">
                                             </form>
@@ -87,7 +99,7 @@
                                 <p> <bar /></p>         
                                 
                                  
-                     <form method="post" action="#">
+                     <form method="post" action="BDD.php">
                      
                              <input type="submit" value="Valider">
                              <input type="reset" value="Effacer">
@@ -175,7 +187,6 @@
 
 
             }
-
 
 
 
