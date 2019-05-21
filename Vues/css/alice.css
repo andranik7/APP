@@ -6,9 +6,12 @@ font-face {
 
 body{
 	background-color: #364970;
-	font-family: 'Quicksand';
+    font-family: 'Quicksand';
+    height:100%;
 }
-
+html{
+    height: 100%;
+}
 
 
 .rectangle{
@@ -201,7 +204,20 @@ body{
     margin-top: 10px;
     margin-bottom: 10px;
     border:2px #EDA04C solid;
+}
 
+.newbtn-tab{
+    height:40px;
+    font-size:110%;
+    border-radius: 105px;
+    outline:none;
+    width: 50%;
+    background-color:#FFFFFF;
+    margin-right:10%;
+    margin-left:10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border:2px #EDA04C solid;
 }
 
 .btn-tab:hover{
@@ -239,15 +255,14 @@ body{
     color:white;
 }
 
-
-
 .rectangleContenu{
     margin-top:40px;
     text-align: center;
     width:90%;
     margin-left:auto;
     margin-right:auto;
-    height:auto;
+    position: relative;
+    height:70%;
     border-radius: 5px;
     background-color:#354a6d;
     padding-top:10px;
@@ -346,4 +361,10 @@ body{
 .subinfos img{
     height:20px;
     width: 20px;
+}
+
+#nomform{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
 }

@@ -1,4 +1,4 @@
-var getHttpRequest= function(){
+﻿var getHttpRequest= function(){
     // permet de supporter tous les navigateurs ( même les moins bons tels que IE .......)
     var httpRequest = false;
     if (window.XMLHttpRequest) { // Mozilla, Safari,...
@@ -69,7 +69,6 @@ function updateUserList(currentRole){
 function updateModalModif(idUser){
   var httpRequest=getHttpRequest();
   httpRequest.open('POST','./Modeles/requeteSpecificUser.php',true);
-  var form=document.getElementById('form');
   var data=new FormData();
   data.append('userid',idUser);
   httpRequest.send(data);
@@ -92,12 +91,80 @@ function displayListeCapteur(){
   httpRequest.send(data);
   httpRequest.onreadystatechange=function(){
     if(httpRequest.readyState===4){
-      removeChild('boitedroite'); // efface les anciennes données
+      removeChild('catDistance'); // efface les anciennes données
+      removeChild('catTemperature'); // efface les anciennes données
+      removeChild('catLuminosite'); // efface les anciennes données
+      removeChild('catSonore'); // efface les anciennes données
+      removeChild('catCamera'); // efface les anciennes données
+      removeChild('catMoteurVolet');
+      removeChild('catMoteurPorte');
+      removeChild('catVentilateur');
+      removeChild('catLumiere');
+      removeChild('catChauffage');
       obj=JSON.parse(httpRequest.responseText);
-      if(obj.length==0) $('#boitedroite').append('<div class="capteur">Vous n\'avez pas encore de capteurs dans cette pièce. Vous pouvez en ajouter avec le menu sur votre gauche.</div>');
+      if(obj.length==0) $('#nocapteur').append('<div class="capteur">Vous n\'avez pas encore de capteurs dans cette pièce. Vous pouvez en ajouter avec le menu sur votre gauche.</div>');
       else{
         for(var i=0;i<obj.length;i++){
-          $('#boitedroite').append('<div class="capteur"><div class="nomCapteur">'+obj[i].type +' id: '+obj[i].idCapteur+' valeur: '+obj[i].valeur+'</div> <button class="supprimerCapteur">&#10006</button> </div> <div class="separateur"></div>');
+          var type;
+          var prop; // capteur ou actionneur
+          var unit; // type d'unité à utiliser
+          switch(obj[i].type){
+            case 'Capteur de température':
+              type="Temperature";
+              unit="°C";
+              prop="capteur";
+              break;
+            case 'Capteur de distance':
+              type="Distance";
+              unit="m";
+              prop="capteur";
+              break;
+            case 'Capteur de luminosité':
+              type="Luminosite";
+              unit="cd";
+              prop="capteur";
+              break;
+            case 'Capteur sonore':
+              type="Sonore";
+              unit="dB";
+              prop="capteur";
+              break;
+            case 'Caméra':
+              type="Camera";
+              prop="capteur";
+              break;
+            case 'Moteur volets':
+              type="MoteurVolet";
+              prop="actionneur";
+              break;
+            case 'Moteur porte':
+              type="MoteurPorte";
+              prop="actionneur";
+              break;
+            case 'Ventilateur':
+              type="Ventilateur";
+              prop="actionneur";
+              break;
+            case 'Lumière':
+              type="Lumière";
+              prop="actionneur";
+              break;
+            case "Chauffage":
+              type="Chauffage";
+              prop="actionneur";
+              break;
+          }
+          var div="#cat"+type;
+          removeChild('nocapteur'); // efface les anciennes données
+          if(prop=="capteur")
+            $(div).append('<div class="capteur" id=capteur'+obj[i].idCapteur+'><div class="nomCapteur"> id: '+obj[i].idCapteur+' valeur: '+obj[i].valeur+' '+unit+'</div> <button class="supprimerCapteur">&#10006</button> </div> <div class="separateur"></div>');
+          else if(prop=="actionneur"){
+            var etat;
+            if(obj[i].idCapteur==1) etat="actif";
+            else etat="éteint";
+            $(div).append('<div class="capteur" id=capteur'+obj[i].idCapteur+'><div class="nomCapteur"> id: '+obj[i].idCapteur+' état: '+etat+'</div> <button class="supprimerCapteur">&#10006</button> </div> <div class="separateur"></div>');
+          }
+            
         }
       }
     }
@@ -110,7 +177,8 @@ $('#sb-tech').on('input',function(e){
   console.log('sb tech');
   e.preventDefault();
   updateUserList('tech');
-})
+});
+
 // Requete recherche admin
 $('#sb').on('input',function(e){
   console.log('input changed');
@@ -164,8 +232,21 @@ $('.addCapteur').on('click',function(e){
   }
 });
 
-$('.supprimerCapteur').on('click',function(e){
-  console.log("ok");
+
+$(document).on('click','.supprimerCapteur',function(e) {
+  var id=this.parentNode.id;
+  id=id.replace('capteur','');
+  var httpRequest=getHttpRequest();
+  httpRequest.open('POST','./Modeles/requeteDeleteCapteurs.php',true);
+  var data=new FormData();
+  data.append('idcapteur',id);
+  httpRequest.send(data);
+  httpRequest.onreadystatechange=function(){
+    if(httpRequest.readyState===4){
+      displayListeCapteur();
+    }
+  }
+
 });
 
 // Affiche la liste des utilisateurs au chargement de la page technicien
@@ -173,6 +254,7 @@ $(window).on('load',function(e){
   //updateListTech();
   if($('#bodytech').length>0) updateUserList('tech');
   if($('#bodyadmin').length>0) updateUserList('admin');
+  if($('#bodyclient').length>0) displayListeCapteur();
   //console.log($('#body'));
 });
 

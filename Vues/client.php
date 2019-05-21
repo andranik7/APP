@@ -41,24 +41,26 @@
 	<div class="rectangleContenu" id="rectangleContenu4">
 		<div class="title">Mes informations</div>
 		<div id="informations">
-			<table class="subinfos">
-				<tr>
-					<td>Nom :</td>
-					<td><?php echo $_SESSION['nom']?><form method="post" action="" ><input type="text" name="newNom" value="<?php echo $_SESSION['nom']?>"></form></td>
-					<td><img src="Vues/images/edit.png" alt="" onclick="modify"></td>
-				</tr>
-				<tr>
-					<td>Prénom :</td>
-					<td><?php echo $_SESSION['prenom']?><form method="post" action="" ><input type="text" name="newPrenom" value="<?php echo $_SESSION['prenom']?>"></form></td>
-					<td><img src="Vues/images/edit.png" alt="" onclick="modify"></td>
-				</tr>
-				<tr>
-					<td>Adresse mail :</td>
-					<td><?php echo $_SESSION['email']?><form method="post" action="" ><input type="text" name="newMail" value="<?php echo $_SESSION['email']?>"></form></td>
-					<td><img src="Vues/images/edit.png" alt="" onclick="modify"></td>
-				</tr>
-				
-			</table>
+			<form method="post" action=""  id="nomform">
+				<table class="subinfos">
+					<tr>
+						<td>Nom :</td>
+						<td><div id="subinfosnom"><?php echo $_SESSION['nom']?></div><input type="text" name="newNom" id="newNom" style="display:none" value="<?php echo $_SESSION['nom']?>"></td>
+						<td><img src="Vues/images/edit.png" alt="" onclick="modify('nom')"></td>
+					</tr>
+					<tr>
+						<td>Prénom :</td>
+						<td><div id="subinfosprenom"><?php echo $_SESSION['prenom']?></div><input type="text" name="newPrenom" id="newPrenom" style="display:none" value="<?php echo $_SESSION['prenom']?>"></td>
+						<td><img src="Vues/images/edit.png" alt="" onclick="modify('prenom')"></td>
+					</tr>
+					<tr>
+						<td>Adresse mail :</td>
+						<td><div id="subinfosmail"><?php echo $_SESSION['email']?></div><input type="text" name="newMail" id="newMail" style="display:none" value="<?php echo $_SESSION['email']?>"></td>
+						<td><img src="Vues/images/edit.png" alt="" onclick="modify('mail')"></td>
+					</tr>
+					<tr><td><input type="submit" value="Modifier" class="newbtn-tab"></td></tr>
+				</table>
+			</form>
 		</div>
 
 	</div>
