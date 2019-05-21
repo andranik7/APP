@@ -4,24 +4,30 @@
     <title>Page Test </title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./style_test.css">
+
+
+    
    
 </head>
 
 <body style="background-color:#364970;">
 
-    <?php
-
-    $bdd = new PDO('mysql:host=localhost;dbname=APP;charset=utf8', 'root', 'root');
-
-    // Check connection
-    if (!$bdd) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    echo "Connected successfully";
-
-    ?>
 
     <header>
+
+        <?php 
+
+        $bdd = new PDO('mysql:host=localhost;dbname=App;charset=utf8', 'root', 'root');
+
+        // Check connection
+        if (!$bdd) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        echo "Connected successfully";
+
+
+
+         ?>
         
     </header>
     <section>
@@ -39,56 +45,141 @@
 
                 
                     <div class="Consigne_1" id="1" >
+                        <form method="post" action="./BDD.php">
                         
-                        <table frame="below" border rules=rows cellspacing=0 align=right> <!-- Dessiner un tableau -->
+                        <table frame="void"  cellpadding="3" cellspacing="0" style="width: 80%; margin:auto"> <!-- Dessiner un tableau -->
                                     <tr>
                                         <th><h2><p style="color:#eba338;">Active</p></h2></th>
                                         <th><h2><p style="color:#eba338;">Consigne</p></h2></th>
                                         <th><h2><p style="color:#eba338;">Valeur</p></h2></th>
+                                        <th><h2><p style="color:#eba338;">Actuel</p></h2></th>
                                     </tr>
                                     <tr>
                                         <td align="middle"><label><input type="checkbox" name="light" style="color: "></label></td>
                                         <td align="middle"><h3>lumière</h3></td>
                                         <td align="middle">
-                                            <form method="post" action="BDD.php">
+                                       
+                                            <input type="number" name="" placeholder="10" id="k1" required style="font-size:15px;" min="10"max="30"step="5">
+                                        
 
-                                            <input type="number" name="" placeholder="10" id="light" required style="font-size:15px;" min="10"max="30"step="5">
-                                            </form>
+                                        </td>
+                                        <td align=middle><h3 style="color: white">
+                                            <?php
 
-                                           </label></td> 
 
+                                              $light = $bdd->query("SELECT valeur FROM Consigne WHERE id=0" );
+
+                                              while ($donnees = $light->fetch() )
+                                             {
+
+                                             echo '<p value="'.$donnees["id"].'";>'
+                                               .$donnees['valeur'];
+                                              echo "</p>";
+                                            }
+    
+
+                                            ?>
+                                                
+                                            </h3>
+                                              
+                                        </td> 
+
+
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td align="middle"><label><input type="checkbox" name="distance"></label></td>
+                                        <td align="middle"><h3>distance</h3></td>
+                                        <td align="middle">
+                                        
+
+                                            <input type="number" name="distance" placeholder="5" id="k1" required style="font-size:15px;" min="5"max="100"step="5">
+                                        
+                                        </td>
+                                        <td align=middle><h3 style="color: white">
+                                            <?php
+
+
+                                              $reponse = $bdd->query("SELECT valeur FROM Consigne WHERE id=1" );
+
+                                              while ($donnees = $reponse->fetch() )
+                                             {
+
+                                             echo '<p value="'.$donnees["id"].'";>'
+                                               .$donnees['valeur'];
+                                              echo "</p>";
+                                            }
+                                        
+
+                                            ?>
+                                                
+                                            </h3>
+                                              
+                                        </td>  
                                     </tr>
                                     <tr>
                                         <td align="middle"><label><input type="checkbox" name="temperature"></label></td>
                                         <td align="middle"><h3>temperature</h3></td>
                                         <td align="middle">
 
-                                            <form method="post" action="#">
+                                            
 
-                                            <input type="number" name="temperature" placeholder="25" id="temperature" required style="font-size:15px;" min="25"max="60"step="5">
-                                            </form>
+                                            <input type="number" name="temperature" placeholder="25" id="k1" required style="font-size:15px;" min="25"max="60"step="5">
+                                       
+                                        </td> 
+                                        <td align=middle><h3 style="color: white">
+                                            <?php
+
+
+                                              $reponse = $bdd->query("SELECT valeur FROM Consigne WHERE id=2" );
+
+                                              while ($donnees = $reponse->fetch() )
+                                             {
+
+                                             echo '<p value="'.$donnees["id"].'";>'
+                                               .$donnees['valeur'];
+                                              echo "</p>";
+                                            }
+                                        
+
+                                            ?>
+                                                
+                                            </h3>
+                                              
                                         </td> 
                                     </tr>
+
                                     <tr>
                                         <td align="middle"><label><input type="checkbox" name="sound"></label></td>
                                         <td align="middle"><h3>son</h3></td>
                                         <td align="middle">
-                                            <form method="post" action="#">
+                                       
 
-                                            <input type="number" name="sound" placeholder="10" id="sound" required style="font-size:15px;" min="10"max="30"step="5">
-                                            </form>
+                                            <input type="number" name="sound" placeholder="10" id="k1" required style="font-size:15px;" min="10"max="30"step="5">
+                                        
 
                                         </td> 
-                                    </tr>
-                                    <tr>
-                                        <td align="middle"><label><input type="checkbox" name="distance"></label></td>
-                                        <td align="middle"><h3>distance</h3></td>
-                                        <td align="middle">
-                                            <form method="post" action="#">
+                                        <td align=middle><h3 style="color: white">
+                                            <?php
 
-                                            <input type="number" name="distance" placeholder="5" id="distance" required style="font-size:15px;" min="5"max="100"step="5">
-                                            </form>
+
+                                              $reponse = $bdd->query("SELECT valeur FROM Consigne WHERE id=3" );
+
+                                              while ($donnees = $reponse->fetch() )
+                                             {
+
+                                             echo '<p value="'.$donnees["id"].'";>'
+                                               .$donnees['valeur'];
+                                              echo "</p>";
+                                            }
+                                        
+
+                                            ?>
+                                                
+                                            </h3>
+                                              
                                         </td> 
+
                                     </tr>
                                     <tr>
                                         <td align="middle"><label><input type="checkbox" name="actionneur"></label></td>
@@ -99,15 +190,62 @@
                                 <p> <bar /></p>         
                                 
                                  
-                     <form method="post" action="BDD.php">
+                     
                      
                              <input type="submit" value="Valider">
-                             <input type="reset" value="Effacer">
+                             <button type="button"  id="valide" onclick="showSite()">VALIDER</button>
+
+                             <?php
+                                 //$userId=100;
+                             ?> 
+                             <script>
+                                // var userId;
+                                // userId=document.getElementById("userId").value;
+                                // alert(userId);
+                             </script>
+                            <!-- <input type="text" name="userId" id="userId" value="<?php echo $userId; ?>"> -->
+
+                             <?php
+/*                                          Ceci qui marche:
+                                              $reponse = $bdd->query("SELECT valeur FROM Consigne " );
+                                              while ($donnees = $reponse->fetch() )
+                                             {
+                                                foreach ($donnees as $key => $value) 
+                                                {
+                                                  echo "$value <br>";
+                                                  
+                                                }
+                                              }  
+*/
+                                    //Ceci ne marche pas
+                                     function les_nums(){  //Pour obtenir les valeurs de capteurs en un arry à realiser les graphiques suivantes
+                                        $bdd = new PDO('mysql:host=localhost;dbname=App;charset=utf8', 'root', 'root');
+                                        $reponse = $bdd->query("SELECT valeur FROM Consigne " );
+                                             while ($donnees = $reponse->fetch() )
+                                             {
+                                                foreach ($donnees as $key => $value) 
+                                                {
+                                                  //echo "$value <br>";
+                                                  return $value;
+                                                }
+                                                
+                                            } 
+                                        }
+
+                                        les_nums();
+                                        arr=les_nums();
+                            ?>
+                             
+                             
                          
                      </form>  
                     </div>
 
                     <div class="Visualisation_1" id="2">
+
+
+
+
                         <div class="Cercle">
                             
                             <canvas  id="canvas" width="450" height="300" style="border: 0px;"></canvas>
@@ -127,6 +265,7 @@
                             <h4 id="a14"> Son</h4>
                         
                         </div>
+                       
 
                         <div class="Total">
                             <canvas id="total" width="1260" height="40"></canvas>
@@ -151,14 +290,49 @@
                 
             </div>
 
+            
 
-        
+            
+          
         
     </section>
 
 
 
         <script type="text/javascript">
+           
+                
+                
+
+
+
+           /* function showSite(str)
+            {
+                if (str=="")
+                {
+                    document.getElementById(k1).innerHTML="";
+                    return;
+                } 
+                if (window.XMLHttpRequest)
+                {
+                    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                    xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function()
+                {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        document.getElementById(k1).innerHTML=xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET","BDD.php?q="+str,true);
+                xmlhttp.send();
+            }*/
 
         //Changer les pages
 
@@ -188,8 +362,24 @@
 
             }
 
-
-
+/*
+            $('valide').click(function(){
+                        $.ajax({
+                            cache:true,//保留缓存数据
+                            type:"GET",//为post请求
+                            url:"ecomatiqueSAUVEGARDE",//这是我在后台接受数据的文件名
+                            data:$('#loginForm').serialize(),//将该表单序列化
+                            async:true,//设置成true，这标志着在请求开始后，其他代码依然能够执行。如果把这个选项设置成false，这意味着所有的请求都不再是异步的了，这也会导致浏览器被锁死
+                            error:function(request){//请求失败之后的操作
+                                return;
+                            },
+                            success:function(data){//请求成功之后的操作
+                                console.log("success");
+                            }
+                        });
+                    });
+            
+*/            
 
         //Le grid---Canvas1
 
@@ -205,8 +395,10 @@
                 var can1 = document.getElementById("can1");
                 var ctx1 = can1.getContext("2d");
 
-
-                 var nums = [90,150,280,51];
+//Qui besoin d'utiliser la fct les_nums() pour un array de $valeur
+                var nums ="<?php echo $arr?>" ; //赋值
+                    alert(nums);
+                 //var nums = [90,150,280,51];
                 // Calculer sum
                                 function sum()
                                 {
