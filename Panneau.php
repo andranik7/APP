@@ -45,7 +45,7 @@
 
                 
                     <div class="Consigne_1" id="1" >
-                        <form method="post" action="./BDD.php">
+                        <form method="post" name="frmPage" action="requetesUtilisateurs.php">
                         
                         <table frame="void"  cellpadding="3" cellspacing="0" style="width: 80%; margin:auto"> <!-- Dessiner un tableau -->
                                     <tr>
@@ -55,11 +55,11 @@
                                         <th><h2><p style="color:#eba338;">Actuel</p></h2></th>
                                     </tr>
                                     <tr>
-                                        <td align="middle"><label><input type="checkbox" name="light" style="color: "></label></td>
+                                        <td align="middle"><label><input type="checkbox" name="isSelect" style="color: "></label></td>
                                         <td align="middle"><h3>lumière</h3></td>
                                         <td align="middle">
                                        
-                                            <input type="number" name="" placeholder="10" id="k1" required style="font-size:15px;" min="10"max="30"step="5">
+                                            <input type="number" name="light" placeholder="10" id="k1" required style="font-size:15px;" min="10"max="30"step="5">
                                         
 
                                         </td>
@@ -88,7 +88,7 @@
                                     </tr>
                                     
                                     <tr>
-                                        <td align="middle"><label><input type="checkbox" name="distance"></label></td>
+                                        <td align="middle"><label><input type="checkbox" name="isSelect"></label></td>
                                         <td align="middle"><h3>distance</h3></td>
                                         <td align="middle">
                                         
@@ -118,7 +118,7 @@
                                         </td>  
                                     </tr>
                                     <tr>
-                                        <td align="middle"><label><input type="checkbox" name="temperature"></label></td>
+                                        <td align="middle"><label><input type="checkbox" name="isSelect"></label></td>
                                         <td align="middle"><h3>temperature</h3></td>
                                         <td align="middle">
 
@@ -150,7 +150,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td align="middle"><label><input type="checkbox" name="sound"></label></td>
+                                        <td align="middle"><label><input type="checkbox" name="isSelect"></label></td>
                                         <td align="middle"><h3>son</h3></td>
                                         <td align="middle">
                                        
@@ -182,7 +182,7 @@
 
                                     </tr>
                                     <tr>
-                                        <td align="middle"><label><input type="checkbox" name="actionneur"></label></td>
+                                        <td align="middle"><label><input type="checkbox" name="isSelect"></label></td>
                                         <td align="middle"><h3>actionneur</h3></td>
                                         <td align="middle"></td>
                                     </tr>
@@ -193,7 +193,7 @@
                      
                      
                              <input type="submit" value="Valider">
-                             <button type="button"  id="valide" onclick="showSite()">VALIDER</button>
+                             <button type="button"  id="valide" onclick="changeValue()">VALIDER</button>
 
                              <?php
                                  //$userId=100;
@@ -217,6 +217,7 @@
                                                 }
                                               }  
 */
+                                              /*
                                     //Ceci ne marche pas
                                      function les_nums(){  //Pour obtenir les valeurs de capteurs en un arry à realiser les graphiques suivantes
                                         $bdd = new PDO('mysql:host=localhost;dbname=App;charset=utf8', 'root', 'root');
@@ -233,12 +234,14 @@
                                         }
 
                                         les_nums();
-                                        arr=les_nums();
+                                        arr=les_nums();*/
                             ?>
                              
                              
                          
                      </form>  
+
+                      <form action="./BDD.php" name="frm" method="post">  
                     </div>
 
                     <div class="Visualisation_1" id="2">
@@ -361,6 +364,36 @@
 
 
             }
+//Pour la selection du checkbox
+            function changeValue(){  
+                         
+                        $("form[name=frm]").empty();  
+                        
+                        var check = $(input[name=isSelect]);  
+                        var light = document.getElementsByName("light");  
+                        var distance = document.getElementsByName("distance");  
+                        var sound = document.getElementsByName("sound");  
+                        var temperature = document.getElementsByName("temperature");  
+                        var i=0;  
+                        var str="";  
+                        
+                        check.each()
+                        {  
+                            
+                            if($(this).attr("checked")==true)
+                            {  
+                                 
+                                str += "<input type='hidden' name='light' value='"+light[i].value+"'>";  
+                                str += "<input type='hidden' name='distance' value='"+distance[i].value+"'>";  
+                                str += "<input type='hidden' name='sound' value='"+sound[i].value+"'>";  
+                                str += "<input type='hidden' name='temperature' value='"+temperature[i].value+"'>";  
+                                $("form[name=frm]").append(str);  
+                            }  
+                            i++;  
+                        };  
+                        $("form[name=frm]").submit(); 
+                        console.log(form) 
+                    }  ;
 
 /*
             $('valide').click(function(){
@@ -396,7 +429,7 @@
                 var ctx1 = can1.getContext("2d");
 
 //Qui besoin d'utiliser la fct les_nums() pour un array de $valeur
-                var nums ="<?php echo $arr?>" ; //赋值
+                var nums ="<?php echo $arr?>" ; 
                     alert(nums);
                  //var nums = [90,150,280,51];
                 // Calculer sum
