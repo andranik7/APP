@@ -145,8 +145,8 @@ function displayListeCapteur(){
               type="Ventilateur";
               prop="actionneur";
               break;
-            case 'Lumière':
-              type="Lumière";
+            case 'Lumiere':
+              type="Lumiere";
               prop="actionneur";
               break;
             case "Chauffage":

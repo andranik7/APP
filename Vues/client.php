@@ -25,7 +25,7 @@
 					</td>
 					<td>
 						<button class="btn-menu" id="3" onclick="changeStep(3)">
-							Contrôle des actionneurs
+							Contrôle des objets
 						</button>
 					</td>
 					<td>
@@ -112,7 +112,10 @@
 
 	<div class="rectangleContenu" id="rectangleContenu3">
 		<div class="title">
-			Contrôler mes actionneurs
+			Contrôler mes objets connectés
+		</div>
+		<div id="ordres">
+			<div></div>
 		</div>
 	</div>
 

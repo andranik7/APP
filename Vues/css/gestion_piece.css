@@ -191,7 +191,7 @@ div::-webkit-scrollbar {
 	text-align: center;
 	color: #FFF;
 	font-family: 'Quicksand', sans-serif;
-	font-size: 20px;
+	font-size: 0.9em;
 }
 
 /* Modal */
@@ -274,7 +274,7 @@ div::-webkit-scrollbar {
 
 .btn-ajouter{
 	height:10%;
-	font-size:110%;
+	font-size:1em;
 	color: #FFF;
 	border-radius: 105px;
 	outline:none;
