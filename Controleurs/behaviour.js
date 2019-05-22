@@ -214,6 +214,7 @@ function displayOrders(target){
         if(obj[i].estActif==0) actif="éteint";
         else actif="allumé"
         content+='<tr id="'+obj[i].idCapteur+'"><td>'+type+' n°'+ (i+1)+'</td><td>état: '+actif+'</td>';
+        if(type=="Chauffage") content+='<td>Température: <input type="number" class="nbchauffage" min="10" max="30" value="'+obj[i].valeur+'"></td>';
         if(actif=="allumé") content+='<td><input type="checkbox" class="chkactif" name="estactif" checked></td></tr>';
         else content+='<td><input type="checkbox" class="chkactif" name="estactif"></td></tr>';
       }
@@ -343,7 +344,24 @@ $(document).on('change','.chkactif',function(e) {
   httpRequest.send(data);
   httpRequest.onreadystatechange=function(){
     if(httpRequest.readyState===4){
-      console.log(obj.parentNode.parentNode.parentNode.parentNode.parentNode);
+      displayOrders(obj.parentNode.parentNode.parentNode.parentNode.parentNode);
+    }
+  }
+});
+
+$(document).on('change','.nbchauffage',function(e) {
+  var id=this.parentNode.parentNode.id;
+  var obj=this;
+  console.log(this.checked);
+  var httpRequest=getHttpRequest();
+  httpRequest.open('POST','./Modeles/requeteAlterCapteur.php',true);
+  var data=new FormData();
+  if(this.checked) data.append('newactif',1);
+  else data.append('valchauffage',this.value);
+  data.append('idcapteur',id);
+  httpRequest.send(data);
+  httpRequest.onreadystatechange=function(){
+    if(httpRequest.readyState===4){
       displayOrders(obj.parentNode.parentNode.parentNode.parentNode.parentNode);
     }
   }
