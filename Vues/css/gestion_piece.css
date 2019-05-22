@@ -298,3 +298,51 @@ div::-webkit-scrollbar {
 	margin-right: auto;
 	border: 1px solid white;
 }
+
+#tabmodal{
+	width: 80%;
+	margin-left:auto;
+	margin-right: auto;
+}
+
+.tabbutton{
+	border: 4px solid #eda04c;
+	background-color: #fff;
+	font-family: 'Quicksand', sans-serif;
+	color: black;
+	height: 30px;
+	width: 49%;
+	font-size: 1em;
+}
+
+#help{
+	background-color: #fff;
+	width: 60%;
+	margin-left:auto;
+	margin-right: auto;
+	text-align: center;
+}
+.orderwrapper{
+	width: 60%;
+	margin-left:auto;
+	margin-right: auto;
+}
+.order{
+	background-color:#eda04c !important;
+	color:white;
+	margin-top: 20px;
+	height:30px;
+	font-size: 1.5em;
+	text-align: center;
+}
+.order:hover{
+	cursor: pointer;
+}
+
+.ordercontent{
+	background-color: gray;
+}
+
+.ordercontent table{
+	width:100%;
+}

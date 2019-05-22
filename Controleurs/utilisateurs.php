@@ -55,18 +55,22 @@ switch($function){
                 $email=htmlspecialchars($_POST['email']);
                 $password=hash("sha256",htmlspecialchars($_POST['password']));
                 $userInfo=speficQuery($bdd,'utilisateurs','*','email',$email);
+                print_r($userInfo);
                 $userId=getClientId($bdd,$email);
-                if($password==$userInfo[0]['mdp']){
-                    $error='Connexion ok';
-                    $_SESSION['nom']=$userInfo[0]['Nom'];
-                    $_SESSION['prenom']=$userInfo[0]['Prenom'];
-                    $_SESSION['role']=$userInfo[0]['role'];
-                    $_SESSION['email']=$userInfo[0]['email'];
-                    $_SESSION['idUtilisateur']=$userInfo[0]['idUtilisateur'];
-                    $_SESSION['idClient']=$userId[0]['idClient'];
-                    header('Location: http://localhost/app/index.php?cible=utilisateurs&function=user');
+                if(sizeOf($userInfo)>0){
+                    if($password==$userInfo[0]['mdp']){
+                        $error='Connexion ok';
+                        $_SESSION['nom']=$userInfo[0]['Nom'];
+                        $_SESSION['prenom']=$userInfo[0]['Prenom'];
+                        $_SESSION['role']=$userInfo[0]['role'];
+                        $_SESSION['email']=$userInfo[0]['email'];
+                        $_SESSION['idUtilisateur']=$userInfo[0]['idUtilisateur'];
+                        $_SESSION['idClient']=$userId[0]['idClient'];
+                        header('Location: http://localhost/app/index.php?cible=utilisateurs&function=user');
+                    }else
+                        $error="<div> Echec de l'authentification, veuillez vérifier vos informations.</div>";
                 }else
-                    $error="<div> Echec de l'authentification, veuillez vérifier vos informations.</div>";
+                    $error="<div> Cet utilisateur est inconnu.</div>";
         }
         break;
     

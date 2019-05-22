@@ -27,7 +27,7 @@ function speficQuery($bdd,$table,$desiredField,$identifier,$value){
 
 function getClientId($bdd,$email){
     $query="select idClient from utilisateurs join clients on utilisateurs.idUtilisateur=clients.idClient where email='".$email."'";
-    echo $query;
+    
     $ans=$bdd->query($query);
     $donnees = $ans->fetchall();
     return $donnees;

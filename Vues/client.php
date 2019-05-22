@@ -114,8 +114,14 @@
 		<div class="title">
 			Contrôler mes objets connectés
 		</div>
+		<div> Ici vous pouvez donner des ordres à vos capteurs et actionneurs</div>
 		<div id="ordres">
-			<div></div>
+			<div id="selectOrder">
+				<div class="order">Gestion de la lumière</div>
+				<div class="order">Gestion du chauffage</div>
+				<div class="order">Contrôle des portes</div>
+				<div class="order">Contrôle des volets</div>
+			</div>
 		</div>
 	</div>
 

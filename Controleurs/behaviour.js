@@ -171,6 +171,59 @@ function displayListeCapteur(){
   }
   
 }
+
+function displayOrders(target){
+  var text=target.parentNode.children[0].innerHTML;
+  var type;
+  switch(text){
+    case 'Gestion de la lumière':
+      type="Lumiere";
+      break;
+      case 'Gestion du chauffage':
+        type="Chauffage";
+        break;
+      case 'Contrôle des ventilateurs':
+        type="Ventilateur";
+        break;
+      case 'Contrôle des portes':
+        type="Moteur porte";
+        break;
+      case 'Contrôle des volets':
+        type="Moteur volets";
+        break;
+  }
+  closeOrderTab();
+  target.parentNode.children[1].style.display="block";
+  console.log();
+  var httpRequest=getHttpRequest();
+  httpRequest.open('POST','./Modeles/requeteListSpecificCapteur.php',true);
+  var data=new FormData();
+  data.append('typecapteur',type);
+  httpRequest.send(data);
+  httpRequest.onreadystatechange=function(){
+    if(httpRequest.readyState===4){
+      var id=target.parentNode.children[1].id;
+      obj=JSON.parse(httpRequest.responseText);
+      console.log(obj);
+      target.parentNode.children[1].innerHTML="";
+      $('#'+id).append();
+      var content="";
+      content+='<table class="tableorder">';
+      for (let i = 0; i < obj.length; i++) {
+        var actif;
+        if(obj[i].estActif==0) actif="éteint";
+        else actif="allumé"
+        content+='<tr id="'+obj[i].idCapteur+'"><td>'+type+' n°'+ (i+1)+'</td><td>état: '+actif+'</td>';
+        if(actif=="allumé") content+='<td><input type="checkbox" class="chkactif" name="estactif" checked></td></tr>';
+        else content+='<td><input type="checkbox" class="chkactif" name="estactif"></td></tr>';
+      }
+      content+='</table>';
+      $('#'+id).append(content);
+      //console.log(httpRequest.responseText);
+
+    }
+  } 
+}
 // Event handler
 // Requete recherche tech
 $('#sb-tech').on('input',function(e){
@@ -272,3 +325,26 @@ function removeChild(parent){
     }
 }
 
+$('.order').on('click',function(e){
+  var target=e.target;
+  displayOrders(target);
+});
+
+$(document).on('change','.chkactif',function(e) {
+  var id=this.parentNode.parentNode.id;
+  var obj=this;
+  console.log(this.checked);
+  var httpRequest=getHttpRequest();
+  httpRequest.open('POST','./Modeles/requeteAlterCapteur.php',true);
+  var data=new FormData();
+  if(this.checked) data.append('newactif',1);
+  else data.append('newactif',0);
+  data.append('idcapteur',id);
+  httpRequest.send(data);
+  httpRequest.onreadystatechange=function(){
+    if(httpRequest.readyState===4){
+      console.log(obj.parentNode.parentNode.parentNode.parentNode.parentNode);
+      displayOrders(obj.parentNode.parentNode.parentNode.parentNode.parentNode);
+    }
+  }
+});
