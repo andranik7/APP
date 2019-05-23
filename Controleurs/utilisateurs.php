@@ -18,7 +18,9 @@ switch($function){
     case 'accueil':
         $view='accueil';
         break;
-    
+    case 'apropos':
+        $view='apropos';
+        break;
     case 'inscription':
         $view='inscription';
         if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['password']) && isset($_POST['email'])){
@@ -124,6 +126,54 @@ switch($function){
                 
                 case 'technicien':
                     $view='Panneau_technicien';
+                    
+                    if( isset($_POST['idClient']) & isset($_POST['prenom']) & isset($_POST['nom']) ){
+
+                        $_SESSION['idClient']=$_POST['idClient'];
+                        $_SESSION['prenomClient']=$_POST['prenom'];
+                        $_SESSION['nomClient']=$_POST['nom'];
+
+                    }
+
+                    if( isset($_SESSION['idClient']) & isset($_SESSION['prenomClient']) & isset($_SESSION['nomClient']) ){
+
+                        $listeLogements=getHomeList($bdd,$_SESSION['idClient']);
+
+                        if(isset($_POST['adresse']) && isset($_POST['ville']) && isset($_POST['cp']) && isset($_POST['superficie'])){
+                            $adresse=htmlspecialchars($_POST['adresse']);
+                            $codePostal=htmlspecialchars($_POST['cp']);
+                            $ville=htmlspecialchars($_POST['ville']);
+                            $nbHabitants=htmlspecialchars($_POST['nb_habitants']);
+                            $_SESSION['adresse']=$adresse;
+                            addHome($bdd,$adresse,$codePostal,$ville,$nbHabitants,$_SESSION['idClient']);
+                            header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                            exit();
+                        }
+
+                        if(isset($_POST['logements']) || isset($_SESSION['adresse'])){
+                            if(isset($_POST['logements'])){
+                                $listePieces=getRoomList($bdd,$_SESSION['idClient'],$_POST['logements']);
+                                $_SESSION['adresse']=$_POST['logements'];
+                                break;
+                            }
+                            if(isset($_SESSION['adresse']))
+                            $listePieces=getRoomList($bdd,$_SESSION['idClient'],$_SESSION['adresse']);
+                        }
+                        // ajout de piece
+                        if(isset($_POST['typePiece']) && isset($_POST['superficie'])){
+                            $typePiece=htmlspecialchars($_POST['typePiece']);
+                            $superficie=htmlspecialchars($_POST['superficie']);
+                            addRoom($bdd,$typePiece,$superficie,$_SESSION['idClient'],$_SESSION['adresse']);
+                            header("Location: " . $_SERVER['REQUEST_URI']); // Post / request / get 
+                            exit();
+                        }
+                    }
+                    if(isset($_POST['piece'])){
+                        $displayModal=true;
+                        $listeCapteur=getSensorList($bdd,$_SESSION['idClient'],$_SESSION['adresse'],$_POST['piece']);
+                        $_SESSION['piece']=$_POST['piece'];
+                    }
+
                     break;
                 
                 case 'gestionnaire':
@@ -162,7 +212,7 @@ switch($function){
             break;
 }
 
-if($function=="user" || $function=="forum" )
+if($function=="user" || $function=="forum" || $function=="apropos" )
     include('Vues/bandeau.php');
 include('Vues/'.$view.'.php');
 

@@ -1,5 +1,5 @@
 let step = 1;
-changeStep(2); // pour se mettre à l'étape 1 dès le départ
+changeStep(1); // pour se mettre à l'étape 1 dès le départ
 
 // fonction pour changer l'étape
 function changeStep(s){

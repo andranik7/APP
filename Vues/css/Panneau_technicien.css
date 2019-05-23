@@ -137,6 +137,87 @@ body{
   overflow-y:scroll;
 }
 
+/* Panneau Capteurs */
+
+.block{
+    display: flex;
+    flex-direction: row;
+}
+
+.tableGestion{
+  width:95%;
+  margin-left:auto;
+  margin-right:auto;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.tableGestion td {
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.tableGestion th {
+  font-size: 12px;
+  color: #fff;
+  line-height: 1.4;
+  text-transform: uppercase;
+  background-color: rgba(255,255,255,0.32);
+}
+
+.btn-tab{
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+    height:40px;
+    font-size:110%;
+    border-radius: 105px;
+    outline:none;
+    width: 50%;
+    background-color:#FFFFFF;
+    margin-right:10%;
+    margin-left:10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border:2px #EDA04C solid;
+
+}
+
+.btn-tab:hover{
+    opacity:0.7;
+    transition:0.6s;
+    cursor: pointer;
+}
+
+.btn-tab-selected{
+    background-color:#eda04c !important;
+    color:white;
+}
+
+.btn-ajouter{
+    height:10%;
+    font-size:110%;
+    color: #FFF;
+    border-radius: 105px;
+    outline:none;
+    width: 30%;
+    margin-top: 10px;
+    background-color:#EDA04C;
+    border:2px #FFFFFF solid;
+
+}
+
+.btn-ajouter:hover{
+    opacity:0.7;
+    transition:0.6s;
+    cursor: pointer;
+}
+
+.btn-ajouter-selected{
+    background-color:#eda04c !important;
+    color:white;
+}
 
 
 /* Animations */

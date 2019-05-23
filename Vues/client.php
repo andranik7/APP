@@ -254,10 +254,10 @@
 
 <?php 
 	include('Vues/gestion_piece.php');
-/* 	if(isset($displayModal)){
+ 	if(isset($displayModal)){
 		if($displayModal){
 			echo '<script type="text/javascript" >openModal(); </script>';
 		}
-	} */
+	} 
 
 ?>

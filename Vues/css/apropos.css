@@ -1,0 +1,106 @@
+body 
+{
+
+
+  /* Location of the image */
+  background-image: url("bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  
+}
+
+
+
+
+
+
+h2{
+	color : #FFEBCD;
+	font-size: 60px;
+	text-align: center;
+}
+
+li{
+	color : #FFEBCD;
+	font-weight : bold;
+	font-size: 20px;
+}
+
+ul#inline li{display: inline;}
+
+
+strong {
+	font-size: 45px;
+	color : #FF8C00;
+
+}
+
+.block{
+	display: flex;
+}
+
+.presentation{
+	font-size : 25px;
+	font-weight: bold;
+  	color: black;  	
+  	font-family: 'Quicksand', sans-serif;
+  	text-align: justify;
+  	text-align : center;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 25em;
+  	background-color: white;
+  	opacity: 0.7;
+  	padding: 15px;
+}
+
+
+.grid-container{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	width:100%;
+	padding:10px;
+}
+
+
+.grid-item{
+	text-align:center;
+}
+
+
+.profile{
+	width:150px;
+	height:150px;
+	border-radius:50%;
+	margin:20px;
+	transition:opacity 0.5s;
+}
+
+.titleProfile{
+	font-size:20px;
+	color:white;
+	font-weight: bold;
+}
+
+.subtitleProfile{
+	position:absolute;
+	margin-top:-100px;
+	margin-left:200px;
+	font-size:20px;
+	color:white;
+	font-weight: bold;
+	opacity: 0;
+	transition: opacity 0.5s;
+
+}
+
+.grid-item:hover .subtitleProfile{
+	opacity:1;
+}
+
+
+.grid-item:hover .profile{
+	opacity:0.6;
+}

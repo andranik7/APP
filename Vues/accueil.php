@@ -118,7 +118,7 @@
     <footer>
         <div id="header">
             <a href="FAQ.html" class="btn">FAQ</a>
-            <a href="Apropos.html" class="btn">A propos</a>
+            <a href="/app/index.php?cible=utilisateurs&function=apropos" class="btn">A propos</a>
         </div>   
     </footer>
 </body>

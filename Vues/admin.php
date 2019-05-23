@@ -126,7 +126,7 @@
 		<div id="modal-modif" class="modal" role="modal" style="display:none;">
     		<div class="modal-wrapper js-modal-stop">
         		<button class="js-modal-close">&#10006</button>
-        		<p id="modif-title"> Chargement en cours...</p>
+        		<p id="modif-title"> Chargement en cours... <img src="Vues/images/loading.gif" alt=""></p>
 				<div>
 					<form action="" id="form-modif-client">
 
