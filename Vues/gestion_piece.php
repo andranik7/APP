@@ -52,9 +52,6 @@
 				</div>
 			</div>
 			<div id="ajoutobjets">	
-				<div class="title">
-					Ajout/Retrait de capteurs et d'actionneurs
-				</div>
 				<div class="boiteprincipale">
 					<div class="boitegauche">
 						<div id="leftcontainer">			

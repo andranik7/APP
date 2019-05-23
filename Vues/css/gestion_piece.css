@@ -213,10 +213,10 @@ div::-webkit-scrollbar {
 	position: absolute;
 	right:0px;
 	top: 0px;
-	color:grey;
+	color:#EDA04C;
 	border:0px;
-	font-size: 20px;
-	background-color: #FFF;
+	font-size: 30px;
+	background-color: #374873;
 }
 
 @keyframes fadeIn{

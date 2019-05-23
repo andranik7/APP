@@ -25,11 +25,6 @@
 					</td>
 					<td>
 						<button class="btn-menu" id="3" onclick="changeStep(3)">
-							Contrôle des objets
-						</button>
-					</td>
-					<td>
-						<button class="btn-menu" id="4" onclick="changeStep(4)">
 							Mes informations
 						</button>
 					</td>
@@ -38,7 +33,7 @@
 		</table>
 	</div>
 
-	<div class="rectangleContenu" id="rectangleContenu4">
+	<div class="rectangleContenu" id="rectangleContenu3">
 		<div class="title">Mes informations</div>
 		<div id="informations">
 			<form method="post" action=""  id="nomform">
@@ -67,10 +62,8 @@
 
 
 	<div class="rectangleContenu" id="rectangleContenu2">
-		<div class="title">
-			Mon relevé de consommation
-		</div>
-		<div style="display:flex; margin-top:100px">
+		<?php include('Vues/consommation.php') ?>
+		<!-- <div style="display:flex; margin-top:100px">
 			<div style="flex:10">
 				<table class="tableProfile">
 					<thead>
@@ -107,22 +100,7 @@
 			<div style="flex:1">
 					<canvas id="canvas" width="800" height="500"></canvas>
 			</div>
-		</div>
-	</div>
-
-	<div class="rectangleContenu" id="rectangleContenu3">
-		<div class="title">
-			Contrôler mes objets connectés
-		</div>
-		<div> Ici vous pouvez donner des ordres à vos capteurs et actionneurs</div>
-		<div id="ordres">
-			<div id="selectOrder">
-				<div class="order">Gestion de la lumière</div>
-				<div class="order">Gestion du chauffage</div>
-				<div class="order">Contrôle des portes</div>
-				<div class="order">Contrôle des volets</div>
-			</div>
-		</div>
+		</div> -->
 	</div>
 
 	<div class="rectangleContenu" id="rectangleContenu1">
@@ -276,10 +254,10 @@
 
 <?php 
 	include('Vues/gestion_piece.php');
-	if(isset($displayModal)){
+/* 	if(isset($displayModal)){
 		if($displayModal){
 			echo '<script type="text/javascript" >openModal(); </script>';
 		}
-	}
+	} */
 
 ?>

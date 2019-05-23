@@ -369,3 +369,7 @@ html{
     margin-right:auto;
 }
 
+#contentconso{
+    height: 80%;
+    display: flex;
+}

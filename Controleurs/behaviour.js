@@ -225,6 +225,25 @@ function displayOrders(target){
     }
   } 
 }
+
+function displayListeHabitats(){
+  var httpRequest=getHttpRequest();
+  httpRequest.open('POST','./Modeles/requeteListeHabitat.php',true);
+  var data=new FormData();
+  httpRequest.send(data);
+  httpRequest.onreadystatechange=function(){
+    if(httpRequest.readyState===4){
+      document.getElementById('listhabitats').innerHTML='';
+      obj=JSON.parse(httpRequest.responseText);
+      if(obj.length>0){
+        for(var i=0;i<obj.length;i++){
+          $('#listhabitats').append('<div><input type="submit" name="logements" class="btn-tab" value="'+obj[i].adresse+'"></div>');
+        }  
+      }else $('#listhabitats').append('<div>Vous n\'avez pas encore de logements</div>');
+
+    }
+  }
+}
 // Event handler
 // Requete recherche tech
 $('#sb-tech').on('input',function(e){
@@ -308,7 +327,10 @@ $(window).on('load',function(e){
   //updateListTech();
   if($('#bodytech').length>0) updateUserList('tech');
   if($('#bodyadmin').length>0) updateUserList('admin');
-  if($('#bodyclient').length>0) displayListeCapteur();
+  if($('#bodyclient').length>0) {
+    displayListeCapteur();
+    displayListeHabitats();
+  }
   //console.log($('#body'));
 });
 
