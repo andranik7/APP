@@ -24,9 +24,9 @@
         if(!isset($_SESSION['nom'])){
             echo '<header>
                     <div id="header">
-                        <a href="http://localhost/app/index.php?cible=utilisateurs&function=inscription" class="btn">Inscription</a>
-                        <a href="http://localhost/app/index.php?cible=utilisateurs&function=connexion" class="btn">Connexion</a>
-                        <a href="#" class="btn">Messagerie</a>
+                        <a href="/app/index.php?cible=utilisateurs&function=inscription" class="btn">Inscription</a>
+                        <a href="/app/index.php?cible=utilisateurs&function=connexion" class="btn">Connexion</a>
+                        <a href="/app/index.php?cible=utilisateurs&function=messagerie" class="btn">Messagerie</a>
                         <input type="text" name="recherche" class="search-bar" placeholder="Adresse, arrondissement..">
                         <button class="btn-search">Chercher</button>
                     </div>   

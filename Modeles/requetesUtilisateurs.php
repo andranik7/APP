@@ -25,6 +25,17 @@ function speficQuery($bdd,$table,$desiredField,$identifier,$value){
     return $donnees;
 }
 
+function getTechList($bdd){
+    $query='select * from utilisateurs where role="technicien"';
+    $ans=$bdd->query($query);
+    $donnees = $ans->fetchall();
+    $res='';
+    for($i=0;$i<sizeof($donnees);$i++){
+        $res=$res.$donnees[$i]['Nom'].' ';
+    }
+    return $res;
+}
+
 function getClientId($bdd,$email){
     $query="select idClient from utilisateurs join clients on utilisateurs.idUtilisateur=clients.idClient where email='".$email."'";
     

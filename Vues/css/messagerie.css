@@ -1,0 +1,154 @@
+
+body {
+    font:12px arial;
+    color: #222;
+    text-align:center;
+    padding:35px; }
+  
+form, p, span {
+    margin:0;
+    padding:0; }
+  
+
+  
+a {
+    color:#0000FF;
+    text-decoration:none; }
+  
+    a:hover { text-decoration:underline; }
+  
+#wrapper, #loginform {
+    margin:0 auto;
+    padding-bottom:25px;
+    background:#364970;
+    width:504px;
+    border-radius:5px;
+    padding:10px;
+    }
+  
+#loginform { padding-top:18px; }
+  
+    #loginform p { margin: 5px; }
+  
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:270px;
+    width:430px;
+    border:1px solid #ACD8F0;
+    overflow:auto; }
+  
+#usermsg {
+    width:395px;
+    border:1px solid #ACD8F0; }
+  
+#submit { width: 60px; }
+  
+.error { color: #ff0000; }
+  
+#menu { padding:12.5px 25px 12.5px 25px; }
+  
+.welcome { float:left; 
+    color:white;
+    font-size:20px;
+}
+  
+.logout { float:right; }
+  
+.msgln { margin:0 0 2px 0; }
+
+.title{
+    font-size:20px;
+    color:white;
+}
+
+
+.input_connexion{
+    width: 97%;
+    height: 45px;
+    padding-left:5px;
+    box-shadow: none;
+    border: 3px solid #F5F5F5;
+    outline: 0;
+    font-size: 19px;
+    font-family: inherit;
+    font-weight: 150;
+    background-color: #FFF;
+    opacity: 0.8;
+    border-radius:3px;
+
+}
+
+.input_connexion:focus{
+    border: 3px solid #d8764a;
+    transition: 0.6s;
+}
+
+.textarea{
+    min-width: 97%;
+    max-width: 97%;
+    height: 60px;
+    box-shadow: none;
+    border: 3px solid #F5F5F5;
+    outline: 0;
+    font-size: 19px;
+    font-family: inherit;
+    font-weight: 150;
+    background-color: #FFF;
+    opacity: 0.8;
+    border-radius:3px; 
+}
+
+
+
+.btn-connect{
+    border:none;
+    margin-top: 4px;
+    outline:0;
+    background-color:#eda04c;
+    height:40px;
+    width:100%;
+    color:white;
+    font-size:110%;
+    border-radius: 3px;
+    font-family: 'Quicksand';
+    font-size:20px;
+
+}
+
+.btn-connect:hover{
+    opacity:0.7;
+    transition:0.6s;
+    cursor: pointer;
+}
+
+#exit{
+    text-decoration: none;
+    color:#fb4244;
+    font-size:15px;
+}
+
+.messageMe{
+    background-color:#36b6f5;
+    word-wrap: break-word;
+    padding:20px;
+    border-radius:10px;
+    color:white;
+    width:40%;
+    margin:10px;
+    float: right;
+}
+
+.messageOther{
+    background-color:#f09f5a;
+    word-wrap: break-word;
+    padding:20px;
+    border-radius:10px;
+    color:white;
+    width:40%;
+    margin:10px;
+    float:left;
+}

@@ -5,6 +5,7 @@
 
 */
 include('Modeles/requetesUtilisateurs.php');
+include('Modeles/requeteMessages.php');
 
 if(isset($_GET['function']) || !empty($_GET['function'])){
     $function=$_GET['function'];
@@ -21,6 +22,40 @@ switch($function){
     case 'apropos':
         $view='apropos';
         break;
+    
+    case 'messagerie':
+        $view='messagerie';
+        $techList=getTechList($bdd);
+        if(isset($_POST['name'])){
+            if($_POST['name'] != ""){
+                $_SESSION['nameInvite'] = stripslashes(htmlspecialchars($_POST['name']));
+            }
+            else{
+                echo '<span class="error">Entrez votre nom</span>';
+            }
+        }
+
+        if(isset($_POST['nameTarget'])){
+            if($_POST['nameTarget'] != ""){
+                $_SESSION['nameTarget'] = stripslashes(htmlspecialchars($_POST['nameTarget']));
+            }
+            else{
+                echo '<span class="error">Entrez votre destinataire</span>';
+            }
+        }
+
+        if(isset($_SESSION['name']) && isset($_POST['text'])){
+            $text = $_POST['text'];
+            $sender = $_SESSION['name'];
+            sendMessage($bdd,$text,$name);
+        }
+        if(isset($_SESSION['nom']) && isset($_POST['text'])){
+            $text = $_POST['text'];
+            $name=$_SESSION['nom'];
+            sendMessage($bdd,$text,$name);
+        }
+        break;
+
     case 'inscription':
         $view='inscription';
         if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['password']) && isset($_POST['email'])){
@@ -221,3 +256,4 @@ if(isset($error)) echo $error;
 ?>
 
 <script src="Controleurs/behaviour.js"></script>
+<script src="Controleurs/messagerieAjax.js"></script>
