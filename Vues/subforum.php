@@ -13,13 +13,13 @@
 </head>
 <body>
     <div id="title">
-        <div id="box"> <a href="http://localhost/app/index.php?cible=forum&function=forum">Forum</a> > <?php echo $categorie?> </div>
+        <div id="box"> <a href="/app/index.php?cible=forum&function=forum">Forum</a> > <?php echo $categorie?> </div>
     </div>
     <div class="group-forum">
         <?php
             if(sizeof($posts)<=0) echo 'Pas encore de topics dans cette catégorie';
             for($i=0;$i<sizeof($posts);$i++){
-                echo '<a class="main-topic" href="http://localhost/app/index.php?cible=forum&function=post&postid='.$posts[$i]['idPostForum'].'">
+                echo '<a class="main-topic" href="/app/index.php?cible=forum&function=post&postid='.$posts[$i]['idPostForum'].'">
                 <img src="Vues/images/conversation-grey.png" class="img-forum">
                 <div class="main-topic-title">
                     <p >'.$posts[$i]['titre'].'</p>
@@ -30,7 +30,7 @@
             }
         ?>
     </div>
-    <a href="http://localhost/app/index.php?cible=forum&function=newtopic" id="newtopic"> Créer un topic </a>
+    <a href="/app/index.php?cible=forum&function=newtopic" id="newtopic"> Créer un topic </a>
 </body>
 </html>
 

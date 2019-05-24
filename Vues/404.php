@@ -8,6 +8,6 @@
 </head>
 <body>
     <div>Cette page n'existe pas </div>
-    <a href="http://localhost/app/index.php">Retour</a>
+    <a href="/app/index.php">Retour</a>
 </body>
 </html>

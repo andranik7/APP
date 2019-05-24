@@ -10,7 +10,7 @@ function getMessage($bdd,$name,$target){
 	$donnees = $ans->fetchall();
 	for($i=0;$i<sizeof($donnees);$i++){
 		if($donnees[$i]['Sender']==$name) echo "<div class='messageMe'>(8:01 AM) <b>".$donnees[$i]['Sender']."</b>: ".$donnees[$i]['Text']."<br></div><br/>";
-		else echo "<div class='messageOther'>(8:01 AM) <b>".$donnees[$i]['Sender']."</b>: ".$donnees[$i]['Text']."<br></div><br/>";
+		if($donnees[$i]['Sender']==$target) echo "<div class='messageOther'>(8:01 AM) <b>".$donnees[$i]['Sender']."</b>: ".$donnees[$i]['Text']."<br></div><br/>";
 	}
 /* 	$sql="select * from chat where Sender='".$target."' and Receiver='".$name."'";
 	//echo $sql;

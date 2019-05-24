@@ -247,8 +247,8 @@ switch($function){
             break;
 }
 
-if($function=="user" || $function=="forum" || $function=="apropos" )
-    include('Vues/bandeau.php');
+if($function=="user" || $function=="forum" || $function=="apropos") include('Vues/bandeau.php');
+if(isset($_SESSION['nom']) && $function=="messagerie") include('Vues/bandeau.php');
 include('Vues/'.$view.'.php');
 
 

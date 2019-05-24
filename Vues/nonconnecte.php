@@ -18,6 +18,6 @@
 </head>
 <body>
  <div id="title">VOUS N'ÊTES PAS CONNECTE</div>
- <a id="redirect" href="http://localhost/app/index.php?cible=utilisateurs&function=connexion">RETOUR</a>
+ <a id="redirect" href="/app/index.php?cible=utilisateurs&function=connexion">RETOUR</a>
 </body>
 </html>

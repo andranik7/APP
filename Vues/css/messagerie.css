@@ -1,10 +1,4 @@
 
-body {
-    font:12px arial;
-    color: #222;
-    text-align:center;
-    padding:35px; }
-  
 form, p, span {
     margin:0;
     padding:0; }
@@ -16,9 +10,21 @@ a {
     text-decoration:none; }
   
     a:hover { text-decoration:underline; }
-  
-#wrapper, #loginform {
-    margin:0 auto;
+
+.subtitle{
+    color:#fff;
+}
+#targetform{
+    margin-top:20px;
+}
+#wrapper, #loginform,#targetform{
+    margin-top:30px;
+    font:12px arial;
+    color: #222;
+    text-align:center;
+    /* margin:0 auto; */
+    margin-left:auto;
+    margin-right:auto;
     padding-bottom:25px;
     background:#364970;
     width:504px;
@@ -52,6 +58,10 @@ a {
 #menu { padding:12.5px 25px 12.5px 25px; }
   
 .welcome { float:left; 
+    color:white;
+    font-size:20px;
+}
+.receiver { float:left; 
     color:white;
     font-size:20px;
 }

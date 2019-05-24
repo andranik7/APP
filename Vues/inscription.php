@@ -55,8 +55,8 @@
 					</div>
 					<section class="message" id="message" style="display: none"></section>
 				</form>
-				<div id="deja">Vous avez déjà un compte? <a href="http://localhost/app/index.php?cible=utilisateurs&function=connexion" id="redirect">Connectez-vous</a></div>
-				<div><a href="http://localhost/app/index.php" id="retour_accueil">Retour Accueil</a></div>
+				<div id="deja">Vous avez déjà un compte? <a href="/app/index.php?cible=utilisateurs&function=connexion" id="redirect">Connectez-vous</a></div>
+				<div><a href="/app/index.php" id="retour_accueil">Retour Accueil</a></div>
 			</div>
 			
 		</div>

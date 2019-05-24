@@ -21,8 +21,8 @@ echo 'Page de connexion';
 
 					<button class="btn-connect">Se connecter</button>
 				</form>
-				<div id="deja">Pas encore de compte? <a href="http://localhost/app/index.php?cible=utilisateurs&function=inscription" id="redirect">Créer en un</a></div>
-				<div><a href="http://localhost/app/index.php" id="retour_accueil">Retour Accueil</a></div>
+				<div id="deja">Pas encore de compte? <a href="/app/index.php?cible=utilisateurs&function=inscription" id="redirect">Créer en un</a></div>
+				<div><a href="/app/index.php" id="retour_accueil">Retour Accueil</a></div>
 			</div>
 		</div>
 	</div>

@@ -5,6 +5,7 @@ $(document).ready(function(){
         $.post("Modeles/postMessage.php", {text: clientmsg});            
         $("#usermsg").attr("value", "");
         loadLog();
+        $("#usermsg").val('');
         return false;
     });
     //If user wants to end session

@@ -13,7 +13,7 @@
 </head>
 <body>
     <div id="title">
-        <div id="box">Nouveau topic <a href="http://localhost/app/index.php?cible=forum&function=forum"> (retour)</a></div>
+        <div id="box">Nouveau topic <a href="/app/index.php?cible=forum&function=forum"> (retour)</a></div>
     </div>
     <div>
     <div class="group-forum" id="formwrapper">
