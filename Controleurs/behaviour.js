@@ -67,10 +67,12 @@ function updateUserList(currentRole){
 }
 
 function updateModalModif(idUser){
+  var id=idUser.replace('rowitem_','');
+  console.log(id);
   var httpRequest=getHttpRequest();
   httpRequest.open('POST','./Modeles/requeteSpecificUser.php',true);
   var data=new FormData();
-  data.append('userid',idUser);
+  data.append('userid',id);
   httpRequest.send(data);
   httpRequest.onreadystatechange=function(){
     if(httpRequest.readyState===4){
@@ -277,7 +279,7 @@ $('#form-modif-client').on('submit',function(e){
   var form=document.getElementById('form-modif-client');
   var idUser=$('#modif-title').text().replace("Modification de l'utilisateur n°","");
   var data=new FormData(form);
-  data.append('userid',idUser);
+  data.append('userid',idUser.replace('rowitem_',''));
   httpRequest.send(data);
   httpRequest.onreadystatechange=function(){
     if(httpRequest.readyState===4){

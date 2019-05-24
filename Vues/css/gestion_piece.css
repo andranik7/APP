@@ -346,3 +346,7 @@ div::-webkit-scrollbar {
 .ordercontent table{
 	width:100%;
 }
+
+#help{
+	margin-top:10px;
+}

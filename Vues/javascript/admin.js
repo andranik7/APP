@@ -67,8 +67,9 @@ const openModal=function(e){
     
     const modalType=e.target.getAttribute('data-href').replace('#',''); // récupère le type de modal à update
     const rowNode=e.target.parentNode.parentNode; // on remonte au parent pour récupérer les infos (nom,prénom etc.)
-    var temp=rowNode.id;
-    var id=temp.replace('user_','');
+    var temp=rowNode.className;
+    var id=temp.replace('row user','');
+    console.log(id);
     target.style.display=null;
     modal=target;
     modal.addEventListener('click',closeModal);

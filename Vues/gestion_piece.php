@@ -18,9 +18,6 @@
 				<button class="tabbutton" id="ordresobjetstab" onclick="dispTab('ordresobjets')">Contrôler mes objets connectés</button>
 			</div>
 			<div id="ordresobjets">
-				<div class="title">
-					Contrôler mes objets connectés
-				</div>
 				<div id="help">
 					<div> Ici vous pouvez donner des ordres à vos capteurs et actionneurs</div>
 				</div>
