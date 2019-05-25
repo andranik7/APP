@@ -36,6 +36,15 @@ function getTechList($bdd){
     return $res;
 }
 
+function updateUser($bdd,$nom,$prenom,$mail){
+    $userQuery='update utilisateurs SET Nom ="'.$nom.'",Prenom="'.$prenom.'",email="'.$mail.'" WHERE idUtilisateur = '.$_SESSION['idUtilisateur'];
+    $stmt=$bdd->prepare($userQuery);
+    if(!$stmt->execute()){
+        echo "Erreur lors de la modification";
+        echo $userQuery;
+        return;
+    }
+}
 function getClientId($bdd,$email){
     $query="select idClient from utilisateurs join clients on utilisateurs.idUtilisateur=clients.idClient where email='".$email."'";
     

@@ -117,7 +117,7 @@
 
     <footer>
         <div id="header">
-            <a href="FAQ.html" class="btn">FAQ</a>
+            <a href="/app/index.php?cible=utilisateurs&function=faq&faq=accueil" class="btn">FAQ</a>
             <a href="/app/index.php?cible=utilisateurs&function=apropos" class="btn">A propos</a>
         </div>   
     </footer>

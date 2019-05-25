@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html id="bodymsg">
 
-<head>
+<head >
 	<title>Ecomatique - messagerie sécurisée</title>
 	<link type="text/css" rel="stylesheet" href="Vues/css/messagerie.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>

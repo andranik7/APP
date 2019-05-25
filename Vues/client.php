@@ -53,7 +53,7 @@
 						<td><div id="subinfosmail"><?php echo $_SESSION['email']?></div><input type="text" name="newMail" id="newMail" style="display:none" value="<?php echo $_SESSION['email']?>"></td>
 						<td><img src="Vues/images/edit.png" alt="" onclick="modify('mail')"></td>
 					</tr>
-					<tr><td><input type="submit" value="Modifier" class="newbtn-tab"></td></tr>
+					<tr><td><input type="submit" id="updateUser" value="Modifier" class="newbtn-tab"></td></tr>
 				</table>
 			</form>
 		</div>

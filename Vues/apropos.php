@@ -49,8 +49,8 @@
         		<div class="subtitleProfile">CSO</div>
         		<div class="titleProfile">Alice Le Nilias Houmeau</div>
         	</div>
-        	<div class="Vues/images/grid-item">
-        		<img src="Tongyun_copie.jpg" class="profile"/>
+        	<div class="grid-item">
+        		<img src="Vues/images/Tongyun_copie.jpg" class="profile"/>
         		<div class="subtitleProfile">PR guy</div>
         		<div class="titleProfile">Tongyun Su</div>
         	</div>

@@ -1,0 +1,109 @@
+        body{
+        background-color: #364970;
+        font-family: 'Quicksand';
+        text-align: center;
+    }
+
+
+
+
+    #title{
+        color: white;
+        font-family: 'Quicksand', sans-serif;
+        text-align: center;
+        font-size: 30px;
+        text-transform: uppercase;
+    }
+    #subtitle{
+        color: white;
+        font-family: 'Quicksand', sans-serif;
+        text-align: center;
+        font-size: 25px;
+        text-transform: uppercase;
+    }
+
+
+    .border-button {
+  border: solid 5px #FC5185;
+  transition: border-width 0.6s linear;
+}
+
+.border-button:hover { border-width: 10px; }
+
+    #main{
+        display: flex;
+        flex-wrap: wrap;
+        width: 70%;
+        position: absolute;
+        left: 50%; /* à 50%/50% du parent référent */
+        transform: translate(-45%, 0%); /* décalage de 50% de sa propre taille */
+    }
+
+    img{
+        opacity: 0.8;
+        height: 100%;
+        width: 100%;
+    }
+
+    .container{
+        cursor: pointer;
+        height: 27%;
+        width: 27%;
+        margin:30px;
+        position: relative;
+
+    }
+    .description{
+        position: absolute;
+        left: 50%; /* à 50%/50% du parent référent */
+        top: 40%;
+        transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+        display: none;
+        font-size: 25px;
+        font-family: 'Fjalla One', sans-serif;
+        text-align: center;
+        display: block;
+    }
+
+    .point{
+        position: absolute;
+        left: 50%; /* à 50%/50% du parent référent */
+        top: 23%;
+        transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+        font-size: 100px;
+        text-align: center;
+        opacity: 0;
+
+    }
+
+    .container:hover .point {
+        opacity: 1;
+    }
+
+
+    .container:hover .description {
+        opacity: 0.5;
+    }
+
+    .titre{
+        
+        width: 50%;
+        font-family: 'Karla', sans-serif;
+        font-size: 30px;
+        text-decoration: none;
+        color: white;
+
+
+
+    }
+
+
+
+	a{
+		
+	
+		color: black;
+
+
+
+	}

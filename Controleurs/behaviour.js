@@ -239,7 +239,7 @@ function displayListeHabitats(){
       obj=JSON.parse(httpRequest.responseText);
       if(obj.length>0){
         for(var i=0;i<obj.length;i++){
-          $('#listhabitats').append('<div><input type="submit" name="logements" class="btn-tab" value="'+obj[i].adresse+'"></div>');
+          $('#listhabitats').append('<div id="logement_'+obj[i].idLogement+'"><input type="submit" name="logements" class="logementbtn" value="'+obj[i].adresse+'"></div>');
         }  
       }else $('#listhabitats').append('<div>Vous n\'avez pas encore de logements</div>');
 
@@ -390,4 +390,25 @@ $(document).on('change','.nbchauffage',function(e) {
       displayOrders(obj.parentNode.parentNode.parentNode.parentNode.parentNode);
     }
   }
+});
+
+$('#updateUser').on('click',function(e){
+  var httpRequest=getHttpRequest();
+  httpRequest.open('POST','./Modeles/requeteUpdateUser.php',true);
+  var form=document.getElementById('nomform');
+  var data=new FormData(form);
+  httpRequest.send(data);
+  httpRequest.onreadystatechange=function(){
+    if(httpRequest.readyState===4){
+      document.getElementById('infoUpdateUser').innerHTML="Modifications effectuées";
+    }
+  }
+});
+
+$(document).on('click','.logementbtn',function(e) {
+  var logementID=e.target.parentNode.id.replace('logement_','');
+  var logementName=e.target.value;
+  console.log(logementName);
+  loadConsommation(logementID);
+  document.getElementById('infoConso').innerHTML='Consommation du logement: '+logementName;
 });

@@ -27,5 +27,10 @@ $(document).ready(function(){
             }    
         });  
     }
-    setInterval (loadLog, 2500); // on reload l'AJAX toutes les 2.5 secondes
+     // on reload l'AJAX toutes les 2.5 secondes
 });
+
+$(window).on('load',function(e){
+    //updateListTech();
+    if($('#bodymsg').length>0) setInterval (loadLog, 2500);
+  });

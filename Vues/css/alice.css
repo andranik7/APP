@@ -207,17 +207,18 @@ html{
 }
 
 .newbtn-tab{
-    height:40px;
-    font-size:110%;
-    border-radius: 105px;
-    outline:none;
-    width: 50%;
-    background-color:#FFFFFF;
-    margin-right:10%;
-    margin-left:10%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border:2px #EDA04C solid;
+    font-family: 'Quicksand', sans-serif;
+    border:2px solid #eba338;
+    background-color: white;
+    border-radius: 10px;
+    margin-top:20px;
+    font-size: 1.2em;
+}
+
+.newbtn-tab:hover{
+    background-color: #eba338;
+    color:#fff;
+    cursor: pointer;
 }
 
 .btn-tab:hover{

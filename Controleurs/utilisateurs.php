@@ -22,6 +22,10 @@ switch($function){
     case 'apropos':
         $view='apropos';
         break;
+
+    case 'faq':
+        $view='faq';
+        break;
     
     case 'messagerie':
         $view='messagerie';
@@ -119,7 +123,15 @@ switch($function){
                 case 'client':
                     $view='client';
                     $listeLogements=getHomeList($bdd,$_SESSION['idClient']);
-
+                    if(isset($_POST['newNom']) && isset($_POST['newPrenom']) && isset($_POST['newMail'])){
+                        $nom=htmlspecialchars($_POST['newNom']);
+                        $prenom=htmlspecialchars($_POST['newPrenom']);
+                        $mail=htmlspecialchars($_POST['newMail']);
+                        updateUser($bdd,$nom,$prenom,$mail);
+                        $_SESSION['nom']=$nom;
+                        $_SESSION['prenom']=$prenom;
+                        $_SESSION['mail']=$mail;
+                    }
                     // ajout de maison
                     if(isset($_POST['adresse']) && isset($_POST['ville']) && isset($_POST['cp']) && isset($_POST['superficie'])){
                         $adresse=htmlspecialchars($_POST['adresse']);
@@ -257,3 +269,4 @@ if(isset($error)) echo $error;
 
 <script src="Controleurs/behaviour.js"></script>
 <script src="Controleurs/messagerieAjax.js"></script>
+<script src="Controleurs/consommation.js"></script>
