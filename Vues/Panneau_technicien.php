@@ -11,17 +11,17 @@
 </head>
 <body onload="load()" id="bodytech">
 	<?php
-		echo "POST: ";
+/* 		echo "POST: ";
 		print_r($_POST);
 		echo "</br>SESSION: ";
-		print_r($_SESSION);
+		print_r($_SESSION); */
 	?>
 	<div class="tab">
     		<p id="tabtitle">Panneau de Technicien</p>
     		<div>
 				<a href="index.php?cible=utilisateurs&amp;function=user&amp;onglet=1"><button class="tabbutton" id="clientsbtn">Liste des clients</button></a>
 				<a href="index.php?cible=utilisateurs&amp;function=user&amp;onglet=2"><button class="tabbutton" id="consobtn">Relevé de consommation</button></a>
-				<a href="index.php?cible=utilisateurs&amp;function=user&amp;onglet=3"><button class="tabbutton" id="captbtn">Modification des Capteurs/Actionneurs</button></a>
+				<a href="index.php?cible=utilisateurs&amp;function=user&amp;onglet=3"><button class="tabbutton" id="captbtn">Modification des Capteurs/Actionneurs</button></a>	
     		</div>
     	</div>
 
@@ -51,6 +51,13 @@
 				</div>
 				<div id="table-body">
 				</div>
+				<?php 
+					if(isset($_SESSION['isAdmin'])){
+						if($_SESSION['isAdmin']){
+							echo '<form action="" method="post"><input class="newbtn-tab" type="submit" value="Retour" name="backToAdmin"></form>';
+						}
+					} 
+				?>
 			</div>
 		</div>
 	</div>
@@ -61,48 +68,8 @@
     	<?php if(isset($_SESSION["idClient"])){ ?>
 
     		<div class="rectangleContenu" id="rectangleContenu2">
-		<div class="title">
-			Mon relevé de consommation
-		</div>
-		<div style="display:flex; margin-top:100px">
-			<div style="flex:10">
-				<table class="tableProfile">
-					<thead>
-						<tr>
-							<th>Consommation électrique</th>
-							<th>Consommation de chauffage</th>
-							<th>Économie</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>100W</td>
-							<td>200W</td>
-							<td>30W</td>
-						</tr>
-						<tr>
-							<td>100W</td>
-							<td>200W</td>
-							<td>30W</td>
-						</tr>
-						<tr>
-							<td>100W</td>
-							<td>200W</td>
-							<td>30W</td>
-						</tr>
-						<tr>
-							<td>100W</td>
-							<td>200W</td>
-							<td>30W</td>
-						</tr>
-					</tbody>
-				</table>
+				<?php include('Vues/consommation.php') ?>
 			</div>
-			<div style="flex:1">
-					<canvas id="canvas" width="800" height="500"></canvas>
-			</div>
-		</div>
-		</div>
     	<?php }else{ ?>
     		<p>Chargez un client avant !</p>
     	<?php } ?>
@@ -252,11 +219,13 @@
 
 		</div>
 
+		
 	<?php }else{ ?>
 		<p>Chargez un client avant !</p>
 	<?php } ?>
 
     </div>
+
 
 </body>
 

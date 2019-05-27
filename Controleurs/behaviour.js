@@ -57,6 +57,7 @@ function updateUserList(currentRole){
             var btnEdit='<img src="Vues/images/edit.png" alt="Editer" data-href="#modal-modif" class="admin_option dlg-edit js-modal">';
             var btnContact='<img src="Vues/images/contact.png" alt="Editer" data-href="#modal-msg" class="admin_option dlg-edit js-modal">';
             var btnDel='<img src="Vues/images/delete.png" alt="Editer" data-href="#modal-del" class="admin_option dlg-edit js-modal">';
+            var btnView='<form action="" method="post" class="admin_option"><input type="hidden" name="prenom" value="'+prenom+'""><input type="hidden" name="idClient" value="'+userid+'""><input type="hidden" name="nom" value="'+nom+'""><img class="admin_option dlg-edit js-modal" type="image" src="Vues/images/eye.png" alt="Submit Form"/></form>';
             content='<div class="row user'+userid+'" id="rowitem_'+i+'">'+'<div class="cell">'+i+'</div>'+'<div class="cell row_prenom">'+prenom+'</div>'+'<div class="cell row_nom">'+nom+'</div>'+'<div class="cell row_role">'+role+'</div>'+'<div class="cell">'+btnEdit+btnContact+btnDel+'</div>';
           }
           $('#table-body').append(content);
@@ -328,7 +329,11 @@ $(document).on('click','.supprimerCapteur',function(e) {
 // Affiche la liste des utilisateurs au chargement de la page technicien
 $(window).on('load',function(e){
   //updateListTech();
-  if($('#bodytech').length>0) updateUserList('tech');
+  if($('#bodytech').length>0) {
+    updateUserList('tech');
+    displayListeHabitats();
+  }
+  
   if($('#bodyadmin').length>0) updateUserList('admin');
   if($('#bodyclient').length>0) {
     displayListeCapteur();

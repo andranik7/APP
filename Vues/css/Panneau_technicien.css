@@ -114,7 +114,8 @@ body{
 	border: none;
 	background: none;
 	font-family: 'Quicksand', sans-serif;
-	color: white;
+  color: white;
+  background-color: #fff;
 }
 
 .tabbutton:hover{
@@ -227,3 +228,20 @@ body{
 	flex-direction: column;
 }
 
+#contentconso{
+  height: 80%;
+  display: flex;
+}
+
+.newbtn-tab{
+  font-family: 'Quicksand', sans-serif;
+  border:2px solid #eba338;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 1.2em;
+}
+
+.newbtn-tab:hover{
+  cursor:pointer;
+  background-color: #eba338;
+}

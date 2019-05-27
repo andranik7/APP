@@ -107,7 +107,7 @@ switch($function){
                         $_SESSION['email']=$userInfo[0]['email'];
                         $_SESSION['idUtilisateur']=$userInfo[0]['idUtilisateur'];
                         $_SESSION['idClient']=$userId[0]['idClient'];
-                        header('Location: http://localhost/app/index.php?cible=utilisateurs&function=user');
+                        header('Location: /app/index.php?cible=utilisateurs&function=user');
                     }else
                         $error="<div> Echec de l'authentification, veuillez vérifier vos informations.</div>";
                 }else
@@ -174,11 +174,20 @@ switch($function){
                 case 'technicien':
                     $view='Panneau_technicien';
                     
+                    if(isset($_POST['backToAdmin'])){
+                        $view='admin';
+                        //$_SESSION['isAdmin']=TRUE;
+                        $_SESSION['role']="admin";
+                    }
                     if( isset($_POST['idClient']) & isset($_POST['prenom']) & isset($_POST['nom']) ){
 
                         $_SESSION['idClient']=$_POST['idClient'];
                         $_SESSION['prenomClient']=$_POST['prenom'];
                         $_SESSION['nomClient']=$_POST['nom'];
+                        if(isset($_SESSION['adresse'])) unset($_SESSION['adresse']);
+                        if(isset($_SESSION['ville'])) unset($_SESSION['ville']);
+                        if(isset($_SESSION['cp'])) unset($_SESSION['cp']);
+                        if(isset($_SESSION['superficie'])) unset($_SESSION['superficie']);
 
                     }
 
@@ -219,6 +228,7 @@ switch($function){
                         $displayModal=true;
                         $listeCapteur=getSensorList($bdd,$_SESSION['idClient'],$_SESSION['adresse'],$_POST['piece']);
                         $_SESSION['piece']=$_POST['piece'];
+                        $_SESSION['idPiece']=getRoomId($bdd,$_SESSION['idClient'],$_SESSION['adresse'],$_POST['piece'])[0]['idPiece'];
                     }
 
                     break;
@@ -228,6 +238,12 @@ switch($function){
                 
                 case 'admin':
                     $donnees=basicQuerry($bdd,'utilisateurs','*');
+                    if(isset($_POST['switchToTech'])) {
+                        $view='Panneau_technicien';
+                        $_SESSION['isAdmin']=TRUE;
+                        $_SESSION['role']="technicien";
+                    }
+                    else $view="admin";
                     if(isset($_POST['mail']) && isset($_POST['mdp']) && isset($_POST['remdp']) && isset($_POST['mail']) && isset($_POST['role']) && isset($_POST['nom'])){
                         $nom=htmlspecialchars($_POST['nom']);
                         $prenom=htmlspecialchars($_POST['prenom']);
@@ -248,7 +264,7 @@ switch($function){
                         }else $error="Les mots de passe ne correspondent pas";
 
                     }
-                    $view="admin";
+                    
                     break;
             }
         }
@@ -261,6 +277,7 @@ switch($function){
 
 if($function=="user" || $function=="forum" || $function=="apropos") include('Vues/bandeau.php');
 if(isset($_SESSION['nom']) && $function=="messagerie") include('Vues/bandeau.php');
+
 include('Vues/'.$view.'.php');
 
 

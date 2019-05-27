@@ -14,7 +14,7 @@
     		<p id="tabtitle">Panneau d'administration</p>
     		<div>
     			<button class="tabbutton" id="newcomptebtn" onclick="dispTab('newcompte')">Créer un nouveau compte</button>
-    			<button class="tabbutton" id="consobtn" onclick="dispTab('conso')">Relevé de consommation</button>
+    			<button name="switchToTech" class="tabbutton" id="consobtn" onclick="dispTab('conso')">Relevé de consommation</button>
     			<button class="tabbutton" id="clientsbtn" onclick="dispTab('clients')">Liste des clients</button>
     		</div>
     		<div>
@@ -55,6 +55,9 @@
     	</div>
     	<div class="tabcontent" id="conso">
     		<p class="subtabtitle"> Relevé de consommation</p>
+			<form action="" method="post">
+				<input type="submit" value="Voir la consommation" name="switchToTech">
+			</form>
     	</div>
         <div class="tabcontent" id="clients">
     		<p class="subtabtitle"> Liste des utilisateurs</p>
